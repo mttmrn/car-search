@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style-practice.css">
     <script src="https://kit.fontawesome.com/2ef970bfe9.js"></script>
     <title>Document</title>
 </head>
@@ -33,18 +33,59 @@
             <h2 class="headline">Never overpay for your car again.</h2>
             <h2 class="subhead">Instantly search 100,000+ cars listed below their KBB value</h2>
             </div>
-            <form class="search" name="search" id="search-form">
+            <form class="search" autocomplete="off" name="search" id="search-form">
+
                     <div class="make-wrapper">
                         <i class="fas fa-tools"></i>
-                        <input class="make" type="text" placeholder="Make">
+                        <select name="makes" id="makes" class="make" onchange="chooseModel()">
+                                <option value="all" selected>All Makes</option>
+                                <option value="acura">Acura</option>
+                                <option value="alfa-romeo">Alfa Romeo</option>
+                                <option value="aston-martin">Aston Martin</option>
+                                <option value="audi">Audi</option>
+                                <option value="bentley">Bentley</option>
+                                <option value="bmw">BMW</option>
+                                <option value="buick">Buick</option>
+                                <option value="cadillac">Cadillac</option>
+                                <option value="chevrolet">Chevrolet</option>
+                                <option value="chrysler">Chrysler</option>
+                                <option value="dodge">Dodge</option>
+                                <option value="fiat">Fiat</option>
+                                <option value="ford">Ford</option>
+                                <option value="gmc">GMC</option>
+                                <option value="honda">Honda</option>
+                                <option value="hyundai">Hyundai</option>
+                                <option value="infiniti">Infiniti</option>
+                                <option value="jaguar">Jaguar</option>
+                                <option value="jeep">Jeep</option>
+                                <option value="kia">Kia</option>
+                                <option value="land-rover">Land Rover</option>
+                                <option value="lexus">Lexus</option>
+                                <option value="lincoln">Lincoln</option>
+                                <option value="mazda">Mazda</option>
+                                <option value="mercedes">Mercedes-Benz</option>
+                                <option value="mistubishi">Mitsubishi</option>
+                                <option value="nissan">Nissan</option>
+                                <option value="porsche">Porsche</option>
+                                <option value="scion">Scion</option>
+                                <option value="saab">Smart</option>
+                                <option value="subaru">Subaru</option>
+                                <option value="suzuki">Suzuki</option>
+                                <option value="tesla">Tesla</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="volkswagen">Volkswagen</option>
+                                <option value="volvo">Volvo</option>
+                        </select>
                     </div>
                     <div class="model-wrapper">
                         <i class="fas fa-car"></i>
-                        <input class="model" type="text" placeholder="Model">
+                        <select name="models" id="models" class="model">
+                                <option value="all" selected>All Models</option>
+                        </select>
                     </div>
                     <div class="zip-wrapper">
                         <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" class="zip" placeholder="Zip Code">
+                        <input type="text" name="zip" class="zip" placeholder="Zip Code">
                     </div>
                     <div class="button-wrapper">
                         <button type="submit" class="btn">SEARCH</button>
@@ -52,8 +93,21 @@
             </form>
     </header>
     <div class="graphic-container">
-            <div class="circle1"></div>
+            <div class="triangle"></div>
+                <div class="text-container">
+                    <h3 class="headline">Find the best deals</h3>
+                    <p class="subhead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos illo perspiciatis quibusdam recusandae quae corrupti, ipsum repellendus ratione, beatae vero fugit animi error ex possimus nam laudantium tempora quas.</p>
+            </div>
+                    <img src="./img/car.svg" class="car-icon" alt="car">
     </div>
+    <div class="white-container">
+        <img src="./img/search-var-flat.svg" class="search-icon" alt="search icon">
+        <div class="text-container2">
+            <h3 class="headline">Another sweet headline</h3>
+            <p class="subhead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos illo perspiciatis quibusdam recusandae quae corrupti, ipsum repellendus ratione, beatae vero fugit animi error ex possimus nam laudantium tempora quas.</p>
+        </div>
+    </div>
+    <script src="./main copy.js"></script>
 </body>
 
 </html>
