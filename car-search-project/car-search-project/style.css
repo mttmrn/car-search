@@ -1,0 +1,298 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 18px;   
+        color: hsl(216, 6%, 47%)
+}
+
+input {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+
+::placeholder {
+    color: hsl(216, 6%, 47%);
+    font-size: 18px;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    width: 100%;
+    height: 10vh;
+}
+
+.logo-container {
+    display: flex;
+    width: 50%;
+    align-items: flex-end;
+    margin-left: 15%;
+}
+
+.link-container {
+    display: flex;
+    width: 50%;
+    align-items: flex-end; 
+    justify-content: flex-end;
+    margin-right: 15%;
+}
+
+.links {
+    list-style: none;
+    display: inline-flex;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.login {
+    color: #2EBD71;
+}
+
+.logo {
+    font-family: "Poppins", sans-serif;
+    z-index: 1;
+    font-size: 38px;
+    color: #2EBD71;
+    text-shadow: 2px 2px rgb(2, 131, 67);
+}
+
+.login {
+    margin-right: 40px;
+    background: white;
+    border: 2px solid #2EBD71;
+    border-radius: 2px;
+    padding: 5px 20px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
+}
+
+.signup {
+    border: 2px solid #2EBD71;
+    background: #2EBD71;
+    border-radius: 2px;
+    padding: 5px 20px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
+}
+
+a.signup {
+    color: white;
+}
+
+.search {
+    width: 950px;
+    height: 90px;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
+}
+
+.make-wrapper {
+    height: 100%;
+    width: 300px;
+    background-color: white;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    position: relative;
+}
+
+.make {
+    height: 100%;
+    width: 100%;
+    border-right: 1px solid hsl(240, 6%, 91%);
+    padding-left: 20%;
+    padding-right: 10%;
+}
+
+.fa-tools {
+    font-size: 26px;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    color: hsl(219, 11%, 74%);
+}
+
+.model-wrapper {
+    height: 100%;
+    width: 300px;
+    background-color: white;
+    position: relative;
+}
+
+.model {
+    height: 100%;
+    width: 100%;
+    border-right: 1px solid hsl(240, 6%, 91%);
+    padding-left: 21%;
+    padding-right: 10%;
+}
+
+.fa-car {
+    font-size: 28px;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    color: hsl(219, 11%, 74%);
+}
+
+.zip-wrapper {
+    height: 100%;
+    width: 200px;
+    background-color: white;
+    position: relative;
+}
+
+.zip {
+    height: 100%;
+    width: 100%;
+    padding-left: 26%;
+    padding-right: 10%;
+}
+
+
+.fa-map-marker-alt {
+    font-size: 26px;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    color: hsl(219, 11%, 74%);
+}
+
+.button-wrapper {
+    height: 100%;
+    width: 150px;
+    background: #2EBD71;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.btn {
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    outline: none;
+}
+
+.headline-container {
+    text-align: center;
+    width: 950px;
+    height: 100%;
+    margin-top: -150px;
+    margin-bottom: 50px;
+    line-height: 50px;
+}
+
+.headline {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 44px;
+    color: #333333;
+}
+.subhead {
+    font-size: 24px;
+    color:#2c2c2c;
+}
+
+.graphic-container {
+    width: 100%;
+    height: 1000px;
+    margin-top: -250px;
+    background-color: #2EBD71;
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+}
+
+.car-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: 63%;
+    margin-top: 31%;
+}
+
+.text-container {
+    text-align: center;
+    width: 50vw;
+    height: 50vh;
+    line-height: 50px;
+    background: yellow;
+}
+
+.text-container .subhead {
+    color: white;
+    margin-left: 8rem;
+    margin-top: 2rem;
+}
+
+.text-container .headline {
+    color: white;
+    margin-left: 8rem;
+    margin-top: 12rem;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 250px solid white;
+}
+
+.white-container {
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(218, 218, 218);
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 91%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.text-container2 {
+    text-align: center;
+    width: 50vw;
+    height: 50vh;
+    line-height: 50px;
+    background: red;
+}
+
+.text-container2 .subhead {
+    margin-top: 2rem;
+}
