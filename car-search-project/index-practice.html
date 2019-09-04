@@ -13,6 +13,25 @@
 </head>
 
 <body>
+        <div class="bg-modal" id="background">
+                <div class="modal-content">
+                    <div class="close">+</div>
+                    <div class="modal-container">
+                        <ul class="tabs">
+                            <li class="modal-login" id="login-tab"><a href="#login-panel" class="tab-headline">Login</a></li>
+                            <li class="modal-signup" id="signup-tab"><a href="#signup-panel" class="tab-headline">Sign Up</a></li>
+                        </ul>
+                    <div class="input-container">    
+                        <input type="email" name="email" id="email" placeholder="Your email">
+                        <input type="password" name="password" id="password" placeholder="Password">
+                        <a href="#" class="create-account"><button class="signup">Create Account</button></a>
+                    </div>
+                    <div class="social-container">
+                            <p>placholder socials</p>
+                    </div>
+                    </div>
+                </div>
+        </div>
         <header class="section">
             <nav>
                 <div class="logo-container">
@@ -22,9 +41,9 @@
                 </div>
                 <div class="link-container">
                     <ul class="links">
-                        <a href="#" class="login">
+                        <a href="#" id="modal1" class="login">
                             <li>Login</li><a>
-                                <a href="#" class="signup">
+                                <a href="#" id="modal2" class="signup">
                                     <li><span>Sign Up</li><a>
                     </ul>
                 </div>
@@ -85,7 +104,7 @@
                     </div>
                     <div class="zip-wrapper">
                         <i class="fas fa-map-marker-alt"></i>
-                        <input type="text" name="zip" class="zip" placeholder="Zip Code">
+                        <input type="tel" name="zip" class="zip" placeholder="Zip Code">
                     </div>
                     <div class="button-wrapper">
                         <button type="submit" class="btn">SEARCH</button>
@@ -102,7 +121,7 @@
     <div class="graphic-container">
                 <div class="text-container">
                     <h3 class="headline">Find the best deals</h3>
-                    <p class="subhead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos illo perspiciatis quibusdam recusandae quae corrupti, ipsum repellendus ratione, beatae vero fugit animi error ex possimus nam laudantium tempora quas.</p>
+                    <p class="subhead">We evaluate car listings from every major marketplace and only display cars we're confident are great deals. Everything is priced at or below it's KBB value and has no prior mechanical damage.</p>
                 </div>
                     <img src="./img/red-car.svg" class="car-top sedan" alt="">
                     <!-- <img src="./img/green-car.svg" class="car-bottom rotate1" alt=""> -->
@@ -115,8 +134,8 @@
     <section class="white-container">
         <img src="./img/search-var-flat.svg" class="search-icon" alt="search icon">
         <div class="text-container2">
-            <h3 class="headline">Another sweet headline</h3>
-            <p class="subhead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos illo perspiciatis quibusdam recusandae quae corrupti, ipsum repellendus ratione, beatae vero fugit animi error ex possimus nam laudantium tempora quas.</p>
+            <h3 class="headline">Get your dream car at your dream price</h3>
+            <p class="subhead">Have a specific car in mind? Filter by make, model, color, and a variety of other choices to buy your next ride. If there are none available, you can even track it and we'll send you an alert when there's a listing that fits your description!</p>
         </div>
     </section>
 
@@ -132,7 +151,7 @@
     </section>
 
 
-    <script src="./main copy.js"></script>
+    <script src="./main-copy.js"></script>
 </body>
 
 </html>

@@ -5,6 +5,14 @@
     font-family: 'Raleway', sans-serif;
 }
 
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -37,6 +45,7 @@ button {
     background: none;
     border: none;
     cursor: pointer;
+    height: 0px;
 }
 
 .section {
@@ -104,7 +113,6 @@ a.login {
 }
 
 .signup {
-    border: 2px solid #2EBD71;
     background: #2EBD71;
     border-radius: 2px;
     padding: 5px 20px;
@@ -353,11 +361,13 @@ a.signup {
 
 .text-container3 {
     text-align: center;
-    width: 40vw;
+    width: 50vw;
     height: 30rem;
     line-height: 5rem;
-    margin-left: 5%;
+    margin-left: 6%;
+    margin-top: 2%;
     align-items: center;
+    z-index: 1;
 }
 
 .text-container3 button {
@@ -380,6 +390,135 @@ a.signup {
     margin-bottom: 30px;
 }
 
+.bg-modal {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 2;
+}
+
+.modal-content {
+    height: 80%;
+    width: 40%;
+    background-color: white;
+    position: relative;
+    display: flex;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);    
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    right: 20px;
+    cursor: pointer;
+    font-size: 42px;
+    z-index: 99;
+}
+
+.close:hover {
+    color: red;
+}
+
+.modal-container {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-signup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-headline {
+    font-size: 3.3rem;
+    color: #2EBD71;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+#email {
+    background: rgb(240, 240, 240);
+    width: 75%;
+    height: 7rem;
+    padding-left: 2%;
+    border-radius: 2px;
+}
+
+#password {
+    background: rgb(240, 240, 240);
+    width: 75%;
+    height: 7rem;
+    padding-left: 2%;
+    border-radius: 2px;
+}
+
+.tabs {
+    width: 100%;
+    height: 13%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.input-container {
+    display: flex;
+    width: 100%;
+    height: 40%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.input-container button {
+    font-size: 1.8rem;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+
+.input-container a.create-account{
+    width: 75%;
+    height: 7rem;
+    background: #2EBD71;
+    border-radius: 2px;
+}
+
+.social-container {
+    width: 100%;
+    height: 37%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    background: #bdbdbd;
+    opacity: 0.6;
+}
 
 /* button effects */
 
@@ -456,7 +595,7 @@ a.signup {
 }
 
 
-@-webkit-keyframes rotateBottom {
+@keyframes rotateBottom {
     0% {
         -webkit-transform: rotate(0deg);
     }
@@ -482,7 +621,7 @@ a.signup {
     }
 }
 
-@-webkit-keyframes rotateTop1 {
+@keyframes rotateTop1 {
     0% {
         -webkit-transform: rotate(0deg);
     }
@@ -512,7 +651,7 @@ a.signup {
     }
 }
 
-@-webkit-keyframes rotateTop2 {
+@keyframes rotateTop2 {
     0% {
         -webkit-transform: rotate(0deg);
     }
@@ -542,7 +681,7 @@ a.signup {
     }
 }
 
-@-webkit-keyframes rotateTop3 {
+@keyframes rotateTop3 {
     0% {
         -webkit-transform: rotate(0deg);
     }
@@ -572,7 +711,7 @@ a.signup {
     }
 }
 
-@-webkit-keyframes rotateTop4 {
+@keyframes rotateTop4 {
     0% {
         -webkit-transform: rotate(0deg);
     }
@@ -603,7 +742,7 @@ a.signup {
 }
 
 /* 1 0 0 1 */
-@-webkit-keyframes disappear {
+@keyframes disappear {
     20% {
         opacity: 1;
     }
@@ -622,7 +761,7 @@ a.signup {
 }
 
 /* 0 1 1 0 0 */
-@-webkit-keyframes appear1 {
+@keyframes appear1 {
     22% {
         opacity: 0;
     }
@@ -644,7 +783,7 @@ a.signup {
     }
 }
 
-@-webkit-keyframes appear2 {
+@keyframes appear2 {
     48% {
         opacity: 0;
     }
@@ -666,7 +805,7 @@ a.signup {
     }
 }
 
-@-webkit-keyframes appear3 {
+@keyframes appear3 {
     72% {
         opacity: 0;
     }
@@ -685,7 +824,7 @@ a.signup {
 
 }
 
-@-webkit-keyframes appear4 {
+@keyframes appear4 {
     76% {
         opacity: 0;
     }
