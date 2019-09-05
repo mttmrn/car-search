@@ -310,6 +310,7 @@ a.signup {
 .text-container .subhead {
     color: white;
     margin-top: 2rem;
+    line-height: 4rem;
 }
 
 .text-container .headline {
@@ -332,10 +333,18 @@ a.signup {
     width: 40vw;
     height: 50vh;
     line-height: 5rem;
+    margin-left: 22rem;
 }
 
 .text-container2 .subhead {
     margin-top: 2rem;
+    line-height: 4rem;
+}
+
+.isometric-car {
+    position: absolute;
+    left: 0;
+    margin-left: 12rem;
 }
 
 .gray-container {
