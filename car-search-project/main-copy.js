@@ -21,7 +21,7 @@ window.onclick = function(event) {
     }
 }
 
-// login event listener
+// Login event listener
 
 document.getElementById('modal1').addEventListener('click',
 function() {
@@ -33,7 +33,7 @@ function() {
   document.querySelector('.bg-modal').style.display = "none";
 });
 
-// signup event listener
+// Signup event listener
 
 document.getElementById('modal2').addEventListener('click',
 function() {
@@ -45,24 +45,37 @@ function() {
   document.querySelector('.bg-modal').style.display = "none";
 });
 
-// change color of the modal depending on which is active
+// Signup event listener (bottom of page)
 
-document.querySelector('#login-tab').addEventListener('click',
+document.getElementById('modal3').addEventListener('click',
 function() {
+  document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+document.querySelector('.close').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = "none";
+});
+
+// change color of the modal depending on which is active
+// login tab
+function loginTab() {
   document.querySelector('#login-tab').classList.remove("active");
   document.querySelector('.modal-login').style.borderTop = "#2EBD71 4px solid";
   document.querySelector('.signup-content').style.display = "none";
+  document.querySelector('.modal-content').style.height = "76%";
   document.querySelector('#signup-tab').classList.add("active");
   document.querySelector('.modal-signup').style.borderTop = "none"
   document.querySelector('.login-content').style.display = "block";
-});
+};
 
-document.querySelector('#signup-tab').addEventListener('click',
-function() {
+//signup tab
+function signupTab() {
   document.querySelector('#signup-tab').classList.remove("active");
   document.querySelector('.modal-signup').style.borderTop = "#2EBD71 4px solid";
   document.querySelector('.login-content').style.display = "none";
+  document.querySelector('.modal-content').style.height = "86%";
   document.querySelector('#login-tab').classList.add("active");
   document.querySelector('.modal-login').style.borderTop = "none"
   document.querySelector('.signup-content').style.display = "block";
-});
+};
