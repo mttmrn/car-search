@@ -51,6 +51,7 @@ document.querySelector('#login-tab').addEventListener('click',
 function() {
   document.querySelector('#login-tab').classList.remove("active");
   document.querySelector('.modal-login').style.borderTop = "#2EBD71 4px solid";
+  document.querySelector('.signup-content').style.display = "none";
   document.querySelector('#signup-tab').classList.add("active");
   document.querySelector('.modal-signup').style.borderTop = "none"
   document.querySelector('.login-content').style.display = "block";
@@ -60,7 +61,8 @@ document.querySelector('#signup-tab').addEventListener('click',
 function() {
   document.querySelector('#signup-tab').classList.remove("active");
   document.querySelector('.modal-signup').style.borderTop = "#2EBD71 4px solid";
+  document.querySelector('.login-content').style.display = "none";
   document.querySelector('#login-tab').classList.add("active");
   document.querySelector('.modal-login').style.borderTop = "none"
-  document.querySelector('.login-content').style.display = "none";
+  document.querySelector('.signup-content').style.display = "block";
 });

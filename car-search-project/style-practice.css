@@ -442,7 +442,6 @@ a.signup {
     justify-content: center;
     align-items: center;
     border-bottom-right-radius: 5px;
-    border-top: #2EBD71 4px solid;
 }
 
 .modal-signup {
@@ -451,7 +450,6 @@ a.signup {
     justify-content: center;
     align-items: center;
     border-bottom-left-radius: 5px;
-    border-top: #2EBD71 4px solid;
 }
 
 .tab-headline {
@@ -495,7 +493,7 @@ a.signup {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 3.2rem;
+    margin-top: 3.7rem;
 }
 
 .input-container button {
@@ -560,6 +558,12 @@ a.signup {
 }
 
 .login-content {
+    display: none;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+  }
+
+.signup-content {
     display: none;
     -webkit-animation: fadeEffect 1s;
     animation: fadeEffect 1s;
