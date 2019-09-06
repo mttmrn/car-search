@@ -79,6 +79,7 @@ nav {
     align-items: flex-end;
     justify-content: flex-end;
     margin-right: 15%;
+    padding-bottom: 0.8rem;
 }
 
 a {
@@ -333,7 +334,7 @@ a.signup {
     width: 40vw;
     height: 50vh;
     line-height: 5rem;
-    margin-left: 22rem;
+    margin-left: 18rem;
 }
 
 .text-container2 .subhead {
@@ -672,14 +673,20 @@ a.signup {
   }
 
   .search-icon {
-    animation: movement 6s infinite;
+    margin-left: 15rem;
+    animation: movement 10s infinite;
 }
 
 @keyframes movement {
-    20% {transform: translate(-200px, 150px)}
-    40% {transform: translate(50px, 100px)}
-    60% {transform: translate(200px, -150px)}
-    80% {transform: translate(-100px, 165px)}
+    10% {transform: translate(225px, -75px) rotate(-20deg)}
+    20% {transform: translate(225px, -75px) rotate(-20deg)}
+    30%{transform: translate(-110px, -90px) rotate(100deg)}
+    40%{transform: translate(-110px, -90px) rotate(100deg)}
+    50% {transform: translate(-120px, 130px) rotate(70deg)}
+    60% {transform: translate(-120px, 130px) rotate(70deg)}
+    70% {transform: translate(150px, 75px) rotate(10deg)}
+    80% {transform: translate(150px, 75px) rotate(10deg)}
+    90% {transform: translate(0px, 0px)}
     100% {transform: translate(0px, 0px)}
 }
 
