@@ -348,6 +348,23 @@ a.signup {
     margin-left: 12rem;
 }
 
+.light-green {
+    fill: #2EBD71;
+    animation: colorSwapLight 10s infinite;
+}
+
+.dark-green {
+    fill: rgb(34, 141, 84);
+}
+
+.darkest-green{
+    fill: rgb(22, 92, 55);
+}
+
+.inbetween {
+    fill: rgb(37, 156, 93);
+}
+
 .gray-container {
     width: 100%;
     height: 70rem;
@@ -665,7 +682,62 @@ a.signup {
     transition: all 0.2s ease 0s;
 }
 
-/* Animations */
+/* Animations     fill: #2EBD71;
+    fill: rgb(34, 141, 84);
+    fill: rgb(22, 92, 55);
+    fill: rgb(37, 156, 93); */
+
+@keyframes colorSwapLight {
+    10% {fill: rgb(189, 75, 46)}
+    20% {fill: rgb(189, 75, 46)}
+    30% {fill: rgb(46, 184, 189)}
+    40% {fill: rgb(46, 184, 189)}
+    50% {fill: rgb(189, 187, 46)}
+    60% {fill: rgb(189, 187, 46)}
+    70% {fill: rgb(96, 46, 189)}
+    80% {fill: rgb(96, 46, 189)}
+    90% {fill: #2EBD71}
+    100% {fill: #2EBD71}
+}
+
+@keyframes colorSwapDark {
+    10% {fill: rgb(133, 53, 32)}
+    20% {fill: rgb(133, 53, 32)}
+    30% {fill: rgb(30, 118, 121)}
+    40% {fill: rgb(30, 129, 133)}
+    50% {fill: rgb(134, 133, 32)}
+    60% {fill: rgb(134, 133, 32)}
+    70% {fill: rgb(59, 27, 119)}
+    80% {fill: rgb(60, 29, 119)}
+    90% {fill: rgb(34, 141, 84)}
+    100% {fill: rgb(34, 141, 84)}
+}
+
+@keyframes colorSwapDarkest {
+    10% {fill: rgb(87, 34, 20)}
+    20% {fill: rgb(87, 34, 21)}
+    30% {fill: rgb(23, 93, 95)}
+    40% {fill: rgb(23, 94, 97)}
+    50% {fill: rgb(94, 92, 23)}
+    60% {fill: rgb(97, 96, 24)}
+    70% {fill: rgb(46, 22, 90)}
+    80% {fill: rgb(50, 24, 97)}
+    90% {fill: rgb(22, 92, 55)}
+    100% {fill: rgb(22, 92, 55)}
+}
+
+@keyframes colorSwapInbetween {
+    10% {fill: rgb(155, 61, 37)}
+    20% {fill: rgb(156, 62, 38)}
+    30% {fill: rgb(37, 151, 155)}
+    40% {fill: rgb(39, 157, 161)}
+    50% {fill: rgb(153, 151, 37)}
+    60% {fill: rgb(155, 153, 37)}
+    70% {fill: rgb(75, 36, 148)}
+    80% {fill: rgb(74, 35, 148)}
+    90% {fill: rgb(37, 156, 93)}
+    100% {fill: rgb(37, 156, 93)}
+}
 
 @keyframes fadeEffect {
     from {opacity: 0;}
@@ -680,8 +752,8 @@ a.signup {
 @keyframes movement {
     10% {transform: translate(225px, -75px) rotate(-20deg)}
     20% {transform: translate(225px, -75px) rotate(-20deg)}
-    30%{transform: translate(-110px, -90px) rotate(100deg)}
-    40%{transform: translate(-110px, -90px) rotate(100deg)}
+    30% {transform: translate(-110px, -90px) rotate(100deg)}
+    40% {transform: translate(-110px, -90px) rotate(100deg)}
     50% {transform: translate(-120px, 130px) rotate(70deg)}
     60% {transform: translate(-120px, 130px) rotate(70deg)}
     70% {transform: translate(150px, 75px) rotate(10deg)}
