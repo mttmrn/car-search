@@ -1,14 +1,58 @@
+// assign variable to JSON (let json = "JSON_DATA")
+// parse the JSON data (let cars = JSON.parse(json))
+// Add them as DOM elements by looping through? document.getElementByID('test').innerHTML = cars.ford
+
+
+var ford = ["Fiesta", "Mustang", "F150", "F250", "F350", "F450", "F550"]
+
+/* 
+function choose2() {
+var x = document.getElementById("makes").value;
+if (x === "ford") {
+    console.log(x)
+      htmlString += '<option value="all" selected>' + item + '</option>';
+      for (var item in models[key]) {
+        console.log(item)
+      }
+  document.getElementById("models").innerHTML = htmlString;
+}
+}
+*/
+
+
+/* function choose() {
+  
+    console.log(document.getElementById("makes").value);
+    for (var i = 0; i < cars[0].models.length; i++) {
+      console.log(cars[0].models);
+      var y = document.getElementById("makes").value;
+      if (y === "ford") {
+      document.getElementById("models").innerHTML = 
+      '<option value="all" selected>Hello</option> <option value="all" selected>This</option><option value="all" selected>testing</option> <option value="all" selected>All Models</option>'
+    }
+  }
+} */
+
 // Listen to the make ID depending on the option, display the model data
 
 function chooseModel() {
   var x = document.getElementById("makes").value;
   if (x === "volvo") {
+    console.log(models.ford);
+    document.getElementById("models").innerHTML = 
+    '<option value="all" selected>Hello</option> <option value="all" selected>This</option><option value="all" selected>testing</option> <option value="all" selected>All Models</option>'
+  }
+  else if (x === "acura") {
     document.getElementById("models").innerHTML = 
     '<div class="model-wrapper"> <i class="fas fa-car"></i> <select name="models" id="models" class="model"> <option value="all" selected>All Models</option> <option value="all" selected>Hello</option> <option value="all" selected>This</option><option value="all" selected>testing</option> <option value="all" selected>All Models</option> </select> </div>'
   }
-  else {document.getElementById("models").innerHTML = ""}
+  else if (x === "ford") {
+    for(var i = 0; i < ford.length; i++) {
+    document.getElementById("models").innerHTML +=
+    '<option value="all" selected>' + ford[i] + '</option>'
+    }
+  }
 
-  console.log(x);
 }
 
 // Get the modal
@@ -21,7 +65,7 @@ window.onclick = function(event) {
     }
 }
 
-// Login event listener
+// Login event listener (nav bar)
 
 document.getElementById('modal1').addEventListener('click',
 function() {
@@ -33,7 +77,7 @@ function() {
   document.querySelector('.bg-modal').style.display = "none";
 });
 
-// Signup event listener
+// Signup event listener (nav bar)
 
 document.getElementById('modal2').addEventListener('click',
 function() {
