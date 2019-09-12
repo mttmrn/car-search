@@ -1,101 +1,380 @@
-var makes = ["Ford", "Hyundai", "Chevrolet", "Toyota", "Cadillac", ""];
-var models = ["j", "b", "smooth", "Hello"];
+// assign variable to JSON (let json = "JSON_DATA")
+// parse the JSON data (let cars = JSON.parse(json))
+// Add them as DOM elements by looping through? document.getElementByID('test').innerHTML = cars.ford
 
-function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
-    var currentFocus;
-    /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", function(e) {
-        var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        if (!val) { return false;}
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
-        this.parentNode.appendChild(a);
-        /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
-            b = document.createElement("DIV");
-            /*make the matching letters bold:*/
-            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
-                b.addEventListener("click", function(e) {
-                /*insert the value for the autocomplete text field:*/
-                inp.value = this.getElementsByTagName("input")[0].value;
-                /*close the list of autocompleted values,
-                (or any other open lists of autocompleted values:*/
-                closeAllLists();
-            });
-            a.appendChild(b);
-          }
-        }
-    });
-    /*execute a function presses a key on the keyboard:*/
-    inp.addEventListener("keydown", function(e) {
-        var x = document.getElementById(this.id + "autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
-        if (e.keyCode == 40) {
-          /*If the arrow DOWN key is pressed,
-          increase the currentFocus variable:*/
-          currentFocus++;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 38) { //up
-          /*If the arrow UP key is pressed,
-          decrease the currentFocus variable:*/
-          currentFocus--;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
-        }
-    });
-    function addActive(x) {
-      /*a function to classify an item as "active":*/
-      if (!x) return false;
-      /*start by removing the "active" class on all items:*/
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
-      /*add class "autocomplete-active":*/
-      x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-      /*a function to remove the "active" class from all autocomplete items:*/
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
+var acura = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
+var alfaRomeo = ["164", "4C", "8C", "Giulia", "Spider", "Stelvio"]
+var astonMartin = ["DB AR1 Zagato", "DB11", "DB7", "DB7 Vantage", "DB9", "Rapide", "Vanquish", "V8 Vantage", "V12 Vantage", "Vantage GT", "Virage"]
+var audi = ["A3", "A4", "A5", "A6", "A7", "A8", "Allroad", "Q3", "Q5", "Q7", "Q8", "R8", "RS3", "RS5", "RS7", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "TT", "TT RS", "TTS", "e-tron"]
+var bentley = ["Arnage", "Azure", "Bentayga", "Brooklands", "Continental", "Continental Flying Spur", "Continental GT", "Continental GTC", "Continental Supersports", "Flying Spur", "Mulsanne", "R-Type", "Turbo R", "Turbo RL", "Turbo RT", "Turbo S"]
+var bmw = ["2 Series", "3 Series", "4 Series", "5 Series", "6 Series", "7 Series", "M2", "M3", "M4", "M5", "M6", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "Z4", "i3", "i8"]
+var buick = ["Cascada", "Enclave", "Encore", "Envision", "LaCrosse", "Regal", "Verano"]
+var cadillac = ["ATS", "CT6", "CTS", "ELR", "Escalade", "SRX", "XT4", "XT5", "XT6", "XTS"]
+var chevrolet = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
+var chrysler = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
+var dodge =["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
+var fiat = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
+var ford = ["Fiesta", "Mustang", "F150", "F250", "F350", "F450", "F550"]
+var gmc
+var honda
+var hyundai
+var infiniti
+var jaguar
+var jeep
+var kia
+var landRover
+var lexus
+var lincoln
+var mazda
+var mercedesBenz
+var mini
+var mitsubishi
+var nissan
+var porsche
+var scion
+var saab
+var subaru
+var suzuki
+var tesla
+var toyota
+var volkswagen = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F350", "F450", "F550"]
+var volvo = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F350", "F450", "F550"]
+
+/* 
+function choose2() {
+var x = document.getElementById("makes").value;
+if (x === "ford") {
+    console.log(x)
+      htmlString += '<option value="all" selected>' + item + '</option>';
+      for (var item in models[key]) {
+        console.log(item)
       }
-    }
-    function closeAllLists(elmnt) {
-      /*close all autocomplete lists in the document,
-      except the one passed as an argument:*/
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
-      }
+  document.getElementById("models").innerHTML = htmlString;
+}
+}
+*/
+
+
+/* function choose() {
+  
+    console.log(document.getElementById("makes").value);
+    for (var i = 0; i < cars[0].models.length; i++) {
+      console.log(cars[0].models);
+      var y = document.getElementById("makes").value;
+      if (y === "ford") {
+      document.getElementById("models").innerHTML = 
+      '<option value="all" selected>Hello</option> <option value="all" selected>This</option><option value="all" selected>testing</option> <option value="all" selected>All Models</option>'
     }
   }
-  /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
-  });
+} */
+
+/*   if (make.value === "acura") {
+    document.getElementById("models").innerHTML = "" // clears the select box
+    for(var i = 0; i < acura.length; i++) { // i is the index of the array
+    document.getElementById("models").innerHTML += //finds the model HTML
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`; //adds each option
+    }
+  }
+  
+  ^previous way of doing the select model function
+*/
+
+// Listen to the make ID depending on the option, display the model data
+
+function chooseModel() {
+  let make = document.getElementById("makes");
+  let models = document.getElementById("models");
+
+  if (make.value === "all") {
+    models.innerHTML = ""
+    models.innerHTML =
+    `<option value="all">All Models</option>`; 
+  }
+  else if (make.value === "acura") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "alfa-romeo") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "aston-martin") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "audi") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "bentley") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "bmw") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "buick") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "cadillac") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "chevrolet") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+    else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
+  else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
   }
 
-  autocomplete(document.getElementById("myInput"), makes);
+}
+
+
+// Get the modal
+var background = document.getElementById('background');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == background) {
+        background.style.display = "none";
+    }
+}
+
+// Login event listener (nav bar)
+
+document.getElementById('modal1').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+document.querySelector('.close').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = "none";
+});
+
+// Signup event listener (nav bar)
+
+document.getElementById('modal2').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+document.querySelector('.close').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = "none";
+});
+
+// Signup event listener (bottom of page)
+
+document.getElementById('modal3').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+document.querySelector('.close').addEventListener('click',
+function() {
+  document.querySelector('.bg-modal').style.display = "none";
+});
+
+// change color of the modal depending on which is active
+// login tab
+function loginTab() {
+  document.querySelector('#login-tab').classList.remove("active");
+  document.querySelector('.modal-login').style.borderTop = "#2EBD71 4px solid";
+  document.querySelector('.signup-content').style.display = "none";
+  document.querySelector('.modal-content').style.height = "76%";
+  document.querySelector('#signup-tab').classList.add("active");
+  document.querySelector('.modal-signup').style.borderTop = "none"
+  document.querySelector('.login-content').style.display = "block";
+};
+
+//signup tab
+function signupTab() {
+  document.querySelector('#signup-tab').classList.remove("active");
+  document.querySelector('.modal-signup').style.borderTop = "#2EBD71 4px solid";
+  document.querySelector('.login-content').style.display = "none";
+  document.querySelector('.modal-content').style.height = "86%";
+  document.querySelector('#login-tab').classList.add("active");
+  document.querySelector('.modal-login').style.borderTop = "none"
+  document.querySelector('.signup-content').style.display = "block";
+};
