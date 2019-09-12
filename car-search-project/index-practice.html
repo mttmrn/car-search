@@ -18,14 +18,14 @@
             <div class="close">+</div>
             <div class="modal-container">
                 <ul class="tabs">
-                    <li class="modal-login" id="login-tab"><a href="#login-panel" class="tab-headline" onclick="loginTab()">Login</a></li>
-                    <li class="modal-signup" id="signup-tab"><a href="#signup-panel" class="tab-headline" onclick="signupTab()">Sign Up</a>
+                    <li class="modal-login" id="login-tab"><a href="#login" class="tab-headline" onclick="loginTab()">Login</a></li>
+                    <li class="modal-signup" id="signup-tab"><a href="#signup" class="tab-headline" onclick="signupTab()">Sign Up</a>
                     </li>
                 </ul>
                 <div class="login-content">
                     <div class="input-container">
-                        <input type="email" name="email" id="email" placeholder="Your email">
-                        <input type="password" name="password" id="password" placeholder="Password">
+                        <input type="email" name="email" id="email-login" placeholder="Your email">
+                        <input type="password" name="password" id="password-login" placeholder="Password">
                         <a href="#" class="create-account"><button class="signup">Login</button></a>
                         <div class="social-divider">
                             <span class="social-span">OR</span>
@@ -39,9 +39,9 @@
                 </div>
                 <div class="signup-content">
                         <div class="input-container">
-                            <input type="email" name="email" id="email" placeholder="Your email">
-                            <input type="password" name="password" id="password" placeholder="Password">
-                            <input type="password" name="password" id="password" placeholder="Confirm password">
+                            <input type="email" name="email" id="email-signup" placeholder="Your email">
+                            <input type="password" name="password" id="password-signup" placeholder="Password">
+                            <input type="password" name="password" id="confirm" placeholder="Confirm password">
                             <a href="#" class="create-account"><button class="signup">Sign Up</button></a>
                             <div class="social-divider">
                                 <span class="social-span">OR</span>
@@ -65,9 +65,9 @@
             </div>
             <div class="link-container">
                 <ul class="links">
-                    <a href="#popup" id="modal1" onclick="loginTab()" class="login">
+                    <a href="#login" id="modal1" onclick="loginTab()" class="login">
                         <li>Login</li><a>
-                            <a href="#popup" id="modal2" onclick="signupTab()" class="signup">
+                            <a href="#signup" id="modal2" onclick="signupTab()" class="signup">
                                 <li><span>Sign Up</li><a>
                 </ul>
             </div>
@@ -119,12 +119,14 @@
                     <option value="volkswagen">Volkswagen</option>
                     <option value="volvo">Volvo</option>
                 </select>
+                <i class="fas fa-chevron-down"></i>
             </div>
             <div class="model-wrapper">
                 <i class="fas fa-car"></i>
                 <select name="models" id="models" class="model">
                     <option value="all" selected>All Models</option>
                 </select>
+                <i class="fas fa-chevron-down"></i>
             </div>
             <div class="zip-wrapper">
                 <i class="fas fa-map-marker-alt"></i>
