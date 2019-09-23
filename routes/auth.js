@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../model/User')
 
 
-router.post('/register', async (req, res) => {
+router.post('/api/user', async (req, res) => {
     const user = new User({
         email: req.body.email,
         password:req.body.password
