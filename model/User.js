@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 6
+    },
+    cratedAt: {
+        type: Date,
+        required: true,
+        default: new Date()
     }
 });
 
