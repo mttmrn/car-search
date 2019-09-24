@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false}))
 
 //Route Middleware
-app.use('/signup', authRoute);
+app.use('/auth', authRoute);
 app.use(express.static(path.join(__dirname, 'public')))
 
 const PORT = process.env.PORT || 3000;

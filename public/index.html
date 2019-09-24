@@ -44,11 +44,13 @@
                 </div>
                 <div class="signup-content">
                     <div class="input-container">
-                        <form action="/signup" method="POST" class="signup-form">
+                        <form class="signup-form" id="signup-form" action="/signup" method="POST"> 
                             <input type="email" name="email" id="email-signup" placeholder="Your email">
                             <input type="password" name="password" id="password-signup" placeholder="Password">
                             <input type="password" name="confirm" id="confirm" placeholder="Confirm password">
-                            <a href="#" class="create-account" type="submit"><button class="signup">Sign Up</button></a>
+                            <a href="#" class="create-account" type="submit">
+                                <button class="signup">Sign Up</button>
+                            </a>
                         </form>
                         <div class="social-divider">
                             <span class="social-span">OR</span>
@@ -445,6 +447,7 @@
     </section>
 
     <script src="./main.js"></script>
+    <script src="./auth.js"></script>
 </body>
 
 </html>
