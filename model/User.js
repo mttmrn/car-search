@@ -11,10 +11,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 6
     },
-    cratedAt: {
+    createdAt: {
         type: Date,
         required: true,
-        default: new Date()
+        default: Date.now
     }
 });
 
