@@ -3,7 +3,7 @@ const User = require('../model/User')
 
 router.post('/register', async (req, res) => {
     // check if fields are empty
-    const email = 'kuzma031@yahoo.com'
+    const email = req.body.email
           password = req.body.password,
           confirmPass = req.body.confirmPass;
 
