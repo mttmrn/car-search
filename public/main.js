@@ -2,11 +2,6 @@
 // parse the JSON data (let cars = JSON.parse(json))
 // Add them as DOM elements by looping through? document.getElementByID('test').innerHTML = cars.ford
 
-var acura = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
-var alfaRomeo = ["164", "4C", "8C", "Giulia", "Spider", "Stelvio"]
-var astonMartin = ["DB AR1 Zagato", "DB11", "DB7", "DB7 Vantage", "DB9", "Rapide", "Vanquish", "V8 Vantage", "V12 Vantage", "Vantage GT", "Virage"]
-var audi = ["A3", "A4", "A5", "A6", "A7", "A8", "Allroad", "Q3", "Q5", "Q7", "Q8", "R8", "RS3", "RS5", "RS7", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "TT", "TT RS", "TTS", "e-tron"]
-var bentley = ["Arnage", "Azure", "Bentayga", "Brooklands", "Continental", "Continental Flying Spur", "Continental GT", "Continental GTC", "Continental Supersports", "Flying Spur", "Mulsanne", "R-Type", "Turbo R", "Turbo RL", "Turbo RT", "Turbo S"]
 var bmw = ["2 Series", "3 Series", "4 Series", "5 Series", "6 Series", "7 Series", "M2", "M3", "M4", "M5", "M6", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "Z4", "i3", "i8"]
 var buick = ["Cascada", "Enclave", "Encore", "Envision", "LaCrosse", "Regal", "Verano"]
 var cadillac = ["ATS", "CT6", "CTS", "ELR", "Escalade", "SRX", "XT4", "XT5", "XT6", "XTS"]
@@ -91,244 +86,115 @@ if (x === "ford") {
 const make = document.getElementById("makes");
 const models = document.getElementById("models");
 
-function chooseModel() {
-
-  if (make.value === "") {
+const getCar = () => { 
+fetch('cars.json')
+.then((res) => res.json())
+.then((data) => {
+  switch (make.value) {
+    case "":
+      models.innerHTML = ""
+      models.innerHTML +=
+      `<option value="">Choose Model</option>`;
+      break;
+    case "acura":
+        models.innerHTML = ""
+        for(var i = 0; i < data.acura.length; i++) {
+        models.innerHTML +=
+        `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
+        }
+        break;
+  }
+  /*if (make.value === "") {
     models.innerHTML = ""
     models.innerHTML +=
     `<option value="">Choose Model</option>`;
-    
   }
   else if (make.value === "acura") {
     models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
+    for(var i = 0; i < data.acura.length; i++) {
     models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
+    `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
     }
   }
-  else if (make.value === "acura") {
+  else if (make.value === "alfa romeo") {
     models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
+    for(var i = 0; i < data.alfaRomeo.length; i++) {
     models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
+    `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
     }
   }
-  else if (make.value === "acura") {
+  else if (make.value === "aston martin") {
     models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
+    for(var i = 0; i < data.astonMartin.length; i++) {
     models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
+    `<option value="${data.astonMartin[i].toLowerCase()}">${data.astonMartin[i]}</option>`;
     }
   }
-  else if (make.value === "acura") {
+  else if (make.value === "audi") {
     models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
+    for(var i = 0; i < data.audi.length; i++) {
     models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
+    `<option value="${data.audi[i].toLowerCase()}">${data.audi[i]}</option>`;
     }
   }
-  else if (make.value === "acura") {
+  else if (make.value === "alfa romeo") {
     models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
+    for(var i = 0; i < data.alfaRomeo.length; i++) {
     models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
+    `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
     }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
-    }
-  }
-
+  }*/
+})
 }
+
+make.addEventListener("change", getCar)
 
 
 // Get the modal
-var background = document.getElementById('background');
+const background = document.getElementById('background');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == background) {
+    if (event.target === background) {
         background.style.display = "none";
     }
 }
 
+const close = document.querySelector('.close')
 // Login event listener (nav bar)
 
 document.getElementById('modal1').addEventListener('click',
 function() {
-  document.querySelector('.bg-modal').style.display = 'flex';
+  background.style.display = 'flex';
 });
 
-document.querySelector('.close').addEventListener('click',
+close.addEventListener('click',
 function() {
-  document.querySelector('.bg-modal').style.display = "none";
+  background.style.display = "none";
 });
 
 // Signup event listener (nav bar)
 
 document.getElementById('modal2').addEventListener('click',
 function() {
-  document.querySelector('.bg-modal').style.display = 'flex';
+  background.style.display = 'flex';
 });
 
-document.querySelector('.close').addEventListener('click',
+close.addEventListener('click',
 function() {
-  document.querySelector('.bg-modal').style.display = "none";
+  background.style.display = "none";
 });
 
 // Signup event listener (bottom of page)
 
 document.getElementById('modal3').addEventListener('click',
 function() {
-  document.querySelector('.bg-modal').style.display = 'flex';
+  background.style.display = 'flex';
 });
 
-document.querySelector('.close').addEventListener('click',
+close.addEventListener('click',
 function() {
-  document.querySelector('.bg-modal').style.display = "none";
+  background.style.display = "none";
 });
 
 // change color of the modal depending on which is active
@@ -389,8 +255,9 @@ signUpForm.addEventListener('submit', e => {
 
 
 const carSearch = document.getElementById('search-form');
-carSearch.addEventListener('submit', e => {
 
+carSearch.addEventListener('submit', e => {
+  console.log("event sent")
   const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F"
   const apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`
 
@@ -407,3 +274,24 @@ carSearch.addEventListener('submit', e => {
     console.log(data);
 });
 })
+
+const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F"
+const apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`
+
+
+
+/*
+
+carSearch.onclick = () => {
+  console.log("event sent")
+  
+  fetch(apiUrl)
+.then(res => res.json())
+.then(data => {
+  for (let i = 0; i < data.listings.length; i++) {
+    console.log(data.listings[i]);
+  }
+});
+}
+
+*/

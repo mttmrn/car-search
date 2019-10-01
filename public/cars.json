@@ -1,0 +1,7 @@
+{
+    "acura": ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"],
+    "alfaRomeo": ["164", "4C", "8C", "Giulia", "Spider", "Stelvio"],
+    "astonMartin": ["DB AR1 Zagato", "DB11", "DB7", "DB7 Vantage", "DB9", "Rapide", "Vanquish", "V8 Vantage", "V12 Vantage", "Vantage GT", "Virage"],
+    "audi": ["A3", "A4", "A5", "A6", "A7", "A8", "Allroad", "Q3", "Q5", "Q7", "Q8", "R8", "RS3", "RS5", "RS7", "S3", "S4", "S5", "S6", "S7", "S8", "SQ5", "TT", "TT RS", "TTS", "e-tron"],
+    "bentley": ["Arnage", "Azure", "Bentayga", "Brooklands", "Continental", "Continental Flying Spur", "Continental GT", "Continental GTC", "Continental Supersports", "Flying Spur", "Mulsanne", "R-Type", "Turbo R", "Turbo RL", "Turbo RT", "Turbo S"]
+}
