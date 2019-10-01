@@ -35,34 +35,6 @@ var toyota
 var volkswagen = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F350", "F450", "F550"]
 var volvo = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F350", "F450", "F550"]
 
-/* 
-function choose2() {
-var x = document.getElementById("makes").value;
-if (x === "ford") {
-    console.log(x)
-      htmlString += '<option value="all" selected>' + item + '</option>';
-      for (var item in models[key]) {
-        console.log(item)
-      }
-  document.getElementById("models").innerHTML = htmlString;
-}
-}
-*/
-
-
-/* function choose() {
-  
-    console.log(document.getElementById("makes").value);
-    for (var i = 0; i < cars[0].models.length; i++) {
-      console.log(cars[0].models);
-      var y = document.getElementById("makes").value;
-      if (y === "ford") {
-      document.getElementById("models").innerHTML = 
-      '<option value="all" selected>Hello</option> <option value="all" selected>This</option><option value="all" selected>testing</option> <option value="all" selected>All Models</option>'
-    }
-  }
-} */
-
 /*  1**    if (make.value === "acura") {
     document.getElementById("models").innerHTML = "" // clears the select box
     for(var i = 0; i < acura.length; i++) { // i is the index of the array
@@ -79,14 +51,23 @@ if (x === "ford") {
     `<option value="${values[0]}">${values[1]}</option>`; 
     }
   }
+
+  3** 
+  else if (make.value === "alfa romeo") {
+    models.innerHTML = ""
+    for(var i = 0; i < data.alfaRomeo.length; i++) {
+    models.innerHTML +=
+    `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
+    }
+  }
+
   ^previous way of doing the select model function
 */
 
 // Listen to the make ID depending on the option, display the model data
-const make = document.getElementById("makes");
-const models = document.getElementById("models");
-
-const getCar = () => { 
+const make = document.getElementById("makes"),
+      models = document.getElementById("models"),
+      getCar = () => { 
 fetch('cars.json')
 .then((res) => res.json())
 .then((data) => {
@@ -94,7 +75,7 @@ fetch('cars.json')
     case "":
       models.innerHTML = ""
       models.innerHTML +=
-      `<option value="">Choose Model</option>`;
+      `<option value="">All Models</option>`;
       break;
     case "acura":
         models.innerHTML = ""
@@ -104,46 +85,7 @@ fetch('cars.json')
         }
         break;
   }
-  /*if (make.value === "") {
-    models.innerHTML = ""
-    models.innerHTML +=
-    `<option value="">Choose Model</option>`;
-  }
-  else if (make.value === "acura") {
-    models.innerHTML = ""
-    for(var i = 0; i < data.acura.length; i++) {
-    models.innerHTML +=
-    `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
-    }
-  }
-  else if (make.value === "alfa romeo") {
-    models.innerHTML = ""
-    for(var i = 0; i < data.alfaRomeo.length; i++) {
-    models.innerHTML +=
-    `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
-    }
-  }
-  else if (make.value === "aston martin") {
-    models.innerHTML = ""
-    for(var i = 0; i < data.astonMartin.length; i++) {
-    models.innerHTML +=
-    `<option value="${data.astonMartin[i].toLowerCase()}">${data.astonMartin[i]}</option>`;
-    }
-  }
-  else if (make.value === "audi") {
-    models.innerHTML = ""
-    for(var i = 0; i < data.audi.length; i++) {
-    models.innerHTML +=
-    `<option value="${data.audi[i].toLowerCase()}">${data.audi[i]}</option>`;
-    }
-  }
-  else if (make.value === "alfa romeo") {
-    models.innerHTML = ""
-    for(var i = 0; i < data.alfaRomeo.length; i++) {
-    models.innerHTML +=
-    `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
-    }
-  }*/
+
 })
 }
 
@@ -151,7 +93,8 @@ make.addEventListener("change", getCar)
 
 
 // Get the modal
-const background = document.getElementById('background');
+const background = document.getElementById('background'),
+      close = document.querySelector('.close')
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -160,8 +103,8 @@ window.onclick = function(event) {
     }
 }
 
-const close = document.querySelector('.close')
 // Login event listener (nav bar)
+
 
 document.getElementById('modal1').addEventListener('click',
 function() {
@@ -256,6 +199,7 @@ signUpForm.addEventListener('submit', e => {
 
 const carSearch = document.getElementById('search-form');
 
+/*
 carSearch.addEventListener('submit', e => {
   console.log("event sent")
   const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F"
@@ -273,18 +217,16 @@ carSearch.addEventListener('submit', e => {
 .then(data => {
     console.log(data);
 });
-})
+})*/
 
-const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F"
-const apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`
+const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`,
+      send = document.getElementById('sendAPI');
 
 
 
-/*
-
-carSearch.onclick = () => {
+send.onclick = () => {
   console.log("event sent")
-  
   fetch(apiUrl)
 .then(res => res.json())
 .then(data => {
@@ -294,4 +236,3 @@ carSearch.onclick = () => {
 });
 }
 
-*/

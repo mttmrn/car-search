@@ -86,11 +86,11 @@
             <h2 class="headline">Take the stress out of car shopping.</h2>
             <h2 class="subhead">Instantly search 100,000+ cars listed below their KBB value</h2>
         </div>
-        <form class="search" name="search" id="search-form">
+        <form class="search" name="search" id="search-form" method="GET" autocomplete="off">
             <div class="make-wrapper">
                 <i class="fas fa-tools"></i>
                 <select name="makes" id="makes" class="make">
-                    <option value="" selected>Choose Make</option>
+                    <option value="" selected>All Makes</option>
                     <option value="acura">Acura</option>
                     <option value="alfa romeo">Alfa Romeo</option>
                     <option value="aston martin">Aston Martin</option>
@@ -133,7 +133,7 @@
             <div class="model-wrapper">
                 <i class="fas fa-car"></i>
                 <select name="models" id="models" class="model">
-                    <option value="" selected>Choose Model</option>
+                    <option value="" selected>All Models</option>
                 </select>
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -142,7 +142,7 @@
                 <input type="tel" name="zip" class="zip" placeholder="Zip Code">
             </div>
             <div class="button-wrapper">
-                <button type="submit" class="btn">SEARCH</button>
+                <button type="submit" class="btn" id="sendAPI">SEARCH</button>
             </div>
         </form>
         <div class="brands-container">
