@@ -7,7 +7,7 @@ var buick = ["Cascada", "Enclave", "Encore", "Envision", "LaCrosse", "Regal", "V
 var cadillac = ["ATS", "CT6", "CTS", "ELR", "Escalade", "SRX", "XT4", "XT5", "XT6", "XTS"]
 var chevrolet = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
 var chrysler = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
-var dodge =["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
+var dodge = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
 var fiat = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
 var ford = ["Fiesta", "Mustang", "F150", "F250", "F350", "F450", "F550"]
 var gmc
@@ -66,79 +66,79 @@ var volvo = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F35
 
 // Listen to the make ID depending on the option, display the model data
 const make = document.getElementById("makes"),
-      models = document.getElementById("models"),
-      getCar = () => { 
-fetch('cars.json')
-.then((res) => res.json())
-.then((data) => {
-  switch (make.value) {
-    case "":
-      models.innerHTML = ""
-      models.innerHTML +=
-      `<option value="">All Models</option>`;
-      break;
-    case "acura":
-        models.innerHTML = ""
-        for(var i = 0; i < data.acura.length; i++) {
-        models.innerHTML +=
-        `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
+      models = document.getElementById("models")
+  
+const getCar = () => {
+    fetch('cars.json')
+      .then((res) => res.json())
+      .then((data) => {
+        switch (make.value) {
+          case "":
+            models.innerHTML = ""
+            models.innerHTML +=
+              `<option value="">All Models</option>`;
+            break;
+          case "acura":
+            models.innerHTML = ""
+            for (var i = 0; i < data.acura.length; i++) {
+              models.innerHTML +=
+                `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
+            }
+            break;
         }
-        break;
-  }
-
-})
-}
+      })
+  };
 
 make.addEventListener("change", getCar)
 
 
 // Get the modal
 const background = document.getElementById('background'),
-      close = document.querySelector('.close')
+  close = document.querySelector('.close')
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target === background) {
-        background.style.display = "none";
-    }
+window.onclick = function (event) {
+  if (event.target === background) {
+    background.style.display = "none";
+  }
 }
 
 // Login event listener (nav bar)
 
 
 document.getElementById('modal1').addEventListener('click',
-function() {
-  background.style.display = 'flex';
-});
+  function () {
+    background.style.display = 'flex';
+  });
 
 close.addEventListener('click',
-function() {
-  background.style.display = "none";
-});
+  function () {
+    background.style.display = "none";
+  });
 
 // Signup event listener (nav bar)
 
 document.getElementById('modal2').addEventListener('click',
-function() {
-  background.style.display = 'flex';
-});
+  function () {
+    background.style.display = 'flex';
+  });
 
 close.addEventListener('click',
-function() {
-  background.style.display = "none";
-});
+  function () {
+    background.style.display = "none";
+  });
 
 // Signup event listener (bottom of page)
 
 document.getElementById('modal3').addEventListener('click',
-function() {
-  background.style.display = 'flex';
-});
+  function () {
+    background.style.display = 'flex';
+  });
 
 close.addEventListener('click',
-function() {
-  background.style.display = "none";
-});
+  function () {
+    background.style.display = "none";
+  });
 
 // change color of the modal depending on which is active
 // login tab
@@ -168,71 +168,50 @@ function signupTab() {
 const signUpForm = document.querySelector('#signup-form');
 
 signUpForm.addEventListener('submit', e => {
-    // prevent form submit
-    e.preventDefault();
+  // prevent form submit
+  e.preventDefault();
 
-    // need to access your api
-    const email = signUpForm.querySelector('#email-signup').value,
-          password = signUpForm.querySelector('#password-signup').value,
-          confirm = signUpForm.querySelector('#confirm').value;
+  // need to access your api
+  const email = signUpForm.querySelector('#email-signup').value,
+    password = signUpForm.querySelector('#password-signup').value,
+    confirm = signUpForm.querySelector('#confirm').value;
 
-    const url = 'http://localhost:3000';
+  const url = 'http://localhost:3000';
 
-    fetch(`${url}/auth/register`, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-            confirmPass: confirm
-        })
+  fetch(`${url}/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        confirmPass: confirm
+      })
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+      console.log(data);
     });
 });
 
-
-
 const carSearch = document.getElementById('search-form');
-
-/*
 carSearch.addEventListener('submit', e => {
-  console.log("event sent")
-  const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F"
-  const apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`
-
-  fetch(`${apiUrl}`, {
-    method: 'GET',
-    headers: {
-        'Host': 'marketcheck-prod.apigee.net',
-        'Content-type': 'application/json'
-
-    },
-})
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-});
-})*/
+    e.preventDefault();
 
 const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`,
-      send = document.getElementById('sendAPI');
+     apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`;
 
+  fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Host': 'marketcheck-prod.apigee.net',
+        'Content-type': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
 
-
-send.onclick = () => {
-  console.log("event sent")
-  fetch(apiUrl)
-.then(res => res.json())
-.then(data => {
-  for (let i = 0; i < data.listings.length; i++) {
-    console.log(data.listings[i]);
-  }
-});
-}
-
+    });
+})
