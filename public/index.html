@@ -86,15 +86,14 @@
             <h2 class="headline">Take the stress out of car shopping.</h2>
             <h2 class="subhead">Instantly search 100,000+ cars listed below their KBB value</h2>
         </div>
-        <form class="search" autocomplete="off" name="search" id="search-form">
-
+        <form class="search" autocomplete="off" name="search" id="search-form" method="GET">
             <div class="make-wrapper">
                 <i class="fas fa-tools"></i>
                 <select name="makes" id="makes" class="make" onchange="chooseModel()">
-                    <option value="all" selected>All Makes</option>
+                    <option value="" selected>Choose Make</option>
                     <option value="acura">Acura</option>
-                    <option value="alfa-romeo">Alfa Romeo</option>
-                    <option value="aston-martin">Aston Martin</option>
+                    <option value="alfa romeo">Alfa Romeo</option>
+                    <option value="aston martin">Aston Martin</option>
                     <option value="audi">Audi</option>
                     <option value="bentley">Bentley</option>
                     <option value="bmw">BMW</option>
@@ -112,7 +111,7 @@
                     <option value="jaguar">Jaguar</option>
                     <option value="jeep">Jeep</option>
                     <option value="kia">Kia</option>
-                    <option value="land-rover">Land Rover</option>
+                    <option value="land rover">Land Rover</option>
                     <option value="lexus">Lexus</option>
                     <option value="lincoln">Lincoln</option>
                     <option value="mazda">Mazda</option>
@@ -134,7 +133,7 @@
             <div class="model-wrapper">
                 <i class="fas fa-car"></i>
                 <select name="models" id="models" class="model">
-                    <option value="all" selected>All Models</option>
+                    <option value="" selected>Choose Model</option>
                 </select>
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -447,7 +446,6 @@
     </section>
 
     <script src="./main.js"></script>
-    <script src="./auth.js"></script>
 </body>
 
 </html>

@@ -68,242 +68,217 @@ if (x === "ford") {
   }
 } */
 
-/*   if (make.value === "acura") {
+/*  1**    if (make.value === "acura") {
     document.getElementById("models").innerHTML = "" // clears the select box
     for(var i = 0; i < acura.length; i++) { // i is the index of the array
     document.getElementById("models").innerHTML += //finds the model HTML
     `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`; //adds each option
     }
   }
-  
+    
+  2**   else if (make.value === "volkswagen") {
+    models.innerHTML = ""
+    for(let option in volkswagen) {
+    let values = volkswagen[option].split("|");
+    models.innerHTML +=
+    `<option value="${values[0]}">${values[1]}</option>`; 
+    }
+  }
   ^previous way of doing the select model function
 */
 
 // Listen to the make ID depending on the option, display the model data
+const make = document.getElementById("makes");
+const models = document.getElementById("models");
 
 function chooseModel() {
-  let make = document.getElementById("makes");
-  let models = document.getElementById("models");
 
-  if (make.value === "all") {
+  if (make.value === "") {
     models.innerHTML = ""
-    models.innerHTML =
-    `<option value="all">All Models</option>`; 
+    models.innerHTML +=
+    `<option value="">Choose Model</option>`;
+    
   }
   else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "alfa-romeo") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "aston-martin") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "audi") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "bentley") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "bmw") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "buick") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "cadillac") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "chevrolet") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-    else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
-  else if (make.value === "volkswagen") {
+  else if (make.value === "acura") {
     models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
+    for(var i = 0; i < acura.length; i++) {
     models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
-    }
-  }
-  else if (make.value === "volkswagen") {
-    models.innerHTML = ""
-    for(let option in volkswagen) {
-    let values = volkswagen[option].split("|");
-    models.innerHTML +=
-    `<option value="${values[0]}">${values[1]}</option>`; 
+    `<option value="${acura[i].toLowerCase()}">${acura[i]}</option>`;
     }
   }
 
@@ -378,3 +353,57 @@ function signupTab() {
   document.querySelector('.modal-login').style.borderTop = "none"
   document.querySelector('.signup-content').style.display = "block";
 };
+
+
+
+const signUpForm = document.querySelector('#signup-form');
+
+signUpForm.addEventListener('submit', e => {
+    // prevent form submit
+    e.preventDefault();
+
+    // need to access your api
+    const email = signUpForm.querySelector('#email-signup').value,
+          password = signUpForm.querySelector('#password-signup').value,
+          confirm = signUpForm.querySelector('#confirm').value;
+
+    const url = 'http://localhost:3000';
+
+    fetch(`${url}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password,
+            confirmPass: confirm
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    });
+});
+
+
+
+const carSearch = document.getElementById('search-form');
+carSearch.addEventListener('submit', e => {
+
+  const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F"
+  const apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`
+
+  fetch(`${apiUrl}`, {
+    method: 'GET',
+    headers: {
+        'Host': 'marketcheck-prod.apigee.net',
+        'Content-type': 'application/json'
+
+    },
+})
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+});
+})
