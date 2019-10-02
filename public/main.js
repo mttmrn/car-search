@@ -2,9 +2,6 @@
 // parse the JSON data (let cars = JSON.parse(json))
 // Add them as DOM elements by looping through? document.getElementByID('test').innerHTML = cars.ford
 
-var bmw = ["2 Series", "3 Series", "4 Series", "5 Series", "6 Series", "7 Series", "M2", "M3", "M4", "M5", "M6", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "Z4", "i3", "i8"]
-var buick = ["Cascada", "Enclave", "Encore", "Envision", "LaCrosse", "Regal", "Verano"]
-var cadillac = ["ATS", "CT6", "CTS", "ELR", "Escalade", "SRX", "XT4", "XT5", "XT6", "XTS"]
 var chevrolet = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
 var chrysler = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
 var dodge = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
@@ -66,28 +63,77 @@ var volvo = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F35
 
 // Listen to the make ID depending on the option, display the model data
 const make = document.getElementById("makes"),
-      models = document.getElementById("models")
-  
+  models = document.getElementById("models")
+
 const getCar = () => {
-    fetch('cars.json')
-      .then((res) => res.json())
-      .then((data) => {
-        switch (make.value) {
-          case "":
-            models.innerHTML = ""
+  fetch('cars.json')
+    .then((res) => res.json())
+    .then((data) => {
+      switch (make.value) {
+        case "":
+          models.innerHTML = ""
+          models.innerHTML +=
+            `<option value="">All Models</option>`;
+          break;
+        case "acura":
+          models.innerHTML = ""
+          for (var i = 0; i < data.acura.length; i++) {
             models.innerHTML +=
-              `<option value="">All Models</option>`;
-            break;
-          case "acura":
-            models.innerHTML = ""
-            for (var i = 0; i < data.acura.length; i++) {
-              models.innerHTML +=
-                `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
-            }
-            break;
-        }
-      })
-  };
+              `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
+          }
+          break;
+        case "alfa romeo":
+          models.innerHTML = ""
+          for (var i = 0; i < data.alfaRomeo.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
+          }
+          break;
+        case "aston martin":
+          models.innerHTML = ""
+          for (var i = 0; i < data.astonMartin.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.astonMartin[i].toLowerCase()}">${data.astonMartin[i]}</option>`;
+          }
+          break;
+        case "audi":
+          models.innerHTML = ""
+          for (var i = 0; i < data.audi.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.audi[i].toLowerCase()}">${data.audi[i]}</option>`;
+          }
+          break;
+        case "bentley":
+          models.innerHTML = ""
+          for (var i = 0; i < data.bentley.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.bentley[i].toLowerCase()}">${data.bentley[i]}</option>`;
+          }
+          break;
+        case "bmw":
+          models.innerHTML = ""
+          for (var i = 0; i < data.bmw.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.bmw[i].toLowerCase()}">${data.bmw[i]}</option>`;
+          }
+          break;
+        case "buick":
+          models.innerHTML = ""
+          for (var i = 0; i < data.buick.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.buick[i].toLowerCase()}">${data.buick[i]}</option>`;
+          }
+          break;
+        case "cadillac":
+          models.innerHTML = ""
+          for (var i = 0; i < data.cadillac.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.cadillac[i].toLowerCase()}">${data.cadillac[i]}</option>`;
+          }
+          break;
+      }
+    })
+};
 
 make.addEventListener("change", getCar)
 
@@ -197,21 +243,7 @@ signUpForm.addEventListener('submit', e => {
 
 const carSearch = document.getElementById('search-form');
 carSearch.addEventListener('submit', e => {
-    e.preventDefault();
 
-const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
-     apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${make.value}&model=${models.value}`;
-
-  fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Host': 'marketcheck-prod.apigee.net',
-        'Content-type': 'application/json'
-      },
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-
-    });
+  localStorage.setItem('make', make.value)
+  localStorage.setItem('model', models.value)
 })
