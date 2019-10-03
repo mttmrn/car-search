@@ -1,37 +1,3 @@
-// assign variable to JSON (let json = "JSON_DATA")
-// parse the JSON data (let cars = JSON.parse(json))
-// Add them as DOM elements by looping through? document.getElementByID('test').innerHTML = cars.ford
-
-var chevrolet = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
-var chrysler = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
-var dodge = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
-var fiat = ["ILX", "Integra", "MDX", "NSX", "RDX", "RLX", "RSX", "TLX", "TSX", "ZDX"]
-var ford = ["Fiesta", "Mustang", "F150", "F250", "F350", "F450", "F550"]
-var gmc
-var honda
-var hyundai
-var infiniti
-var jaguar
-var jeep
-var kia
-var landRover
-var lexus
-var lincoln
-var mazda
-var mercedesBenz
-var mini
-var mitsubishi
-var nissan
-var porsche
-var scion
-var saab
-var subaru
-var suzuki
-var tesla
-var toyota
-var volkswagen = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F350", "F450", "F550"]
-var volvo = ["test|Testing", "moose|Mustang", "eff|F150", "eff|F250", "effff|F350", "F450", "F550"]
-
 /*  1**    if (make.value === "acura") {
     document.getElementById("models").innerHTML = "" // clears the select box
     for(var i = 0; i < acura.length; i++) { // i is the index of the array
@@ -77,6 +43,7 @@ const getCar = () => {
           break;
         case "acura":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.acura.length; i++) {
             models.innerHTML +=
               `<option value="${data.acura[i].toLowerCase()}">${data.acura[i]}</option>`;
@@ -84,6 +51,7 @@ const getCar = () => {
           break;
         case "alfa romeo":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.alfaRomeo.length; i++) {
             models.innerHTML +=
               `<option value="${data.alfaRomeo[i].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
@@ -91,6 +59,7 @@ const getCar = () => {
           break;
         case "aston martin":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.astonMartin.length; i++) {
             models.innerHTML +=
               `<option value="${data.astonMartin[i].toLowerCase()}">${data.astonMartin[i]}</option>`;
@@ -98,6 +67,7 @@ const getCar = () => {
           break;
         case "audi":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.audi.length; i++) {
             models.innerHTML +=
               `<option value="${data.audi[i].toLowerCase()}">${data.audi[i]}</option>`;
@@ -105,6 +75,7 @@ const getCar = () => {
           break;
         case "bentley":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.bentley.length; i++) {
             models.innerHTML +=
               `<option value="${data.bentley[i].toLowerCase()}">${data.bentley[i]}</option>`;
@@ -112,6 +83,7 @@ const getCar = () => {
           break;
         case "bmw":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.bmw.length; i++) {
             models.innerHTML +=
               `<option value="${data.bmw[i].toLowerCase()}">${data.bmw[i]}</option>`;
@@ -119,6 +91,7 @@ const getCar = () => {
           break;
         case "buick":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.buick.length; i++) {
             models.innerHTML +=
               `<option value="${data.buick[i].toLowerCase()}">${data.buick[i]}</option>`;
@@ -126,21 +99,247 @@ const getCar = () => {
           break;
         case "cadillac":
           models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
           for (var i = 0; i < data.cadillac.length; i++) {
             models.innerHTML +=
               `<option value="${data.cadillac[i].toLowerCase()}">${data.cadillac[i]}</option>`;
+          }
+          break;
+        case "chevrolet":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.chevrolet.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.chevrolet[i].toLowerCase()}">${data.chevrolet[i]}</option>`;
+          }
+          break;
+        case "chrysler":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.chrysler.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.chrysler[i].toLowerCase()}">${data.chrysler[i]}</option>`;
+          }
+          break;
+        case "dodge":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.dodge.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.dodge[i].toLowerCase()}">${data.dodge[i]}</option>`;
+          }
+          break;
+        case "fiat":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.fiat.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.fiat[i].toLowerCase()}">${data.fiat[i]}</option>`;
+          }
+          break;
+        case "ford":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.ford.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.ford[i].toLowerCase()}">${data.ford[i]}</option>`;
+          }
+          break;
+        case "gmc":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.gmc.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.gmc[i].toLowerCase()}">${data.gmc[i]}</option>`;
+          }
+          break;
+        case "honda":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.honda.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.honda[i].toLowerCase()}">${data.honda[i]}</option>`;
+          }
+          break;
+        case "hyundai":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.hyundai.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.hyundai[i].toLowerCase()}">${data.hyundai[i]}</option>`;
+          }
+          break;
+        case "infiniti":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.infiniti.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.infiniti[i].toLowerCase()}">${data.infiniti[i]}</option>`;
+          }
+          break;
+        case "jaguar":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.jaguar.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.jaguar[i].toLowerCase()}">${data.jaguar[i]}</option>`;
+          }
+          break;
+        case "jeep":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.jeep.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.jeep[i].toLowerCase()}">${data.jeep[i]}</option>`;
+          }
+          break;
+        case "kia":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.kia.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.kia[i].toLowerCase()}">${data.kia[i]}</option>`;
+          }
+          break;
+        case "land rover":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.landRover.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.landRover[i].toLowerCase()}">${data.landRover[i]}</option>`;
+          }
+          break;
+        case "lexus":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.lexus.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.lexus[i].toLowerCase()}">${data.lexus[i]}</option>`;
+          }
+          break;
+        case "lincoln":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.lincoln.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.lincoln[i].toLowerCase()}">${data.lincoln[i]}</option>`;
+          }
+          break;
+        case "mazda":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.mazda.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.mazda[i].toLowerCase()}">${data.mazda[i]}</option>`;
+          }
+          break;
+        case "mercedes benz":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.mercedesBenz.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.mercedesBenz[i].toLowerCase()}">${data.mercedesBenz[i]}</option>`;
+          }
+          break;
+        case "mini":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.mini.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.mini[i].toLowerCase()}">${data.mini[i]}</option>`;
+          }
+          break;
+        case "mitsubishi":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.mitsubishi.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.mitsubishi[i].toLowerCase()}">${data.mitsubishi[i]}</option>`;
+          }
+          break;
+        case "nissan":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.nissan.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.nissan[i].toLowerCase()}">${data.nissan[i]}</option>`;
+          }
+          break;
+        case "porsche":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.porsche.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.porsche[i].toLowerCase()}">${data.porsche[i]}</option>`;
+          }
+          break;
+        case "saab":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.saab.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.saab[i].toLowerCase()}">${data.saab[i]}</option>`;
+          }
+          break;
+        case "scion":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.scion.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.scion[i].toLowerCase()}">${data.scion[i]}</option>`;
+          }
+          break;
+        case "subaru":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.subaru.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.subaru[i].toLowerCase()}">${data.subaru[i]}</option>`;
+          }
+          break;
+        case "tesla":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.tesla.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.tesla[i].toLowerCase()}">${data.tesla[i]}</option>`;
+          }
+          break;
+        case "toyota":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.toyota.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.toyota[i].toLowerCase()}">${data.toyota[i]}</option>`;
+          }
+          break;
+        case "volkswagen":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.volkswagen.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.volkswagen[i].toLowerCase()}">${data.volkswagen[i]}</option>`;
+          }
+          break;
+        case "volvo":
+          models.innerHTML = ""
+          models.innerHTML = `<option value="">All Models</option>`
+          for (var i = 0; i < data.volvo.length; i++) {
+            models.innerHTML +=
+              `<option value="${data.volvo[i].toLowerCase()}">${data.volvo[i]}</option>`;
           }
           break;
       }
     })
 };
 
+// Call function on input change
 make.addEventListener("change", getCar)
 
 
 // Get the modal
 const background = document.getElementById('background'),
-  close = document.querySelector('.close')
+      close = document.querySelector('.close')
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
