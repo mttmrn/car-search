@@ -241,6 +241,9 @@ a.signup {
     font-weight: bold;
     letter-spacing: -0.1rem;
     outline: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
 }
 
 .headline-container {
@@ -662,28 +665,7 @@ a.signup {
 }
 
 /* Results Page */
-.main-container {
-    margin-top: 4rem;
-    height: 100%;
-    width: 100%;
-    display: flex;
-}
-
-.sidebar-container {
-    display: flex;
-    height: 100%;
-    flex: 30%;
-    background: #2EBD71
-}
-
-.data-container {
-    flex: 70;
-    height: 100%;
-    background: #3b5b99
-}
-
 .header {
-    position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -691,24 +673,123 @@ a.signup {
     margin-top: 1rem;
 }
 
+.main-container {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    height: 100%;
+    width: 100%;
+    padding: 0 7rem;
+    display: flex;
+    background: #eeeded;
+}
+
+.sidebar-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex: 30%;
+    background: #2EBD71
+}
+
+.data-container {
+    flex: 70;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
 .heading-container {
     display: flex;
     justify-content: center;
     width: 100%;
-    background: yellow;
+    margin-bottom: 1rem;
 }
 
 .heading {
     font-size: 3.5rem;
 }
 
-.results-container {
-    width: 100%;
-    background: #00a2d0;
-}
 
 .results {
     font-size: 2rem;
+    height: 40rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border: 1px solid black;
+    display: flex;
+    flex-flow: row wrap;
+    background: #ffffff;
+}
+
+.listing-title {
+    font-size: 2.5rem;
+    position: absolute;
+}
+
+.img-container {
+    max-height: auto;
+    flex: 45%;
+    padding-top: 4rem;
+}
+
+.list-img {
+    height: auto;
+    width: 100%;
+    display: block;
+    
+}
+
+.info-container {
+    flex: 55%;
+    padding-top: 4rem;
+}
+
+.price-container {
+    padding:0rem 1rem;
+    height: 4rem;
+    width: 100%;
+    background: yellow;
+}
+
+.history-container {
+    margin-top: 0.75rem;
+    height: 20rem;
+    width: 100%;
+    background: green;
+}
+
+.columns {
+    display: flex;
+
+    height: 100%;
+}
+
+.column-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 3px;
+    border-right: solid 1px #bdbdbd;
+    flex: 33%;
+    height: 100%;
+    background: #00a2d0;
+}
+
+.history-text {
+    font-size: 1rem;
+}
+
+.price {
+    font-size: 3rem;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 0.7rem;
+}
+
+.mileage {
+    margin-left: 0.7rem;
+    font-size: 1.35rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* button effects */

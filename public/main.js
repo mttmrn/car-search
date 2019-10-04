@@ -443,6 +443,6 @@ signUpForm.addEventListener('submit', e => {
 const carSearch = document.getElementById('search-form');
 carSearch.addEventListener('submit', e => {
 
-  localStorage.setItem('make', make.value)
-  localStorage.setItem('model', models.value)
+  sessionStorage.setItem('make', make.value)
+  sessionStorage.setItem('model', models.value)
 })

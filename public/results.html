@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/2ef970bfe9.js"></script>
     <title>Document</title>
 </head>
 
@@ -19,8 +22,50 @@
     </header>
     <main class="main-container">
         <div class="sidebar-container">
-            <h1>hello
-            </h1>
+            <form id="search-form" action="results.html">
+                    <select name="makes" id="makes">
+                        <option value="" selected>All Makes</option>
+                        <option value="acura">Acura</option>
+                        <option value="alfa romeo">Alfa Romeo</option>
+                        <option value="aston martin">Aston Martin</option>
+                        <option value="audi">Audi</option>
+                        <option value="bentley">Bentley</option>
+                        <option value="bmw">BMW</option>
+                        <option value="buick">Buick</option>
+                        <option value="cadillac">Cadillac</option>
+                        <option value="chevrolet">Chevrolet</option>
+                        <option value="chrysler">Chrysler</option>
+                        <option value="dodge">Dodge</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="ford">Ford</option>
+                        <option value="gmc">GMC</option>
+                        <option value="honda">Honda</option>
+                        <option value="hyundai">Hyundai</option>
+                        <option value="infiniti">Infiniti</option>
+                        <option value="jaguar">Jaguar</option>
+                        <option value="jeep">Jeep</option>
+                        <option value="kia">Kia</option>
+                        <option value="land rover">Land Rover</option>
+                        <option value="lexus">Lexus</option>
+                        <option value="lincoln">Lincoln</option>
+                        <option value="mazda">Mazda</option>
+                        <option value="mercedes benz">Mercedes-Benz</option>
+                        <option value="mitsubishi">Mitsubishi</option>
+                        <option value="nissan">Nissan</option>
+                        <option value="porsche">Porsche</option>
+                        <option value="scion">Scion</option>
+                        <option value="saab">Smart</option>
+                        <option value="subaru">Subaru</option>
+                        <option value="tesla">Tesla</option>
+                        <option value="toyota">Toyota</option>
+                        <option value="volkswagen">Volkswagen</option>
+                        <option value="volvo">Volvo</option>
+                    </select>
+
+                    <select name="models" id="models" class="model">
+                        <option value="" selected>All Models</option>
+                    </select>
+            </form>
         </div>
 
         <div class="data-container">
@@ -28,8 +73,8 @@
                 <h1 class="heading" id="heading"></h1>
             </div>
             <div class="results-container">
-                <ul class="result-list" id="data">
-                </ul>
+                <div id="data">
+                </div>
             </div>
         </div>
     </main>
