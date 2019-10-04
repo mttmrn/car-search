@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,33 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>testing data</h1>
-    <div id="data">
-        <ul>
-        </ul>
-    </div>
+    <header class="header">
+        <nav class="header">
+            <a href="index.html">
+                <h1 class="logo">AUTOMAGIC</h1>
+            </a>
+        </nav>
+    </header>
+    <main class="main-container">
+        <div class="sidebar-container">
+            <h1>hello
+            </h1>
+        </div>
+
+        <div class="data-container">
+            <div class="heading-container">
+                <h1 class="heading" id="heading"></h1>
+            </div>
+            <div class="results-container">
+                <ul class="result-list" id="data">
+                </ul>
+            </div>
+        </div>
+    </main>
+
     <script src="./api.js"></script>
 </body>
-</html>
 
+</html>

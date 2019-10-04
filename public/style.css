@@ -9,10 +9,6 @@ ul {
     list-style: none;
 }
 
-li {
-    display: inline-block;
-}
-
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -377,7 +373,7 @@ a.signup {
     animation: colorSwapDark 10s infinite;
 }
 
-.darkest{
+.darkest {
     fill: rgb(22, 92, 55);
     animation: colorSwapDarkest 10s infinite;
 }
@@ -463,9 +459,9 @@ a.signup {
     position: relative;
     display: flex;
     border-radius: 3px;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);    
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
     justify-content: center;
     align-items: center;
 }
@@ -514,7 +510,8 @@ a.signup {
     padding-top: 1.25rem;
 }
 
-#email-signup, #email-login {
+#email-signup,
+#email-login {
     background: rgb(240, 240, 240);
     width: 75%;
     height: 7rem;
@@ -523,7 +520,9 @@ a.signup {
     margin-bottom: 1%;
 }
 
-#password-login, #password-signup, #confirm {
+#password-login,
+#password-signup,
+#confirm {
     background: rgb(240, 240, 240);
     width: 75%;
     height: 7rem;
@@ -556,7 +555,7 @@ a.signup {
     color: #ffffff;
 }
 
-.input-container a.create-account{
+.input-container a.create-account {
     width: 75%;
     height: 7rem;
     background: #2EBD71;
@@ -580,7 +579,8 @@ a.signup {
     margin-top: 3%;
 }
 
-.facebook, .social {
+.facebook,
+.social {
     width: 36.5%;
     height: 7rem;
 }
@@ -614,13 +614,13 @@ a.signup {
     display: none;
     -webkit-animation: fadeEffect 0.75s;
     animation: fadeEffect 0.75s;
-  }
+}
 
 .signup-content {
     display: none;
     -webkit-animation: fadeEffect 0.75s;
     animation: fadeEffect 0.75s;
-  }
+}
 
 .active {
     background: #d6d6d6;
@@ -659,6 +659,56 @@ a.signup {
 .modal-footer a {
     font-size: 1.3rem;
     color: #2EBD71;
+}
+
+/* Results Page */
+.main-container {
+    margin-top: 4rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.sidebar-container {
+    display: flex;
+    height: 100%;
+    flex: 30%;
+    background: #2EBD71
+}
+
+.data-container {
+    flex: 70;
+    height: 100%;
+    background: #3b5b99
+}
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+    margin-top: 1rem;
+}
+
+.heading-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: yellow;
+}
+
+.heading {
+    font-size: 3.5rem;
+}
+
+.results-container {
+    width: 100%;
+    background: #00a2d0;
+}
+
+.results {
+    font-size: 2rem;
 }
 
 /* button effects */
@@ -711,78 +761,228 @@ a.signup {
 /* Animations */
 
 @keyframes colorSwapLight {
-    10% {fill: rgb(189, 75, 46)}
-    20% {fill: rgb(189, 75, 46)}
-    30% {fill: rgb(46, 184, 189)}
-    40% {fill: rgb(46, 184, 189)}
-    50% {fill: rgb(241, 239, 79)}
-    60% {fill: rgb(241, 239, 79)}
-    70% {fill: rgb(231, 158, 61)}
-    80% {fill: rgb(231, 158, 61)}
-    90% {fill: #2EBD71}
-    100% {fill: #2EBD71}
+    10% {
+        fill: rgb(189, 75, 46)
+    }
+
+    20% {
+        fill: rgb(189, 75, 46)
+    }
+
+    30% {
+        fill: rgb(46, 184, 189)
+    }
+
+    40% {
+        fill: rgb(46, 184, 189)
+    }
+
+    50% {
+        fill: rgb(241, 239, 79)
+    }
+
+    60% {
+        fill: rgb(241, 239, 79)
+    }
+
+    70% {
+        fill: rgb(231, 158, 61)
+    }
+
+    80% {
+        fill: rgb(231, 158, 61)
+    }
+
+    90% {
+        fill: #2EBD71
+    }
+
+    100% {
+        fill: #2EBD71
+    }
 }
 
 @keyframes colorSwapDark {
-    10% {fill: rgb(133, 53, 32)}
-    20% {fill: rgb(133, 53, 32)}
-    30% {fill: rgb(30, 118, 121)}
-    40% {fill: rgb(30, 129, 133)}
-    50% {fill: rgb(194, 192, 63)}
-    60% {fill: rgb(194, 192, 63)}
-    70% {fill: rgb(182, 124, 49)}
-    80% {fill: rgb(182, 124, 49)}
-    90% {fill: rgb(34, 141, 84)}
-    100% {fill: rgb(34, 141, 84)}
+    10% {
+        fill: rgb(133, 53, 32)
+    }
+
+    20% {
+        fill: rgb(133, 53, 32)
+    }
+
+    30% {
+        fill: rgb(30, 118, 121)
+    }
+
+    40% {
+        fill: rgb(30, 129, 133)
+    }
+
+    50% {
+        fill: rgb(194, 192, 63)
+    }
+
+    60% {
+        fill: rgb(194, 192, 63)
+    }
+
+    70% {
+        fill: rgb(182, 124, 49)
+    }
+
+    80% {
+        fill: rgb(182, 124, 49)
+    }
+
+    90% {
+        fill: rgb(34, 141, 84)
+    }
+
+    100% {
+        fill: rgb(34, 141, 84)
+    }
 }
 
 @keyframes colorSwapDarkest {
-    10% {fill: rgb(87, 34, 20)}
-    20% {fill: rgb(87, 34, 20)}
-    30% {fill: rgb(23, 93, 95)}
-    40% {fill: rgb(23, 93, 95)}
-    50% {fill: rgb(161, 160, 56)}
-    60% {fill: rgb(161, 160, 56)}
-    70% {fill: rgb(150, 102, 40)}
-    80% {fill: rgb(150, 102, 40)}
-    90% {fill: rgb(22, 92, 55)}
-    100% {fill: rgb(22, 92, 55)}
+    10% {
+        fill: rgb(87, 34, 20)
+    }
+
+    20% {
+        fill: rgb(87, 34, 20)
+    }
+
+    30% {
+        fill: rgb(23, 93, 95)
+    }
+
+    40% {
+        fill: rgb(23, 93, 95)
+    }
+
+    50% {
+        fill: rgb(161, 160, 56)
+    }
+
+    60% {
+        fill: rgb(161, 160, 56)
+    }
+
+    70% {
+        fill: rgb(150, 102, 40)
+    }
+
+    80% {
+        fill: rgb(150, 102, 40)
+    }
+
+    90% {
+        fill: rgb(22, 92, 55)
+    }
+
+    100% {
+        fill: rgb(22, 92, 55)
+    }
 }
 
 @keyframes colorSwapInbetween {
-    10% {fill: rgb(156, 62, 38)}
-    20% {fill: rgb(156, 62, 38)}
-    30% {fill: rgb(37, 151, 155)}
-    40% {fill: rgb(37, 151, 155)}
-    50% {fill: rgb(207, 205, 54)}
-    60% {fill: rgb(207, 205, 54)}
-    70% {fill: rgb(202, 138, 53)}
-    80% {fill: rgb(202, 138, 53)}
-    90% {fill: rgb(37, 156, 93)}
-    100% {fill: rgb(37, 156, 93)}
+    10% {
+        fill: rgb(156, 62, 38)
+    }
+
+    20% {
+        fill: rgb(156, 62, 38)
+    }
+
+    30% {
+        fill: rgb(37, 151, 155)
+    }
+
+    40% {
+        fill: rgb(37, 151, 155)
+    }
+
+    50% {
+        fill: rgb(207, 205, 54)
+    }
+
+    60% {
+        fill: rgb(207, 205, 54)
+    }
+
+    70% {
+        fill: rgb(202, 138, 53)
+    }
+
+    80% {
+        fill: rgb(202, 138, 53)
+    }
+
+    90% {
+        fill: rgb(37, 156, 93)
+    }
+
+    100% {
+        fill: rgb(37, 156, 93)
+    }
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
+    from {
+        opacity: 0;
+    }
 
-  .search-icon {
+    to {
+        opacity: 1;
+    }
+}
+
+.search-icon {
     margin-left: 15rem;
     animation: movement 10s infinite;
 }
 
 @keyframes movement {
-    10% {transform: translate(225px, -75px) rotate(-20deg)}
-    20% {transform: translate(225px, -75px) rotate(-20deg)}
-    30% {transform: translate(-110px, -90px) rotate(100deg)}
-    40% {transform: translate(-110px, -90px) rotate(100deg)}
-    50% {transform: translate(-120px, 130px) rotate(70deg)}
-    60% {transform: translate(-120px, 130px) rotate(70deg)}
-    70% {transform: translate(150px, 75px) rotate(10deg)}
-    80% {transform: translate(150px, 75px) rotate(10deg)}
-    90% {transform: translate(0px, 0px)}
-    100% {transform: translate(0px, 0px)}
+    10% {
+        transform: translate(225px, -75px) rotate(-20deg)
+    }
+
+    20% {
+        transform: translate(225px, -75px) rotate(-20deg)
+    }
+
+    30% {
+        transform: translate(-110px, -90px) rotate(100deg)
+    }
+
+    40% {
+        transform: translate(-110px, -90px) rotate(100deg)
+    }
+
+    50% {
+        transform: translate(-120px, 130px) rotate(70deg)
+    }
+
+    60% {
+        transform: translate(-120px, 130px) rotate(70deg)
+    }
+
+    70% {
+        transform: translate(150px, 75px) rotate(10deg)
+    }
+
+    80% {
+        transform: translate(150px, 75px) rotate(10deg)
+    }
+
+    90% {
+        transform: translate(0px, 0px)
+    }
+
+    100% {
+        transform: translate(0px, 0px)
+    }
 }
 
 .car-top {
@@ -819,7 +1019,8 @@ a.signup {
     20% {
         -webkit-transform: rotate(0deg);
     }
-/* start next here */
+
+    /* start next here */
     21% {
         -webkit-transform: rotate(-5deg);
     }
@@ -853,7 +1054,8 @@ a.signup {
     45% {
         -webkit-transform: rotate(180deg) translateY(200px);
     }
-/* start next here */
+
+    /* start next here */
     47% {
         -webkit-transform: rotate(175deg) translateY(200px);
     }
@@ -883,7 +1085,8 @@ a.signup {
     70% {
         -webkit-transform: rotate(180deg) translateY(200px);
     }
-/* start next here */
+
+    /* start next here */
     71% {
         -webkit-transform: rotate(175deg) translateY(200px);
     }
@@ -913,7 +1116,8 @@ a.signup {
     95% {
         -webkit-transform: rotate(180deg) translateY(200px);
     }
-/* start next here */
+
+    /* start next here */
     96% {
         -webkit-transform: rotate(175deg) translateY(200px);
     }
@@ -943,7 +1147,8 @@ a.signup {
     66% {
         -webkit-transform: rotate(180deg) translateY(200px);
     }
-/* start next here */
+
+    /* start next here */
     67% {
         -webkit-transform: rotate(175deg) translateY(200px);
     }

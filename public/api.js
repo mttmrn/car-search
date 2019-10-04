@@ -1,11 +1,13 @@
-const load = () => {
-    const storedMake = localStorage.getItem('make');
-    const storedModel = localStorage.getItem('model');
-    console.log(storedMake);
-    console.log(storedModel);
+const storedMake = localStorage.getItem('make'),
+  storedModel = localStorage.getItem('model'),
+  heading = document.getElementById('heading'),
+  output = document.getElementById('data'),
+  apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
+  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}`,
+  firstLetter = storedMake.charAt(0);
 
-const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}`;
+const load = () => {
+
 
   fetch(apiUrl, {
       method: 'GET',
@@ -17,9 +19,10 @@ const apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
-      const output = document.getElementById('data')
+      heading.innerHTML = `Displaying ${storedMake}s in your area`
       data.listings.forEach(element => {
-          output.innerHTML += `<li>${element.heading} | Price: ${element.price} | Miles: ${element.miles}</li>`
+
+        output.innerHTML += `<li class="results">${element.heading} | Price: ${element.price} | Miles: ${element.miles}</li>`
       });
     });
 }
