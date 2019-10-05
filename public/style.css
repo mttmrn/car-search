@@ -89,6 +89,7 @@ nav {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 a.login {
@@ -700,25 +701,24 @@ a.signup {
 
 .heading-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    margin-bottom: 1rem;
+    margin: 2rem;
 }
 
 .heading {
-    font-size: 3.5rem;
+    font-size: 1rem;
 }
-
 
 .results {
     font-size: 2rem;
-    height: 40rem;
     width: 100%;
     margin-bottom: 1rem;
     padding: 1.5rem;
     border: 1px solid black;
     display: flex;
-    flex-flow: row wrap;
+    justify-content: space-evenly;
+    flex-flow: row;
     background: #ffffff;
 }
 
@@ -729,51 +729,58 @@ a.signup {
 
 .img-container {
     max-height: auto;
-    flex: 45%;
     padding-top: 4rem;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    flex: 50%;
 }
 
 .list-img {
     height: auto;
     width: 100%;
+    min-width: 30rem;
+    min-height: 30rem;
     display: block;
-    
 }
 
 .info-container {
-    flex: 55%;
     padding-top: 4rem;
+    margin-left: 0.5rem;
+    flex: 50%;
 }
 
 .price-container {
-    padding:0rem 1rem;
+    padding: 0rem 1rem;
     height: 4rem;
     width: 100%;
-    background: yellow;
+    position: relative;
 }
 
 .history-container {
     margin-top: 0.75rem;
-    height: 20rem;
+    height: 15rem;
     width: 100%;
-    background: green;
 }
 
 .columns {
     display: flex;
-
     height: 100%;
 }
 
 .column-item {
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     padding: 10px 3px;
     border-right: solid 1px #bdbdbd;
     flex: 33%;
     height: 100%;
-    background: #00a2d0;
+    background: #f5f8fb;
+}
+
+.column-item:last-child {
+    border-right: none;
 }
 
 .history-text {
@@ -783,14 +790,34 @@ a.signup {
 .price {
     font-size: 3rem;
     font-family: 'Poppins', sans-serif;
-    margin-right: 0.7rem;
+    height: auto;
+    width: auto;
 }
 
 .mileage {
-    margin-left: 0.7rem;
     font-size: 1.35rem;
     font-family: 'Poppins', sans-serif;
+    padding-top: 2rem;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
 }
+
+.results:hover {
+    border: 1px solid #2EBD71;
+    background: rgb(113, 250, 177);
+}
+
+.details-container {
+    margin-top: 0.75rem;
+    width: 100%;
+    background: yellow;
+}
+
+.sort {
+    text-indent: 0;
+}
+
 
 /* button effects */
 

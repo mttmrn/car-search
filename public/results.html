@@ -22,55 +22,25 @@
     </header>
     <main class="main-container">
         <div class="sidebar-container">
-            <form id="search-form" action="results.html">
-                    <select name="makes" id="makes">
-                        <option value="" selected>All Makes</option>
-                        <option value="acura">Acura</option>
-                        <option value="alfa romeo">Alfa Romeo</option>
-                        <option value="aston martin">Aston Martin</option>
-                        <option value="audi">Audi</option>
-                        <option value="bentley">Bentley</option>
-                        <option value="bmw">BMW</option>
-                        <option value="buick">Buick</option>
-                        <option value="cadillac">Cadillac</option>
-                        <option value="chevrolet">Chevrolet</option>
-                        <option value="chrysler">Chrysler</option>
-                        <option value="dodge">Dodge</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="ford">Ford</option>
-                        <option value="gmc">GMC</option>
-                        <option value="honda">Honda</option>
-                        <option value="hyundai">Hyundai</option>
-                        <option value="infiniti">Infiniti</option>
-                        <option value="jaguar">Jaguar</option>
-                        <option value="jeep">Jeep</option>
-                        <option value="kia">Kia</option>
-                        <option value="land rover">Land Rover</option>
-                        <option value="lexus">Lexus</option>
-                        <option value="lincoln">Lincoln</option>
-                        <option value="mazda">Mazda</option>
-                        <option value="mercedes benz">Mercedes-Benz</option>
-                        <option value="mitsubishi">Mitsubishi</option>
-                        <option value="nissan">Nissan</option>
-                        <option value="porsche">Porsche</option>
-                        <option value="scion">Scion</option>
-                        <option value="saab">Smart</option>
-                        <option value="subaru">Subaru</option>
-                        <option value="tesla">Tesla</option>
-                        <option value="toyota">Toyota</option>
-                        <option value="volkswagen">Volkswagen</option>
-                        <option value="volvo">Volvo</option>
-                    </select>
-
-                    <select name="models" id="models" class="model">
-                        <option value="" selected>All Models</option>
-                    </select>
-            </form>
+           <p>this will be where the sidebar is</p>
         </div>
 
         <div class="data-container">
             <div class="heading-container">
-                <h1 class="heading" id="heading"></h1>
+                <span class="heading" id="heading"></span>
+                <div class="sort-container heading">
+                    <span>Sort by</span>
+                    <select class="sort heading" name="sort" id="sort">
+                        <option value="best" selected>Best Match</option>
+                        <option value="low-price">Price: Low to High</option>
+                        <option value="high-price">Price: High to Low</option>
+                        <option value="low-miles">Miles: Low to High</option>
+                        <option value="high-miles">Miles: High to Low</option>
+                        <option value="low-year">Price: Low to High</option>
+                        <option value="high-year">Price: Low to High</option>
+                    </select>
+                </div>
+                
             </div>
             <div class="results-container">
                 <div id="data">
