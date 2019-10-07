@@ -44,7 +44,7 @@
                 </div>
                 <div class="signup-content">
                     <div class="input-container">
-                        <form class="signup-form" id="signup-form" action="/signup" method="POST"> 
+                        <form class="signup-form" id="signup-form" action="/signup" method="POST">
                             <input type="email" name="email" id="email-signup" placeholder="Your email">
                             <input type="password" name="password" id="password-signup" placeholder="Password">
                             <input type="password" name="confirm" id="confirm" placeholder="Confirm password">
@@ -138,10 +138,10 @@
             </div>
             <div class="zip-wrapper">
                 <i class="fas fa-map-marker-alt"></i>
-                <input type="tel" name="zip" class="zip" placeholder="Zip Code">
+                <input type="tel" required name="zip" class="zip" id="zip" placeholder="Zip Code">
             </div>
             <div class="button-wrapper">
-                <button type="submit" class="btn" id="sendAPI">SEARCH</button>
+                <button type="submit" class="btn">SEARCH</button>
             </div>
         </form>
         <div class="brands-container">
