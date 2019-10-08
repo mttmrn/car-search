@@ -4,7 +4,7 @@ const storedMake = sessionStorage.getItem("make"),
   heading = document.getElementById("heading"),
   output = document.getElementById("data"),
   apiKey = "CKaBAjmqPrITAAE8GRY59hWegIfWTg9F",
-  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&radius=50&start=0&rows=15`;
+  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15`;
 
 if (storedMake === null) {
   console.log("Could not find make or model");
@@ -42,7 +42,7 @@ if (storedMake === null) {
             element.media.photo_links[0]
           }" alt=""></div>
           <div class="info-container">
-          <div class="price-container"><span class="price">$${element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><span class="mileage">Mileage: ${element.miles}
+          <div class="price-container"><span class="price">$${element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><span class="mileage">Mileage: ${element.miles.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </span></div>
           <div class="history-container"><ul class="columns">
           <li class="column-item"><span class="history-text">Does it have a clean title? ${
