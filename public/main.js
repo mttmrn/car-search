@@ -377,7 +377,7 @@ const background = document.getElementById("background"),
   close = document.querySelector(".close");
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target === background) {
     background.style.display = "none";
   }
@@ -385,31 +385,31 @@ window.onclick = function(event) {
 
 // Login event listener (nav bar)
 
-document.getElementById("modal1").addEventListener("click", function() {
+document.getElementById("modal1").addEventListener("click", function () {
   background.style.display = "flex";
 });
 
-close.addEventListener("click", function() {
+close.addEventListener("click", function () {
   background.style.display = "none";
 });
 
 // Signup event listener (nav bar)
 
-document.getElementById("modal2").addEventListener("click", function() {
+document.getElementById("modal2").addEventListener("click", function () {
   background.style.display = "flex";
 });
 
-close.addEventListener("click", function() {
+close.addEventListener("click", function () {
   background.style.display = "none";
 });
 
 // Signup event listener (bottom of page)
 
-document.getElementById("modal3").addEventListener("click", function() {
+document.getElementById("modal3").addEventListener("click", function () {
   background.style.display = "flex";
 });
 
-close.addEventListener("click", function() {
+close.addEventListener("click", function () {
   background.style.display = "none";
 });
 
@@ -450,16 +450,16 @@ signUpForm.addEventListener("submit", e => {
   const url = "http://localhost:3000";
 
   fetch(`${url}/auth/register`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body: JSON.stringify({
-      email: email,
-      password: password,
-      confirmPass: confirm
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        confirmPass: confirm
+      })
     })
-  })
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -471,4 +471,25 @@ carSearch.addEventListener("submit", e => {
   sessionStorage.setItem("zip", zip.value);
   sessionStorage.setItem("make", make.value);
   sessionStorage.setItem("model", models.value);
+});
+
+
+// Zip Code Validation
+const searchBtn = document.querySelector('#searchBtn');
+
+zip.addEventListener('input', (e) => {
+  if (zip.value.length === 5) {
+    searchBtn.disabled = false;
+  } else {
+    searchBtn.disabled = true;
+  }
+  console.log('run');
+});
+
+searchBtn.addEventListener('click', (e) => {
+  if (zip.value.length < 5) {
+    fetch()
+  } else {
+
+  }
 });
