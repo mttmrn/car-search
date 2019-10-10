@@ -475,11 +475,27 @@ carSearch.addEventListener("submit", e => {
 
 
 // Zip Code Validation
-const searchBtn = document.querySelector('#searchBtn');
+const searchBtn = document.querySelector('#searchBtn'),
+  zipApiUrl = `http://www.zipcodeapi.com/rest/pM6cwGNcP34gNxK7SDnXtrUkNyVVc20J4IF2gZgvbGqFk0zj7kT1a1RbMIJacamy/info.json/${zip.value}/degrees`,
+  zipError = document.querySelector('#zipError'),
+  checkZip = () =>
+
+  {
+    console.log("zip value = " + zip.value)
+    searchBtn.disabled = false;
+    fetch(zipApiUrl, {
+        method: "GET",
+        "Access-Control-Allow-Origin": "*"
+      }).then(res => res.json())
+      .then(data => {
+        console.log(data)
+      });
+  }
+
 
 zip.addEventListener('input', (e) => {
   if (zip.value.length === 5) {
-    searchBtn.disabled = false;
+    checkZip();
   } else {
     searchBtn.disabled = true;
   }
@@ -487,9 +503,10 @@ zip.addEventListener('input', (e) => {
 });
 
 searchBtn.addEventListener('click', (e) => {
-  if (zip.value.length < 5) {
-    fetch()
-  } else {
+  if (zip.value.length === 5) {
+    console.log(zip.value)
 
+  } else {
+    zipError.classList.remove('hidden');
   }
 });

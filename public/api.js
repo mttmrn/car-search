@@ -21,13 +21,13 @@ if (storedMake === null) {
       .then(data => {
         console.log(data);
         if (storedMake === "") {
-          heading.innerHTML = `Displaying all cars in your area`;
+          heading.innerHTML = `Displaying all cars near ${storedZip}`;
         } else {
           heading.innerHTML = `Displaying ${data.num_found
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results for ${
             data.listings[0].build.make
-          } ${data.listings[0].build.model} in your area`;
+          } ${data.listings[0].build.model} near ${storedZip}`;
         }
         data.listings.forEach(element => {
           output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
