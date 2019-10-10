@@ -476,37 +476,43 @@ carSearch.addEventListener("submit", e => {
 
 // Zip Code Validation
 const searchBtn = document.querySelector('#searchBtn'),
-  zipApiUrl = `http://www.zipcodeapi.com/rest/pM6cwGNcP34gNxK7SDnXtrUkNyVVc20J4IF2gZgvbGqFk0zj7kT1a1RbMIJacamy/info.json/${zip.value}/degrees`,
   zipError = document.querySelector('#zipError'),
   checkZip = () =>
 
   {
-    console.log("zip value = " + zip.value)
-    searchBtn.disabled = false;
-    fetch(zipApiUrl, {
-        method: "GET",
-        "Access-Control-Allow-Origin": "*"
-      }).then(res => res.json())
-      .then(data => {
-        console.log(data)
-      });
+    const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`
+    console.log(zipApiUrl)
+    fetch(zipApiUrl).then(res => {
+      if (res.status != 200) {
+        isError = true
+        throw Error(res.statusText)
+      } else {
+        isError = false
+        return res.json()
+      }
+    }).then(data => {
+      console.log(data)
+    })
   }
+
+let isError;
 
 
 zip.addEventListener('input', (e) => {
   if (zip.value.length === 5) {
     checkZip();
-  } else {
-    searchBtn.disabled = true;
   }
-  console.log('run');
 });
 
 searchBtn.addEventListener('click', (e) => {
-  if (zip.value.length === 5) {
+  if (zip.value.length < 5) {
+    e.preventDefault()
     console.log(zip.value)
 
-  } else {
+  } else if (isError === true) {
+    e.preventDefault()
+    zipError.innerHTML = `Please input a valid zip code`
     zipError.classList.remove('hidden');
+    console.log("error!")
   }
 });
