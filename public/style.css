@@ -880,6 +880,101 @@ a.signup {
     transition: all 0.2s ease 0s;
 }
 
+/* Media Queries */
+
+@media (max-width: 1350px) {
+    .yellow-car {
+        max-width: 90rem;
+    }
+}
+
+@media (max-width: 1290px) {
+
+    .isometric-car {
+        height: 45rem;
+        width: 45rem;
+    }
+
+    .search-icon {
+        height: 12rem;
+        width: 12rem;
+    }
+
+    .headline {
+        font-size: 4rem;
+    }
+
+    .subhead {
+        font-size: 2rem;
+    }
+
+    .muscle,
+    .sedan,
+    .shadow,
+    .truck,
+    .beetle {
+        height: 40rem;
+        width: 40rem;
+    }
+
+    .car-top {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin-bottom: 185px;
+        margin-right: 120px;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .car-bottom {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin-bottom: -20px;
+        margin-right: 120px;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    .shadow {
+        margin-bottom: 8rem;
+        margin-right: 12.1rem;
+    }
+
+    .truck {
+        margin-bottom: -1px !important;
+    }
+
+    .muscle {
+        margin-bottom: -35px !important;
+    }
+}
+
+@media (max-width: 1150px) {
+
+    .yellow-car {
+        max-width: 80rem;
+    }
+
+    .isometric-car {
+        margin-left: 8rem;
+    }
+
+    .text-container {
+        margin-left: 10rem;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    body {
+        background: blue;
+    }
+
+}
+
 /* Animations */
 
 @keyframes colorSwapLight {
