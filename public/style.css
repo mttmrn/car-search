@@ -237,7 +237,6 @@ a.signup {
     background: #2EBD71;
     border-top-right-radius: 0.8rem;
     border-bottom-right-radius: 0.8rem;
-    transition-duration: 0.3s;
 }
 
 .button-wrapper:hover {
@@ -949,6 +948,14 @@ a.signup {
     .muscle {
         margin-bottom: -35px !important;
     }
+
+    .brands-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: -12rem;
+        margin-bottom: 10rem;
+        padding: 0 4rem;
+    }
 }
 
 @media (max-width: 1150px) {
@@ -965,12 +972,175 @@ a.signup {
         margin-left: 10rem;
     }
 
+    .brands-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: -12rem;
+        margin-bottom: 10rem;
+        padding: 0 0rem;
+    }
+
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1020px) {
 
-    body {
-        background: blue;
+    .headline-container {
+        text-align: center;
+        width: 95rem;
+        height: 100%;
+        margin-top: -6rem;
+        margin-bottom: 4rem;
+        line-height: 5rem;
+    }
+
+    .headline {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 3.6rem;
+        color: #333333;
+    }
+
+    .subhead {
+        font-size: 1.8rem;
+        color: #2c2c2c;
+    }
+
+    .search {
+        margin: auto;
+        width: 45rem;
+        height: 100%;
+        position: relative;
+        border-radius: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
+    }
+
+    .make-wrapper {
+        height: 8rem;
+        width: 100%;
+        background-color: white;
+        border-radius: 0.8rem;
+        position: relative;
+    }
+
+    .make {
+        height: 100%;
+        width: 100%;
+        border-bottom: 0.1rem solid hsl(240, 6%, 91%);
+        border-radius: 0px;
+        border-right: none;
+        padding-left: 14%;
+    }
+
+    .fa-tools {
+        font-size: 2.3rem;
+        position: absolute;
+        top: 2.7rem;
+        left: 2rem;
+        color: hsl(219, 11%, 74%);
+    }
+
+    .fa-chevron-down {
+        font-size: 1.3rem;
+        position: absolute;
+        top: 3.8rem;
+        right: 2rem;
+        color: #2EBD71;
+    }
+
+    .model-wrapper {
+        height: 8rem;
+        width: 100%;
+        background-color: white;
+        position: relative;
+    }
+
+    .model {
+        height: 100%;
+        width: 100%;
+        border-right: none;
+        border-bottom: 0.1rem solid hsl(240, 6%, 91%);
+        border-radius: 0px;
+        padding-left: 14%;
+    }
+
+    .fa-car {
+        font-size: 2.6rem;
+        position: absolute;
+        top: 2.5rem;
+        left: 2rem;
+        color: hsl(219, 11%, 74%);
+    }
+
+    .zip-wrapper {
+        height: 8rem;
+        width: 100%;
+        background-color: white;
+        position: relative;
+        border-right: none;
+    }
+
+    .zip {
+        height: 100%;
+        width: 100%;
+        border-bottom: 0.1rem solid hsl(240, 6%, 91%);
+        border-radius: 0px;
+        border-right: none;
+        padding-left: 14%;
+    }
+
+    .zip-error {
+        font-size: 0px;
+        display: block;
+        padding: none;
+        color: rgb(192, 36, 16);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+
+    .fa-map-marker-alt {
+        font-size: 2.3rem;
+        position: absolute;
+        top: 2.5rem;
+        left: 2.7rem;
+        color: hsl(219, 11%, 74%);
+    }
+
+    .button-wrapper {
+        height: 7rem;
+        width: 100%;
+        background: #2EBD71;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0.8rem;
+        border-bottom-right-radius: 0.8rem;
+    }
+
+    .button-wrapper:hover {
+        background: rgb(51, 212, 127);
+        transition-duration: 0.3s;
+    }
+
+    .btn {
+        height: 100%;
+        width: 100%;
+        color: white;
+        font-size: 2.2rem;
+        outline: none;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2)
+    }
+
+    .brands-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: -12rem;
+        margin-bottom: 10rem;
+        padding: 0 8rem;
     }
 
 }
