@@ -13,6 +13,11 @@
 </head>
 
 <body>
+    <div class="hamburger-links hidden">
+        <a href="" class="hamburger-login">Login</a>
+        <a href="" class="hamburger-signup">Sign Up</a>
+        <p class="footnote">Made with love by Matt Moran</p>
+    </div>
     <div class="bg-modal" id="background">
         <div class="modal-content">
             <div class="close">+</div>
@@ -79,6 +84,11 @@
                         <li>Login</li><a>
                             <a href="#signup" id="modal2" onclick="signupTab()" class="signup">
                                 <li><span>Sign Up</li><a>
+                                    <div class="container">
+                                        <div class="bar1"></div>
+                                        <div class="bar2"></div>
+                                        <div class="bar3"></div>
+                                    </div>
                 </ul>
             </div>
         </nav>
@@ -147,17 +157,19 @@
         </form>
     </header>
     <div class="brands-container">
-        <img class="margin" src="./img/kbb.png" height="65" width="115" alt="kbb logo">
-        <img class="margin" src="./img/atc-logo.png" height="50" width="200" alt="atc logo">
-        <img class="margin" src="./img/carsdotcom.png" height="60" width="70" alt="">
-        <img class="margin" src="./img/edmundslogo.png" height="50" width="280" alt="">
-        <img class="margin" src="./img/carfax-logo-small.png" height="50" width="185" alt="carfax logo">
+        <img class="kbb" src="./img/kbb.png" height="65" width="115" alt="kbb logo">
+        <img class="atc-logo" src="./img/atc-logo.png" height="50" width="200" alt="atc logo">
+        <img class="carsdotcom" src="./img/carsdotcom.png" height="60" width="70" alt="cars logo">
+        <img class="edmunds" src="./img/edmundslogo.png" height="50" width="280" alt="edmunds logo">
+        <img class="carfax" src="./img/carfax-logo-small.png" height="50" width="185" alt="carfax logo">
     </div>
     <div class="graphic-container">
         <div class="text-container">
-            <h3 class="headline">Find the best deals</h3>
-            <p class="subhead">We evaluate car listings from every major marketplace and only display cars we're
-                confident are great deals. Everything is priced at or below it's KBB value and has no prior mechanical
+            <h3 class="headline">Find the diamond in the rough</h3>
+            <div class="divider"></div>
+            <p class="subhead">We evaluate 200,000+ car listings across the country and only display cars we're
+                confident are great deals.</p>
+            <p class="subhead">Everything is priced at or below it's KBB value and has no prior mechanical
                 damage.</p>
         </div>
         <img src="./img/red-car.svg" class="car-top sedan" alt="">
@@ -427,8 +439,10 @@
         <img src="./img/search-var-flat.svg" class="search-icon" alt="search icon">
         <div class="text-container2">
             <h3 class="headline">Get your dream car at your dream price</h3>
+            <div class="divider"></div>
             <p class="subhead">Have a specific car in mind? Filter by make, model, color, and a variety of other choices
-                to buy your next ride. If there are none available, you can even track it and we'll send you an alert
+                to buy your next ride.</p>
+            <p class="subhead">If there are none available, you can even track it and we'll send you an alert
                 when there's a listing that fits your description!</p>
         </div>
     </section>

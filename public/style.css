@@ -87,6 +87,10 @@ nav {
     padding-bottom: 0.8rem;
 }
 
+.hamburger-links {
+    display: none;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -295,11 +299,11 @@ a.signup {
     height: 75rem;
     background-color: #2EBD71;
     position: relative;
-    -webkit-clip-path: polygon(0 3%, 100% 12%, 100% 88%, 0 97%);
-    clip-path: polygon(0 3%, 100% 12%, 100% 88%, 0 97%);
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    -webkit-clip-path: polygon(0 3%, 100% 12%, 100% 88%, 0 97%);
+    clip-path: polygon(0 3%, 100% 12%, 100% 88%, 0 97%);
 }
 
 .car-top {
@@ -330,20 +334,29 @@ a.signup {
     margin-bottom: -85px !important;
 }
 
-
 .text-container {
-    text-align: center;
+    position: relative;
+    margin-top: -1rem;
     width: 40vw;
     height: 50vh;
-    line-height: 5rem;
-    margin-left: 12rem;
-    margin-top: 4.5rem;
+    margin-left: 16rem;
+    border-radius: 8px;
+    background: #2EBD71;
+    padding: 0rem 4rem;
+}
+
+.divider {
+    background: white;
+    height: 0.2rem;
+    width: 100%;
+    margin-top: 5%;
 }
 
 .text-container .subhead {
     color: white;
     margin-top: 2rem;
-    line-height: 4rem;
+    line-height: 3.4rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .text-container .headline {
@@ -352,7 +365,7 @@ a.signup {
 
 .white-container {
     width: 100%;
-    height: 60.5rem;
+    height: 65.5rem;
     position: relative;
     -webkit-clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%);
     clip-path: polygon(0 9%, 100% 0, 100% 100%, 0 100%);
@@ -362,16 +375,21 @@ a.signup {
 }
 
 .text-container2 {
-    text-align: center;
+    margin-top: -2.2rem;
     width: 40vw;
     height: 50vh;
-    line-height: 5rem;
     margin-left: 18rem;
+    padding: 0rem 4rem;
+}
+
+.text-container2 .divider {
+    background: black;
 }
 
 .text-container2 .subhead {
     margin-top: 2rem;
-    line-height: 4rem;
+    line-height: 3.5rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .isometric-car {
@@ -426,7 +444,7 @@ a.signup {
     width: 50vw;
     height: 30rem;
     line-height: 5rem;
-    margin-left: 6%;
+    margin-left: 4%;
     margin-top: 2%;
     align-items: center;
     z-index: 1;
@@ -442,6 +460,7 @@ a.signup {
 
 .text-container3 .subhead {
     margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .forgot-pass:hover {
@@ -982,6 +1001,17 @@ a.signup {
 
 }
 
+@media (max-width: 1050px) {
+    .text-container {
+        margin-top: -4rem;
+    }
+
+    .text-container2 {
+        margin-top: -14rem;
+    }
+
+}
+
 @media (max-width: 1020px) {
 
     .headline-container {
@@ -1090,16 +1120,16 @@ a.signup {
     }
 
     .zip-error {
-        font-size: 0px;
-        display: block;
-        padding: none;
+        font-size: 1.2rem;
+        position: absolute;
+        right: 0;
+        top: 2.5rem;
         color: rgb(192, 36, 16);
     }
 
     .hidden {
         display: none;
     }
-
 
     .fa-map-marker-alt {
         font-size: 2.3rem;
@@ -1139,8 +1169,123 @@ a.signup {
         display: flex;
         justify-content: space-evenly;
         margin-top: -12rem;
-        margin-bottom: 10rem;
-        padding: 0 8rem;
+        margin-bottom: 5rem;
+        padding: 0rem 2rem;
+    }
+
+    .kbb {
+        height: 55px;
+        width: 90px;
+    }
+
+    .atc-logo {
+        height: 45px;
+        width: 160px;
+    }
+
+    .carsdotcom {
+        height: 50px;
+        width: 65px;
+    }
+
+    .edmunds {
+        height: 45px;
+        width: 240px;
+    }
+
+    .carfax {
+        height: 45px;
+        width: 175px;
+    }
+
+    .login {
+        display: none;
+    }
+
+    .signup {
+        display: none;
+    }
+
+    .container {
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    .bar1,
+    .bar2,
+    .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #2EBD71;
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-9px, 6px);
+    }
+
+    .change .bar2 {
+        opacity: 0;
+    }
+
+    .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-8px, -8px);
+    }
+
+    .hamburger-links {
+        position: fixed;
+        z-index: 2;
+        background: #2EBD71;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        font-size: 2rem;
+        top: 7.3rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav {
+        position: fixed;
+        z-index: 4;
+        background: white;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .hamburger-login {
+        text-align: center;
+        display: block;
+        color: white;
+        transition-duration: 0.3s;
+        position: absolute;
+        top: 15rem;
+    }
+
+    .hamburger-signup {
+        position: absolute;
+        text-align: center;
+        display: block;
+        color: white;
+        top: 25rem;
+    }
+
+    .footnote {
+        position: absolute;
+        color: white;
+        bottom: 10rem;
+    }
+
+    .hamburger-login:hover,
+    .hamburger-signup:hover {
+        background: rgb(51, 212, 127);
+        transition-duration: 0.5s;
     }
 
 }

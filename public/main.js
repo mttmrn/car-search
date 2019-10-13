@@ -507,6 +507,8 @@ zip.addEventListener('input', (e) => {
 searchBtn.addEventListener('click', (e) => {
   if (zip.value.length < 5) {
     e.preventDefault()
+    zipError.innerHTML = `Please input a valid zip code`
+    zipError.classList.remove('hidden');
     console.log(zip.value)
 
   } else if (isError === true) {
@@ -516,3 +518,11 @@ searchBtn.addEventListener('click', (e) => {
     console.log("error!")
   }
 });
+
+
+const hamburger = document.querySelector('.container')
+const hamburgerLinks = document.querySelector('.hamburger-links')
+hamburger.addEventListener('click', e => {
+  hamburger.classList.toggle("change");
+  hamburgerLinks.classList.toggle("hidden");
+})
