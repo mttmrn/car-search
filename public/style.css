@@ -286,11 +286,13 @@ a.signup {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 4.4rem;
     color: #333333;
+    padding: 0 0;
 }
 
 .subhead {
     font-size: 2.4rem;
     color: #2c2c2c;
+    padding: 0 0;
 }
 
 .graphic-container {
@@ -1016,17 +1018,15 @@ a.signup {
     .headline-container {
         margin-top: -9rem;
         margin-bottom: 4rem;
+        line-height: 4rem;
     }
 
     .headline {
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 3.6rem;
-        color: #333333;
     }
 
     .subhead {
         font-size: 1.8rem;
-        color: #2c2c2c;
     }
 
     .search {
@@ -1672,14 +1672,6 @@ a.signup {
 
 }
 
-@media (max-width: 680px) {
-
-    .headline-container {
-        line-height: 4rem;
-    }
-
-}
-
 @media (max-width: 650px) {
 
     .isometric-car {
@@ -1689,6 +1681,14 @@ a.signup {
     .search-icon {
         bottom: 180px;
         left: 100px;
+    }
+
+    .headline {
+        padding: 0 1%;
+    }
+
+    .subhead {
+        padding: 0 1%;
     }
 
 }
@@ -1780,6 +1780,17 @@ a.signup {
     .truck,
     .beetle {
         margin-right: 8.5rem;
+    }
+
+    .headline-container .headline {
+        padding: 0 2%;
+        margin-top: 8rem;
+        margin-bottom: 2rem;
+    }
+
+    .headline-container .subhead {
+        padding: 0 2%;
+        line-height: 2rem;
     }
 
 }
