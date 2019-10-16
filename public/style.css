@@ -899,6 +899,11 @@ a.signup {
     transition: all 0.2s ease 0s;
 }
 
+.search-icon {
+    height: 12rem;
+    width: 12rem;
+}
+
 /* Media Queries */
 
 @media (max-width: 1350px) {
@@ -912,11 +917,6 @@ a.signup {
     .isometric-car {
         height: 45rem;
         width: 45rem;
-    }
-
-    .search-icon {
-        height: 12rem;
-        width: 12rem;
     }
 
     .headline {
