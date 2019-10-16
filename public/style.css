@@ -1737,6 +1737,10 @@ a.signup {
         margin-right: 11.2rem;
     }
 
+    .yellow-car {
+        min-width: 50.5rem;
+    }
+
 }
 
 @media (max-width: 560px) {
@@ -1810,13 +1814,24 @@ a.signup {
         left: 40px;
     }
 
+    .text-container {
+        margin-top: 19rem;
+    }
+
     .muscle,
     .sedan,
     .shadow,
     .truck,
     .beetle {
-        margin-right: 7.5rem;
+        margin-right: 12.5rem;
+        height: 28rem;
+        width: 28rem;
     }
+
+    .shadow {
+        margin-bottom: 1.5rem;
+    }
+
 
 }
 
@@ -1830,12 +1845,17 @@ a.signup {
         margin-left: 3.5rem;
     }
 
+    .isometric-car {
+        height: auto;
+        width: 77%;
+    }
+
     .muscle,
     .sedan,
     .shadow,
     .truck,
     .beetle {
-        margin-right: 6.5rem;
+        margin-right: 11rem;
     }
 
     .logo-container {
@@ -1849,11 +1869,98 @@ a.signup {
 }
 
 @media (max-width: 470px) {
-    .isometric-car {
-        height: auto;
-        width: 70%;
+    .yellow-car {
+        min-width: 42.5rem;
+    }
+
+    .make,
+    .model,
+    .zip {
+        padding-left: 17%;
     }
 }
+
+@media (max-width: 450px) {
+    .yellow-car {
+        min-width: 42.5rem;
+    }
+
+    .muscle,
+    .sedan,
+    .shadow,
+    .truck,
+    .beetle {
+        margin-right: 7rem;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .text-container2 {
+        margin-top: 6.9rem;
+        width: 100%;
+    }
+
+    .text-container {
+        width: 100%;
+        margin-top: 12rem;
+    }
+
+    .headline-container .subhead {
+        padding: 0 1.2rem;
+    }
+
+    .muscle,
+    .sedan,
+    .shadow,
+    .truck,
+    .beetle {
+        margin-right: 6rem;
+    }
+
+    .make,
+    .model,
+    .zip {
+        padding-left: 18.5%;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .muscle,
+    .sedan,
+    .shadow,
+    .truck,
+    .beetle {
+        margin-right: 4.5rem;
+    }
+
+    .make,
+    .model,
+    .zip {
+        padding-left: 19%;
+    }
+
+}
+
+@media (max-width: 340px) {
+
+    .muscle,
+    .sedan,
+    .shadow,
+    .truck,
+    .beetle {
+        margin-right: 2rem;
+    }
+
+    .make,
+    .model,
+    .zip {
+        padding-left: 22%;
+    }
+
+}
+
 
 
 /* Animations */
