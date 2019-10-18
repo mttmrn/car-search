@@ -1948,11 +1948,19 @@ a.signup {
 
 @media (max-width: 380px) {
     .graphic-container {
-        height: 100rem;
+        height: 93.5rem;
     }
 
     .white-container {
         height: 94rem;
+    }
+
+    .muscle,
+    .sedan,
+    .shadow,
+    .truck,
+    .beetle {
+        margin-right: 13%;
     }
 }
 
