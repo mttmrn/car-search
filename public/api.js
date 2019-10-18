@@ -9,19 +9,9 @@ const storedMake = sessionStorage.getItem("make"),
   locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
 
 
-//https://blogs.msdn.microsoft.com/typescript/2016/11/08/typescript-2-1-rc-better-inference-async-functions-and-more/
 async function fetchURLs() {
   try {
-    // Promise.all() lets us coalesce multiple promises into a single super-promise
     const data = await Promise.all([
-      /* Alternatively store each in an array */
-      // var [x, y, z] = await Promise.all([
-      // parse results as json; fetch data response has several reader methods available:
-      //.arrayBuffer()
-      //.blob()
-      //.formData()
-      //.json()
-      //.text()
       fetch(apiUrl).then((res) => res.json()),
       fetch(locationUrl).then((res) => res.json())
     ]);
@@ -37,7 +27,9 @@ async function fetchURLs() {
         data[0].listings[0].build.make
       } ${data[0].listings[0].build.model} near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
     }
-    data[0].listings.forEach(element => {
+
+    // I think this is what I can change it. Finish up this function and then add in the remaining stuff I want based on params
+    await data[0].listings.forEach(element => {
       output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
         element.vin
       }" target="_blank"><div class="results">
@@ -70,6 +62,9 @@ async function fetchURLs() {
         element.exterior_color
       }</span><span class="detail"> Interior: ${
         element.interior_color
+      }</span>
+      <span class="detail"> Transmission: ${
+        element.build.transmission
       }</span>
       </div>
       </div>

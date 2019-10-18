@@ -717,7 +717,7 @@ a.signup {
     background: #eeeded;
 }
 
-.sidebar-container {
+.search-container {
     display: flex;
     height: 100%;
     width: 100%;
@@ -844,8 +844,20 @@ a.signup {
 .details-container {
     margin-top: 0.75rem;
     width: 100%;
-    background: yellow;
+    height: 14rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 20rem 20rem;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
 }
+
+.detail {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
 
 .sort {
     text-indent: 0;
@@ -934,6 +946,7 @@ a.signup {
     .beetle {
         height: 40rem;
         width: 40rem;
+        overflow: hidden;
     }
 
     .car-top {
@@ -1896,6 +1909,14 @@ a.signup {
 
 @media (max-width: 400px) {
 
+    .graphic-container {
+        height: 90rem;
+    }
+
+    .white-container {
+        height: 85rem;
+    }
+
     .text-container2 {
         margin-top: 6.9rem;
         width: 100%;
@@ -1922,6 +1943,16 @@ a.signup {
     .model,
     .zip {
         padding-left: 18.5%;
+    }
+}
+
+@media (max-width: 380px) {
+    .graphic-container {
+        height: 100rem;
+    }
+
+    .white-container {
+        height: 94rem;
     }
 }
 
