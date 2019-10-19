@@ -168,7 +168,7 @@ a.signup {
     color: hsl(219, 11%, 74%);
 }
 
-.fa-chevron-down {
+.icon {
     font-size: 1.3rem;
     position: absolute;
     top: 3.8rem;
@@ -701,18 +701,43 @@ a.signup {
 /* Results Page */
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 10vh;
-    margin-top: 1rem;
+    height: 7rem;
+    padding: 0 5%;
+}
+
+.navlink {
+    font-size: 1.8rem;
+    padding: 0rem 2rem;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.link-wrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.iconify {
+    font-size: 3.7rem;
+}
+
+.profile {
+    margin: 0rem -1.5rem 0rem 8rem;
 }
 
 .main-container {
-    margin-top: 1rem;
-    padding-top: 1rem;
     height: 100%;
     width: 100%;
-    padding: 0 7rem;
+    padding: 1rem 7rem;
     display: flex;
     background: #eeeded;
 }
@@ -723,7 +748,12 @@ a.signup {
     width: 100%;
     flex: 30%;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 0rem;
+}
+
+.larger {
+    font-size: 4.5rem;
+    margin: 0rem 0.75rem 0rem -0.65rem;
 }
 
 .search-container-top {
@@ -739,6 +769,7 @@ a.signup {
 }
 
 .search-container-bottom {
+    position: relative;
     display: flex;
     justify-content: space-between;
     height: 100%;
@@ -785,6 +816,17 @@ a.signup {
     padding: 0.5rem 1rem;
 }
 
+.filter-btn {
+    height: 4.5rem;
+    width: 100%;
+    margin-top: 2.5rem;
+    color: white;
+    background: #87B7FF;
+    font-size: 2.6rem;
+    border: 1px solid #087DD2;
+    border-radius: 4px;
+}
+
 .add-width {
     width: 47%;
 }
@@ -798,6 +840,8 @@ a.signup {
     border-radius: 4px;
     padding: 1rem;
 }
+
+
 
 .data-container {
     flex: 70;
@@ -1146,14 +1190,6 @@ a.signup {
         top: 2.7rem;
         left: 2rem;
         color: hsl(219, 11%, 74%);
-    }
-
-    .fa-chevron-down {
-        font-size: 1.3rem;
-        position: absolute;
-        top: 3.8rem;
-        right: 2rem;
-        color: #2EBD71;
     }
 
     .model-wrapper {

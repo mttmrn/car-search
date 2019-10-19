@@ -9,15 +9,26 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/2ef970bfe9.js"></script>
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <header class="header">
         <nav class="header">
-            <a href="index.html">
-                <h1 class="logo">Automagic</h1>
-            </a>
+            <div class="logo-wrapper">
+                <a class="logo-wrapper" href="index.html">
+                    <span class="iconify larger" data-icon="ant-design:car-fill" data-inline="false"></span>
+                    <h1 class="logo">Batchcar</h1>
+                </a>
+            </div>
+            <div class="link-wrapper">
+                <span class="navlink">Support</span>
+                <span class="navlink">Sell Your Car</span>
+                <span class="navlink">Financing</span>
+                <span class="iconify profile" data-icon="ion:person-circle-outline" data-inline="false"></span>
+                <span class="navlink">Sign In</span>
+            </div>
         </nav>
     </header>
     <main class="main-container">
@@ -27,11 +38,13 @@
                     <select name="make" id="" class="make">
                         <option value="">All Makes</option>
                     </select>
+                    <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="model-reset-container">
                     <select name="" id="" class="model">
                         <option value="">All Models</option>
                     </select>
+                    <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
             <div class="search-container-bottom">
@@ -45,8 +58,9 @@
                     <option value="25">25 Miles</option>
                     <option value="10">10 Miles</option>
                 </select>
+                <i class="fas fa-chevron-down"></i>
                 <input class="selection add-width" type="tel" id="zipCode" value="08758">
-                <button class="btn">Search</button>
+                <button class="filter-btn">Search</button>
             </div>
         </div>
 
@@ -64,6 +78,8 @@
                         <option value="low-year">Price: Low to High</option>
                         <option value="high-year">Price: Low to High</option>
                     </select>
+                    <i class="fas fa-chevron-down"></i>
+
                 </div>
             </div>
             <div class="results-container">
