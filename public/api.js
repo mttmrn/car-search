@@ -73,6 +73,10 @@ async function fetchURLs() {
 
     });
 
+    // number of pages = whatever I set the limit to / total results.
+    // i.e. If I do 10 results per page and there are 54 results, we divide 54 / 10 and get 5.4
+    // We can then round that up and get 6 pages, which would be the total needed to house 54 results
+
     console.log(data)
     console.log(data[1].results[0].locations[0].adminArea5)
     console.log(data[1].results[0].locations[0].adminArea3)

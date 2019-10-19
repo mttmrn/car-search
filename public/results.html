@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -17,21 +16,37 @@
     <header class="header">
         <nav class="header">
             <a href="index.html">
-                <h1 class="logo">AUTOMAGIC</h1>
+                <h1 class="logo">Automagic</h1>
             </a>
         </nav>
     </header>
     <main class="main-container">
-        <div class="search-container">
-            <div class="make-reset-container">
-                <select name="make" id="" class="make">
-                    <option value="">All Makes</option>
-                </select>
+        <div class="sidebar">
+            <div class="search-container-top">
+                <div class="make-reset-container">
+                    <select name="make" id="" class="make">
+                        <option value="">All Makes</option>
+                    </select>
+                </div>
                 <div class="model-reset-container">
-                    <select name="" id="">
+                    <select name="" id="" class="model">
                         <option value="">All Models</option>
                     </select>
                 </div>
+            </div>
+            <div class="search-container-bottom">
+                <span class="filter-title">Radius</span><span class="filter-title">Zip Code</span>
+                <select name="radius" id="" class="selection add-width">
+                    <option value="200">200 Miles</option>
+                    <option value="150">150 Miles</option>
+                    <option value="100">100 Miles</option>
+                    <option value="75" selected>75 Miles</option>
+                    <option value="50">50 Miles</option>
+                    <option value="25">25 Miles</option>
+                    <option value="10">10 Miles</option>
+                </select>
+                <input class="selection add-width" type="tel" id="zipCode" value="08758">
+                <button class="btn">Search</button>
             </div>
         </div>
 
@@ -40,7 +55,7 @@
                 <span class="heading" id="heading"></span>
                 <div class="sort-container heading">
                     <span>Sort by</span>
-                    <select class="sort heading" name="sort" id="sort">
+                    <select class="selection heading" name="sort" id="sort">
                         <option value="best" selected>Best Match</option>
                         <option value="low-price">Price: Low to High</option>
                         <option value="high-price">Price: High to Low</option>
@@ -50,7 +65,6 @@
                         <option value="high-year">Price: Low to High</option>
                     </select>
                 </div>
-
             </div>
             <div class="results-container">
                 <div id="data">
