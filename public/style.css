@@ -730,8 +730,13 @@ a.signup {
     font-size: 3.7rem;
 }
 
-.profile {
-    margin: 0rem -1.5rem 0rem 8rem;
+.checkmark {
+    color: #44D889;
+    font-size: 5rem;
+}
+
+.last-link {
+    padding: 0rem 0rem 0rem 0.5rem;
 }
 
 .main-container {
@@ -766,6 +771,7 @@ a.signup {
     flex-wrap: wrap;
     padding: 2rem 2rem 2.75rem 2rem;
     margin-bottom: -1px;
+    position: relative;
 }
 
 .search-container-bottom {
@@ -808,6 +814,12 @@ a.signup {
     border: 1px solid #000000;
     border-radius: 4px;
     padding: 1rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .filter-title {
@@ -856,6 +868,7 @@ a.signup {
     align-items: center;
     width: 100%;
     padding: 0.75rem 0rem;
+    position: relative;
 }
 
 .heading {
@@ -921,18 +934,31 @@ a.signup {
     justify-content: center;
     align-items: center;
     padding: 10px 3px;
-    border-right: solid 1px #bdbdbd;
     flex: 33%;
     height: 100%;
     background: #f5f8fb;
+    border: 1px solid #C9C9C9;
+    border-radius: 5px 0px 0px 5px;
+    flex-direction: column;
+}
+
+.column-item:first-child {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.column-item:nth-child(2) {
+    border-left: none;
+    border-radius: 0px;
 }
 
 .column-item:last-child {
-    border-right: none;
+    border-left: none;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .history-text {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    padding: 0.5rem;
 }
 
 .price {

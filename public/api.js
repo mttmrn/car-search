@@ -30,6 +30,7 @@ async function fetchURLs() {
 
     // I think this is what I can change it. Finish up this function and then add in the remaining stuff I want based on params
     await data[0].listings.forEach(element => {
+
       output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
         element.vin
       }" target="_blank"><div class="results">
@@ -45,9 +46,8 @@ async function fetchURLs() {
       <div class="price-container"><span class="price">$${element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><span class="mileage">Mileage: ${element.miles.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
       </span></div>
       <div class="history-container"><ul class="columns">
-      <li class="column-item"><span class="history-text">Does it have a clean title? ${
-        element.carfax_clean_title
-      }</span></li>
+      <li class="column-item"><div class="center"><span class="iconify checkmark" data-icon="ion:checkmark-circle-sharp" data-inline="false"></span></div><div class="center"><span class="history-text">Car has a clean title and 
+      has been inspected.</span></div></li>
       <li class="column-item"><span class="history-text">Does it have one owner? ${
         element.carfax_1_owner
       }</span></li>
@@ -55,15 +55,15 @@ async function fetchURLs() {
         element.dom
       }</span></li>
       </ul></div>
-      <div class="details-container"><span class="detail">Location: ${
+      <div class="details-container"><span class="detail location">Location: ${
         element.dealer.city
       }, ${element.dealer.state}</span>
-      <span class="detail">Exterior: ${
+      <span class="detail exterior">Exterior: ${
         element.exterior_color
-      }</span><span class="detail"> Interior: ${
+      }</span><span class="detail interior"> Interior: ${
         element.interior_color
       }</span>
-      <span class="detail"> Transmission: ${
+      <span class="detail transmission"> Transmission: ${
         element.build.transmission
       }</span>
       </div>
@@ -71,7 +71,55 @@ async function fetchURLs() {
       </div>
       </a>`;
 
+      const location = document.querySelector(".location"),
+        exterior = document.querySelector(".exterior"),
+        interior = document.querySelector(".interior"),
+        transmission = document.querySelector(".transmission");
+
+      if (element.dealer.city === undefined) {
+        location.parentNode.removeChild(location)
+      }
+      if (element.exterior_color === undefined) {
+        exterior.parentNode.removeChild(exterior)
+      }
+      if (element.interior_color === undefined) {
+        interior.parentNode.removeChild(interior)
+      }
+      if (element.build.transmission === undefined || element.build.transmission === null || element.build.transmission === 0) {
+        transmission.parentNode.removeChild(transmission)
+      }
+
+      if (element.media.photo_links[0] === undefined) {
+        console.log("there's no image to be found")
+      }
+
+      /*
+      Possible solutions: loop through data and set unique IDs for each element that returns "undefined". 
+      Target those unique IDs in another loop outside the function after it's been constructed.
+
+      Loop through data and set variables like location = true; Do "if" statements for each parameter and set it
+      to false if it's undefined. If any parameter is false, remove it;
+          Comment: I did a version of
+
+      Set inline style to display: none but I don't know if that will set it for every one.
+
+      Give them a default display: none and then loop through each; 
+      
+      const checkDetails = (param) => {
+              if (param === undefined) {
+                ${param}.classList.add("hidden")
+      }
+      }
+
+
+      */
+
     });
+
+    // fetchURLs().then(doOtherStuff);
+    /* function doOtherStuff() {
+
+    } */
 
     // number of pages = whatever I set the limit to / total results.
     // i.e. If I do 10 results per page and there are 54 results, we divide 54 / 10 and get 5.4

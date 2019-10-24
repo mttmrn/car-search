@@ -499,6 +499,7 @@ let isError;
 
 
 zip.addEventListener('input', (e) => {
+  console.log("hello")
   if (zip.value.length === 5) {
     checkZip();
   }
