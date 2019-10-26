@@ -28,7 +28,7 @@ async function fetchURLs() {
       } ${data[0].listings[0].build.model} near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
     }
 
-    // I think this is what I can change it. Finish up this function and then add in the remaining stuff I want based on params
+    // I think this is what I can change. Finish up this function and then add in the remaining stuff I want based on params
     await data[0].listings.forEach(element => {
 
       output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
@@ -137,3 +137,19 @@ async function fetchURLs() {
 }
 
 fetchURLs();
+
+const priceFilter = document.querySelector('#price-filter');
+const priceDropdown = document.querySelector('#price-dropdown');
+const mileageFilter = document.querySelector("#mileage-filter");
+const mileageDropdown = document.querySelector("#mileage-dropdown");
+
+
+const toggleFilter = (dropdown, expandedContent) => {
+  const expand = () => {
+    expandedContent.classList.toggle("hidden")
+  }
+  dropdown.addEventListener('click', expand)
+}
+
+toggleFilter(mileageDropdown, mileageFilter);
+toggleFilter(priceDropdown, priceFilter);

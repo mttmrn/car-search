@@ -19,14 +19,13 @@
             <div class="logo-wrapper">
                 <a class="logo-wrapper" href="index.html">
                     <span class="iconify larger" data-icon="ant-design:car-fill" data-inline="false"></span>
-                    <h1 class="logo">Batchcar</h1>
+                    <h1 class="logo" style="color: #ffffff; text-shadow: none;">Batchcar</h1>
                 </a>
             </div>
             <div class="link-wrapper">
-
-                <span class="navlink"><a href="#support">Support</a></span>
-                <span class="navlink"><a href="#Sell-your-car">Sell Your Car</a></span>
-                <span class="navlink"><a href="#finance">Financing</a></span>
+                <a class="navlink" href="#support">Support</a>
+                <a class="navlink" href="#Sell-your-car">Sell Your Car</a>
+                <a class="navlink" href="#finance">Financing</a>
                 <span class="navlink" style="padding-left: 0rem;"></span>
                 <a href="#profile" class="center">
                     <span class="iconify" data-icon="ion:person-circle-outline" data-inline="false"></span>
@@ -78,7 +77,41 @@
                 <input class="selection add-width" type="tel" id="zipCode" value="08758">
                 <button class="filter-btn">Search</button>
             </div>
+            <div class="filters">
+                <div class="filter-dropdown">
+                    <div id="price-dropdown">
+                        <span class="filter-title">Price</span>
+                        <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
+                            data-inline="false"></span>
+                    </div>
+                    <div class="hidden" id="price-filter">
+                        <p class="range-numbers">$0 - $100,000+</p>
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-dropdown">
+                    <div id="mileage-dropdown">
+                        <span class="filter-title">Mileage</span>
+                        <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
+                            data-inline="false"></span>
+                    </div>
+                    <div class="hidden" id="mileage-filter">
+                        <p class="range-numbers">0 - 200,000+</p>
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-dropdown">
+                    <span class="filter-title">Year</span>
+                    <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
+                        data-inline="false"></span>
+                </div>
+            </div>
         </div>
+
 
         <div class="data-container">
             <div class="heading-container">
