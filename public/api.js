@@ -6,13 +6,19 @@ const storedMake = sessionStorage.getItem("make"),
   output = document.getElementById("data"),
   apiKey = "hDf3vM05pCFgcB8TnFqxoRUwsY8S3F4f",
   apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15`,
+  lowToHighPrice = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=price&sort_order=asc`,
+  highToLowPrice = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=price&sort_order=desc`,
+  lowToHighMileage = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=miles&sort_order=asc`,
+  highToLowMileage = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=miles&sort_order=desc`,
+  lowToHighYear = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=year&sort_order=desc`,
+  highToLowYear = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=year&sort_order=asc`,
   locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
 
 
-async function fetchURLs() {
+async function fetchURLs(carAPI) {
   try {
     const data = await Promise.all([
-      fetch(apiUrl).then((res) => res.json()),
+      fetch(carAPI).then((res) => res.json()),
       fetch(locationUrl).then((res) => res.json())
     ]);
 
@@ -30,7 +36,6 @@ async function fetchURLs() {
 
     // I think this is what I can change. Finish up this function and then add in the remaining stuff I want based on params
     await data[0].listings.forEach(element => {
-
       output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
         element.vin
       }" target="_blank"><div class="results">
@@ -94,6 +99,33 @@ async function fetchURLs() {
       }
 
       /*
+
+const myList = document.querySelector('ul');
+const myRequest = new Request('products.json');
+
+fetch(myRequest)
+  .then(response => response.json())
+  .then(data => {
+    for (const product of data.products) {
+      let listItem = document.createElement('li');
+      listItem.appendChild(
+        document.createElement('strong')
+      ).textContent = product.Name;
+      listItem.append(
+        ` can be found in ${
+          product.Location
+        }. Cost: `
+      );
+      listItem.appendChild(
+        document.createElement('strong')
+      ).textContent = `£${product.Price}`;
+      myList.appendChild(listItem);
+    }
+  });
+
+*/
+
+      /*
       Possible solutions: loop through data and set unique IDs for each element that returns "undefined". 
       Target those unique IDs in another loop outside the function after it's been constructed.
 
@@ -136,20 +168,101 @@ async function fetchURLs() {
   }
 }
 
-fetchURLs();
+fetchURLs(apiUrl);
 
-const priceFilter = document.querySelector('#price-filter');
-const priceDropdown = document.querySelector('#price-dropdown');
-const mileageFilter = document.querySelector("#mileage-filter");
-const mileageDropdown = document.querySelector("#mileage-dropdown");
+// Adding functionality to toggle filter buttons
+
+const priceFilter = document.querySelector('#price-filter'),
+  priceDropdown = document.querySelector('#price-dropdown'),
+  mileageFilter = document.querySelector("#mileage-filter"),
+  mileageDropdown = document.querySelector("#mileage-dropdown");
 
 
 const toggleFilter = (dropdown, expandedContent) => {
   const expand = () => {
     expandedContent.classList.toggle("hidden")
+    expandedContent.classList.toggle("dropdownAnimation")
   }
   dropdown.addEventListener('click', expand)
 }
 
 toggleFilter(mileageDropdown, mileageFilter);
 toggleFilter(priceDropdown, priceFilter);
+
+
+
+// Adding sort feature
+
+const sortResults = () => {
+  switch (sort.value) {
+    case "low-price":
+      output.innerHTML = "";
+      fetchURLs(lowToHighPrice);
+      break;
+    case "high-price":
+      output.innerHTML = "";
+      fetchURLs(highToLowPrice);
+      break;
+    case "low-miles":
+      output.innerHTML = "";
+      fetchURLs(lowToHighMileage);
+      break;
+    case "high-miles":
+      output.innerHTML = "";
+      fetchURLs(highToLowMileage);
+      break;
+    case "low-year":
+      output.innerHTML = "";
+      fetchURLs(lowToHighYear);
+      break;
+    case "high-year":
+      output.innerHTML = "";
+      fetchURLs(highToLowYear);
+      break;
+    default:
+      output.innerHTML = ""
+      fetchURLs(apiUrl)
+  }
+}
+
+sort.addEventListener("change", sortResults)
+
+
+/* 
+
+slider logic
+
+var lowerSlider = document.querySelector('#lower'),
+  upperSlider = document.querySelector('#upper'),
+  lowerVal = parseInt(lowerSlider.value);
+upperVal = parseInt(upperSlider.value);
+
+upperSlider.oninput = function () {
+  lowerVal = parseInt(lowerSlider.value);
+  upperVal = parseInt(upperSlider.value);
+
+  if (upperVal < lowerVal + 4) {
+    lowerSlider.value = upperVal - 4;
+
+    if (lowerVal == lowerSlider.min) {
+      upperSlider.value = 4;
+    }
+  }
+};
+
+
+lowerSlider.oninput = function () {
+  lowerVal = parseInt(lowerSlider.value);
+  upperVal = parseInt(upperSlider.value);
+
+  if (lowerVal > upperVal - 4) {
+    upperSlider.value = lowerVal + 4;
+
+    if (upperVal == upperSlider.max) {
+      lowerSlider.value = parseInt(upperSlider.max) - 4;
+    }
+
+  }
+};
+
+*/

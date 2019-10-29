@@ -87,7 +87,8 @@
                     <div class="hidden" id="price-filter">
                         <p class="range-numbers">$0 - $100,000+</p>
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                            <input type="range" min="0" max="100" value="0" class="slider low" id="priceRangeLow">
+                            <input type="range" min="0" max="100" value="100" class="slider high" id="myRange">
                         </div>
                     </div>
                 </div>
@@ -100,7 +101,8 @@
                     <div class="hidden" id="mileage-filter">
                         <p class="range-numbers">0 - 200,000+</p>
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                            <input type="range" min="0" max="100" value="0" class="slider low" id="priceRangeLow">
+                            <input type="range" min="0" max="100" value="100" class="slider high" id="myRange">
                         </div>
                     </div>
                 </div>
@@ -124,10 +126,10 @@
                         <option value="high-price">Price: High to Low</option>
                         <option value="low-miles">Miles: Low to High</option>
                         <option value="high-miles">Miles: High to Low</option>
-                        <option value="low-year">Price: Low to High</option>
-                        <option value="high-year">Price: Low to High</option>
+                        <option value="low-year">Year: New to Old</option>
+                        <option value="high-year">Year: Old to New</option>
                     </select>
-                    <i class="fas fa-chevron-down" style="    position: absolute;
+                    <i class="fas fa-chevron-down" style="position: absolute;
                     top: 22px;
                     right: 12px;
                     font-size: 10px;"></i>
