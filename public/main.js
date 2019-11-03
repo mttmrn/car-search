@@ -417,7 +417,7 @@ close.addEventListener("click", function () {
 // login tab
 function loginTab() {
   document.querySelector("#login-tab").classList.remove("active");
-  document.querySelector(".modal-login").style.borderTop = "#2EBD71 4px solid";
+  document.querySelector(".modal-login").style.borderTop = "#087DD2 4px solid";
   document.querySelector(".signup-content").style.display = "none";
   document.querySelector(".modal-content").style.height = "76%";
   document.querySelector("#signup-tab").classList.add("active");
@@ -428,7 +428,7 @@ function loginTab() {
 //signup tab
 function signupTab() {
   document.querySelector("#signup-tab").classList.remove("active");
-  document.querySelector(".modal-signup").style.borderTop = "#2EBD71 4px solid";
+  document.querySelector(".modal-signup").style.borderTop = "#087DD2 4px solid";
   document.querySelector(".login-content").style.display = "none";
   document.querySelector(".modal-content").style.height = "86%";
   document.querySelector("#login-tab").classList.add("active");

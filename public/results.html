@@ -19,7 +19,7 @@
             <div class="logo-wrapper">
                 <a class="logo-wrapper" href="index.html">
                     <span class="iconify larger" data-icon="ant-design:car-fill" data-inline="false"></span>
-                    <h1 class="logo" style="color: #ffffff; text-shadow: none;">Batchcar</h1>
+                    <h1 class="logo" style="color: #ffffff;">Batchcar</h1>
                 </a>
             </div>
             <div class="link-wrapper">
@@ -85,10 +85,13 @@
                             data-inline="false"></span>
                     </div>
                     <div class="hidden" id="price-filter">
-                        <p class="range-numbers">$0 - $100,000+</p>
+                        <div class="range-numbers">
+                            <span class="lower-num" id="lowerPrice">$0</span><span>-</span><span class="higher-num"
+                                id="upperPrice">$100,000+</span>
+                        </div>
                         <div class="slidecontainer">
                             <input type="range" min="0" max="100" value="0" class="slider low" id="priceRangeLow">
-                            <input type="range" min="0" max="100" value="100" class="slider high" id="myRange">
+                            <input type="range" min="0" max="100" value="100" class="slider high" id="priceRangeHigh">
                         </div>
                     </div>
                 </div>
@@ -99,7 +102,9 @@
                             data-inline="false"></span>
                     </div>
                     <div class="hidden" id="mileage-filter">
-                        <p class="range-numbers">0 - 200,000+</p>
+                        <div class="range-numbers">
+                            <span class="lower-num">0</span><span>-</span><span class="higher-num">200,000+</span>
+                        </div>
                         <div class="slidecontainer">
                             <input type="range" min="0" max="100" value="0" class="slider low" id="priceRangeLow">
                             <input type="range" min="0" max="100" value="100" class="slider high" id="myRange">
