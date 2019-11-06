@@ -103,11 +103,14 @@
                     </div>
                     <div class="hidden" id="mileage-filter">
                         <div class="range-numbers">
-                            <span class="lower-num">0</span><span>-</span><span class="higher-num">200,000+</span>
+                            <span class="lower-num" id="lowerMiles">0</span><span>-</span><span class="higher-num"
+                                id="upperMiles">150,000+</span>
                         </div>
                         <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="0" class="slider low" id="priceRangeLow">
-                            <input type="range" min="0" max="100" value="100" class="slider high" id="myRange">
+                            <input type="range" min="0" max="150" value="0" step="5" class="slider low"
+                                id="milesRangeLow">
+                            <input type="range" min="0" max="150" value="150" step="5" class="slider high"
+                                id="milesRangeHigh">
                         </div>
                     </div>
                 </div>

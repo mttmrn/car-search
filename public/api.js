@@ -16,12 +16,14 @@ const storedMake = sessionStorage.getItem("make"),
 
 
 async function fetchURLs(carAPI = apiUrl) {
+  // Fetching the marketcheck and the mapquest API together
   try {
     const data = await Promise.all([
       fetch(carAPI).then((res) => res.json()),
       fetch(locationUrl).then((res) => res.json())
     ]);
 
+    // Changing the output of the title of the div depending on whether a make and model are specified or they search all cars
     if (storedMake === "") {
       heading.innerHTML = `Displaying ${data[0].num_found
         .toString()
@@ -34,7 +36,9 @@ async function fetchURLs(carAPI = apiUrl) {
       } ${data[0].listings[0].build.model} near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
     }
 
-    // I think this is what I can change. Finish up this function and then add in the remaining stuff I want based on params
+    // Get the response, target the response of the Marketcheck API, and then loop through each individual element
+    // For each element, output HTML
+
     await data[0].listings.forEach(element => {
       output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
         element.vin
@@ -76,7 +80,19 @@ async function fetchURLs(carAPI = apiUrl) {
       </div>
       </a>`;
 
-      const location = document.querySelector(".location"),
+      /* 
+      As we are looping through, grab the element and try to see if it is there.
+      If it isn't, remove the HTML from the parent element.
+
+      I've tried things like if element !== true, do something; if element === true, etc. etc. to try to evaluate for falsy or truthy.
+      None of them worked, and when I console logged for the variable it would return undefined so I settled for check for that.
+      It does work on some, and doesn't work properly on others.
+
+      I think this is where the issue is stemming from, since it's going through each element
+      and targeting a class instead of an ID. I don't know whether it's a specificity thing, whether it doesn't know what to target or something else.
+      */
+
+      let location = document.querySelector(".location"),
         exterior = document.querySelector(".exterior"),
         interior = document.querySelector(".interior"),
         transmission = document.querySelector(".transmission");
@@ -90,7 +106,7 @@ async function fetchURLs(carAPI = apiUrl) {
       if (element.interior_color === undefined) {
         interior.parentNode.removeChild(interior)
       }
-      if (element.build.transmission === undefined || element.build.transmission === null || element.build.transmission === 0) {
+      if (element.build.transmission === undefined || element.build.transmission === null || element.build.transmission === 0 || element.build.transmission === false) {
         transmission.parentNode.removeChild(transmission)
       }
 
@@ -99,6 +115,8 @@ async function fetchURLs(carAPI = apiUrl) {
       }
 
       /*
+
+      SOME NOTES + POSSIBLE SOLUTIONS, DISREGARD IF YOU WANT
 
 const myList = document.querySelector('ul');
 const myRequest = new Request('products.json');
@@ -191,7 +209,7 @@ toggleFilter(priceDropdown, priceFilter);
 
 
 
-// Adding sort feature
+// Adding sort feature and calling subsequent API endpoints
 
 const sortResults = () => {
   switch (sort.value) {
@@ -249,7 +267,7 @@ upperSliderPrice.addEventListener('input', function () {
   if (upperValPrice > lowerValPrice) {
     switch (upperValPrice) {
       case 100:
-        upperPrice.innerHTML = "$100,000"
+        upperPrice.innerHTML = "$100,000+"
         break
       case 99:
         upperPrice.innerHTML = "$99,000"
@@ -550,7 +568,7 @@ upperSliderPrice.addEventListener('input', function () {
     }
   }
 
-  upperPriceRange = parseInt(upperPrice.innerHTML.replace(/[$,]/g, ""))
+  upperPriceRange = parseInt(upperPrice.innerHTML.replace(/[$,+]/g, ""))
 
   if (upperValPrice < lowerValPrice + 5) {
     upperSliderPrice.value = lowerValPrice + 5
@@ -868,5 +886,236 @@ lowerSliderPrice.addEventListener('input', function () {
 
   if (lowerValPrice > upperValPrice - 5) {
     lowerSliderPrice.value = upperValPrice - 5;
+  }
+});
+
+
+
+
+let lowerMilesRange;
+let upperMilesRange;
+
+const upperMiles = document.querySelector('#upperMiles'),
+  lowerMiles = document.querySelector('#lowerMiles')
+
+let lowerSliderMiles = document.querySelector('#milesRangeLow'),
+  upperSliderMiles = document.querySelector('#milesRangeHigh'),
+  lowerValMiles = parseInt(lowerSliderMiles.value),
+  upperValMiles = parseInt(upperSliderMiles.value);
+
+upperSliderMiles.addEventListener('input', function () {
+  lowerValMiles = parseInt(lowerSliderMiles.value);
+  upperValMiles = parseInt(upperSliderMiles.value);
+
+  if (upperValMiles > lowerValMiles) {
+    switch (upperValMiles) {
+      case 150:
+        upperMiles.innerHTML = "150,000+"
+        break
+      case 145:
+        upperMiles.innerHTML = "145,000"
+        break
+      case 140:
+        upperMiles.innerHTML = "140,000"
+        break
+      case 135:
+        upperMiles.innerHTML = "135,000"
+        break
+      case 130:
+        upperMiles.innerHTML = "130,000"
+        break
+      case 125:
+        upperMiles.innerHTML = "125,000"
+        break
+      case 120:
+        upperMiles.innerHTML = "120,000"
+        break
+      case 115:
+        upperMiles.innerHTML = "115,000"
+        break
+      case 110:
+        upperMiles.innerHTML = "110,000"
+        break
+      case 105:
+        upperMiles.innerHTML = "105,000"
+        break
+      case 100:
+        upperMiles.innerHTML = "100,000"
+        break
+      case 95:
+        upperMiles.innerHTML = "95,000"
+        break
+      case 90:
+        upperMiles.innerHTML = "90,000"
+        break
+      case 85:
+        upperMiles.innerHTML = "85,000"
+        break
+      case 80:
+        upperMiles.innerHTML = "80,000"
+        break
+      case 75:
+        upperMiles.innerHTML = "75,000"
+        break
+      case 70:
+        upperMiles.innerHTML = "70,000"
+        break
+      case 65:
+        upperMiles.innerHTML = "65,000"
+        break
+      case 60:
+        upperMiles.innerHTML = "60,000"
+        break
+      case 55:
+        upperMiles.innerHTML = "55,000"
+        break
+      case 50:
+        upperMiles.innerHTML = "50,000"
+        break
+      case 45:
+        upperMiles.innerHTML = "45,000"
+        break
+      case 40:
+        upperMiles.innerHTML = "40,000"
+        break
+      case 35:
+        upperMiles.innerHTML = "35,000"
+        break
+      case 30:
+        upperMiles.innerHTML = "30,000"
+        break
+      case 25:
+        upperMiles.innerHTML = "25,000"
+        break
+      case 20:
+        upperMiles.innerHTML = "20,000"
+        break
+      case 15:
+        upperMiles.innerHTML = "15,000"
+        break
+      case 10:
+        upperMiles.innerHTML = "10,000"
+        break
+      case 5:
+        upperMiles.innerHTML = "5,000"
+        break
+      case 0:
+        upperMiles.innerHTML = "0"
+        break
+    }
+  }
+
+  upperMilesRange = parseInt(upperMiles.innerHTML.replace(/[,+]/g, ""))
+
+  if (upperValMiles < lowerValMiles + 5) {
+    upperSliderMiles.value = lowerValMiles + 5
+  }
+});
+
+
+lowerSliderMiles.addEventListener('input', function () {
+  lowerValMiles = parseInt(lowerSliderMiles.value);
+  upperValMiles = parseInt(upperSliderMiles.value);
+
+  if (upperValMiles > lowerValMiles) {
+    switch (lowerValMiles) {
+      case 150:
+        lowerMiles.innerHTML = "150,000+"
+        break
+      case 145:
+        lowerMiles.innerHTML = "145,000"
+        break
+      case 140:
+        lowerMiles.innerHTML = "140,000"
+        break
+      case 135:
+        lowerMiles.innerHTML = "135,000"
+        break
+      case 130:
+        lowerMiles.innerHTML = "130,000"
+        break
+      case 125:
+        lowerMiles.innerHTML = "125,000"
+        break
+      case 120:
+        lowerMiles.innerHTML = "120,000"
+        break
+      case 115:
+        lowerMiles.innerHTML = "115,000"
+        break
+      case 110:
+        lowerMiles.innerHTML = "110,000"
+        break
+      case 105:
+        lowerMiles.innerHTML = "105,000"
+        break
+      case 100:
+        lowerMiles.innerHTML = "100,000"
+        break
+      case 95:
+        lowerMiles.innerHTML = "95,000"
+        break
+      case 90:
+        lowerMiles.innerHTML = "90,000"
+        break
+      case 85:
+        lowerMiles.innerHTML = "85,000"
+        break
+      case 80:
+        lowerMiles.innerHTML = "80,000"
+        break
+      case 75:
+        lowerMiles.innerHTML = "75,000"
+        break
+      case 70:
+        lowerMiles.innerHTML = "70,000"
+        break
+      case 65:
+        lowerMiles.innerHTML = "65,000"
+        break
+      case 60:
+        lowerMiles.innerHTML = "60,000"
+        break
+      case 55:
+        lowerMiles.innerHTML = "55,000"
+        break
+      case 50:
+        lowerMiles.innerHTML = "50,000"
+        break
+      case 45:
+        lowerMiles.innerHTML = "45,000"
+        break
+      case 40:
+        lowerMiles.innerHTML = "40,000"
+        break
+      case 35:
+        lowerMiles.innerHTML = "35,000"
+        break
+      case 30:
+        lowerMiles.innerHTML = "30,000"
+        break
+      case 25:
+        lowerMiles.innerHTML = "25,000"
+        break
+      case 20:
+        lowerMiles.innerHTML = "20,000"
+        break
+      case 15:
+        lowerMiles.innerHTML = "15,000"
+        break
+      case 10:
+        lowerMiles.innerHTML = "10,000"
+        break
+      case 5:
+        lowerMiles.innerHTML = "5,000"
+        break
+      case 0:
+        lowerMiles.innerHTML = "0"
+        break
+    }
+  }
+
+  if (lowerValMiles > upperValMiles - 5) {
+    lowerSliderMiles.value = upperValMiles - 5;
   }
 });
