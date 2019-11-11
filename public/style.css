@@ -739,6 +739,23 @@ a.signup {
 .checkmark {
     color: #44D889;
     font-size: 5rem;
+    padding: 0.05rem;
+}
+
+.one-owner-icon {
+    color: #44D889;
+    font-size: 5rem;
+}
+
+.multi-owner-icon {
+    color: rgb(216, 68, 68);
+    font-size: 5rem;
+}
+
+.dom-icon {
+    color: #44D889;
+    font-size: 5rem;
+    padding: 0.25rem;
 }
 
 .last-link {
@@ -997,7 +1014,6 @@ a.signup {
 .img-container {
     padding-top: 3.5rem;
     height: 34rem;
-    overflow: hidden;
     display: flex;
     align-items: center;
 }
@@ -1011,6 +1027,20 @@ a.signup {
 .info-container {
     padding-top: 4rem;
     padding-left: 1rem;
+    position: relative;
+}
+
+.tag-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tag {
+    background: cyan;
 }
 
 .price-container {

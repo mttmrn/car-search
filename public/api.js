@@ -2,7 +2,6 @@ const storedMake = sessionStorage.getItem("make"),
   storedModel = sessionStorage.getItem("model"),
   storedZip = sessionStorage.getItem("zip"),
   heading = document.getElementById("heading"),
-  heading2 = document.getElementById("heading2"),
   output = document.getElementById("data"),
   apiKey = "hDf3vM05pCFgcB8TnFqxoRUwsY8S3F4f",
   apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15`,
@@ -40,146 +39,131 @@ async function fetchURLs(carAPI = apiUrl) {
     // For each element, output HTML
 
     await data[0].listings.forEach(element => {
-      output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${
-        element.vin
-      }" target="_blank"><div class="results">
-      <div class="title-container"><span class="listing-title">${
-        element.build.year
-      } ${element.build.make} ${element.build.model} ${
-        element.build.trim
-      }</span></div>
-      <div class="img-container"><img class="list-img" src="${
-        element.media.photo_links[0]
-      }" alt=""></div>
-      <div class="info-container">
-      <div class="price-container"><span class="price">$${element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span><span class="mileage">Mileage: ${element.miles.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-      </span></div>
-      <div class="history-container"><ul class="columns">
-      <li class="column-item"><div class="center"><span class="iconify checkmark" data-icon="ion:checkmark-circle-sharp" data-inline="false"></span></div><div class="center"><span class="history-text">Car has a clean title and 
-      has been inspected.</span></div></li>
-      <li class="column-item"><span class="history-text">Does it have one owner? ${
-        element.carfax_1_owner
-      }</span></li>
-      <li class="column-item"><span class="history-text">Days on market: ${
-        element.dom
-      }</span></li>
-      </ul></div>
-      <div class="details-container"><span class="detail location">Location: ${
-        element.dealer.city
-      }, ${element.dealer.state}</span>
-      <span class="detail exterior">Exterior: ${
-        element.exterior_color
-      }</span><span class="detail interior"> Interior: ${
-        element.interior_color
-      }</span>
-      <span class="detail transmission"> Transmission: ${
-        element.build.transmission
-      }</span>
-      </div>
-      </div>
-      </div>
-      </a>`;
+      const stockPhotoLink = element.media && element.media.photo_links && (element.media.photo_links.length > 0) ? element.media.photo_links[0] : "/stock_photo_link";
+      const price = element.price ? element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
+      const miles = element.miles ? element.miles.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
+      const owners = element.carfax_1_owner ? 'One previous owner' : "More than one owner";
+      const city = element.dealer.city && (element.dealer.city.length > 0) ? element.dealer.city : "NA";
+      const state = element.dealer.state && (element.dealer.state.length > 0) ? element.dealer.state : "NA";
+      const intColor = element.interior_color && (element.interior_color.length > 0) ? element.interior_color : "NA";
+      const extColor = element.exterior_color && (element.exterior_color.length > 0) ? element.exterior_color : "NA";
+      const transmission = element.build.transmission && (element.build.transmission.length > 0) ? element.build.transmission : "NA";
+      const dom = element.dom && (element.dom > 0) ? element.dom : "NA";
+      let heading_mod = ""
+      let details = ""
+      let tag = ""
+      let ownerIcon = ""
 
-      /* 
-      As we are looping through, grab the element and try to see if it is there.
-      If it isn't, remove the HTML from the parent element.
-
-      I've tried things like if element !== true, do something; if element === true, etc. etc. to try to evaluate for falsy or truthy.
-      None of them worked, and when I console logged for the variable it would return undefined so I settled for check for that.
-      It does work on some, and doesn't work properly on others.
-
-      I think this is where the issue is stemming from, since it's going through each element
-      and targeting a class instead of an ID. I don't know whether it's a specificity thing, whether it doesn't know what to target or something else.
-      */
-
-      let location = document.querySelector(".location"),
-        exterior = document.querySelector(".exterior"),
-        interior = document.querySelector(".interior"),
-        transmission = document.querySelector(".transmission");
-
-      if (element.dealer.city === undefined) {
-        location.parentNode.removeChild(location)
-      }
-      if (element.exterior_color === undefined) {
-        exterior.parentNode.removeChild(exterior)
-      }
-      if (element.interior_color === undefined) {
-        interior.parentNode.removeChild(interior)
-      }
-      if (element.build.transmission === undefined || element.build.transmission === null || element.build.transmission === 0 || element.build.transmission === false) {
-        transmission.parentNode.removeChild(transmission)
-      }
-
-      if (element.media.photo_links[0] === undefined) {
-        console.log("there's no image to be found")
-      }
-
-      /*
-
-      SOME NOTES + POSSIBLE SOLUTIONS, DISREGARD IF YOU WANT
-
-const myList = document.querySelector('ul');
-const myRequest = new Request('products.json');
-
-fetch(myRequest)
-  .then(response => response.json())
-  .then(data => {
-    for (const product of data.products) {
-      let listItem = document.createElement('li');
-      listItem.appendChild(
-        document.createElement('strong')
-      ).textContent = product.Name;
-      listItem.append(
-        ` can be found in ${
-          product.Location
-        }. Cost: `
-      );
-      listItem.appendChild(
-        document.createElement('strong')
-      ).textContent = `£${product.Price}`;
-      myList.appendChild(listItem);
-    }
-  });
-
-*/
-
-      /*
-      Possible solutions: loop through data and set unique IDs for each element that returns "undefined". 
-      Target those unique IDs in another loop outside the function after it's been constructed.
-
-      Loop through data and set variables like location = true; Do "if" statements for each parameter and set it
-      to false if it's undefined. If any parameter is false, remove it;
-          Comment: I did a version of
-
-      Set inline style to display: none but I don't know if that will set it for every one.
-
-      Give them a default display: none and then loop through each; 
-      
-      const checkDetails = (param) => {
-              if (param === undefined) {
-                ${param}.classList.add("hidden")
-      }
+      if (owners === 'One previous owner') {
+        ownerIcon = `<span class="iconify one-owner-icon" data-icon="mdi-account" data-inline="false"></span>`
+      } else {
+        ownerIcon = `<span class="iconify multi-owner-icon" data-icon="mdi-account-multiple" data-inline="false"></span>`
       }
 
 
-      */
+      if ((city || state) !== "NA") {
+        details += `<span class="detail location">Location: ${ city }, ${state}</span>`;
+      }
+      if (extColor !== "NA") {
+        details += `<span class="detail exterior">Exterior: ${ extColor }</span>`;
+      }
+      if (intColor !== "NA") {
+        details += `<span class="detail interior"> Interior: ${ intColor }</span>`;
+      }
+      if (transmission !== "NA") {
+        details += `<span class="detail transmission"> Transmission: ${ transmission }</span>`;
+      }
+
+
+      if (element.build) {
+        if (element.build.year) {
+          heading_mod += `${element.build.year} `;
+        }
+        if (element.build.make) {
+          heading_mod += `${element.build.make} `;
+        }
+        if (element.build.model) {
+          heading_mod += `${element.build.model} `;
+        }
+        if (element.build.trim) {
+          heading_mod += `${element.build.trim} `;
+        }
+      }
+
+
+      if (element.price <= 5000) {
+        tag = "less than 5k"
+      }
+      if (element.price <= 5000 && element.miles > 70000) {
+        tag = 'less than 5k and 70k miles'
+      }
+      if (element.price > 5000) {
+        tag = 'over 5000'
+      }
+      if (element.price > 10000) {
+        tag = 'over 10000'
+      }
+      if (element.price > 5000 && miles > 10000) {
+        tag = '5k price and over 10k miles'
+      }
+      if (dom > 100 && owners === 'One owner') {
+        tag = 'dom over 100 and one owner'
+      }
+
+
+
+      output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${ element.vin }" target="_blank">
+                              <div class="results">
+                                      <div class="title-container">
+                                            <span class="listing-title">${heading_mod}</span>
+                                      </div>
+                                      <div class="img-container">
+                                          <img class="list-img" src="${ stockPhotoLink }" alt="">
+                                      </div>
+                                      <div class="info-container">
+                                      <div class="tag-container"><div class="tag">${tag}</div>
+                                      </div>
+                                            <div class="price-container">
+                                                <span class="price">$${price}</span>
+                                                <span class="mileage">Mileage: ${miles}</span>
+                                            </div>
+                                            <div class="history-container">
+                                                <ul class="columns">
+                                                      <li class="column-item">
+                                                        <div class="center">
+                                                            <span class="iconify checkmark" data-icon="ion:checkmark-circle-sharp" data-inline="false"></span>
+                                                        </div>
+                                                        <div class="center">
+                                                            <span class="history-text">Clean title and inspected</span>
+                                                        </div>
+                                                      </li>
+                                                      <li class="column-item">
+                                                      <div class="center">
+                                                      ${ownerIcon}
+                                                  </div>
+                                                  <div class="center">
+                                                      <span class="history-text">${owners}</span>
+                                                  </div>
+                                                      </li>
+                                                    <li class="column-item">                       
+                                                    <div class="center">
+                                                    <span class="iconify dom-icon" data-icon="wi:day-sunny" data-inline="false"></span>
+                                                        </div>
+                                                        <div class="center">
+                                                            <span class="history-text">${dom} days on market</span>
+                                                        </div></li>
+                                                  </ul>
+                                            </div>
+                                            <div class="details-container">${details}</div> </div> </div> </a>`;
+
 
     });
-
-    // fetchURLs().then(doOtherStuff);
-    /* function doOtherStuff() {
-
-    } */
 
     // number of pages = whatever I set the limit to / total results.
     // i.e. If I do 10 results per page and there are 54 results, we divide 54 / 10 and get 5.4
     // We can then round that up and get 6 pages, which would be the total needed to house 54 results
 
     console.log(data)
-    console.log(data[1].results[0].locations[0].adminArea5)
-    console.log(data[1].results[0].locations[0].adminArea3)
-    //logger utility method, logs output to screen
-
 
   } catch (error) {
     console.log(error);
@@ -210,6 +194,8 @@ toggleFilter(priceDropdown, priceFilter);
 
 
 // Adding sort feature and calling subsequent API endpoints
+
+const sort = document.querySelector("#sort");
 
 const sortResults = () => {
   switch (sort.value) {
@@ -244,8 +230,6 @@ const sortResults = () => {
 }
 
 sort.addEventListener("change", sortResults)
-
-
 
 
 // Slider logic
@@ -575,7 +559,6 @@ upperSliderPrice.addEventListener('input', function () {
   }
 });
 
-
 lowerSliderPrice.addEventListener('input', function () {
   lowerValPrice = parseInt(lowerSliderPrice.value);
   upperValPrice = parseInt(upperSliderPrice.value);
@@ -889,9 +872,6 @@ lowerSliderPrice.addEventListener('input', function () {
   }
 });
 
-
-
-
 let lowerMilesRange;
 let upperMilesRange;
 
@@ -1011,7 +991,6 @@ upperSliderMiles.addEventListener('input', function () {
     upperSliderMiles.value = lowerValMiles + 5
   }
 });
-
 
 lowerSliderMiles.addEventListener('input', function () {
   lowerValMiles = parseInt(lowerSliderMiles.value);
