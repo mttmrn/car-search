@@ -3,7 +3,7 @@ const storedMake = sessionStorage.getItem("make"),
   storedZip = sessionStorage.getItem("zip"),
   heading = document.getElementById("heading"),
   output = document.getElementById("data"),
-  apiKey = "hDf3vM05pCFgcB8TnFqxoRUwsY8S3F4f",
+  apiKey = "TOwzUUuiHdSdXMKwTWvC0vt4CUt0XcDC",
   apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15`,
   lowToHighPrice = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=price&sort_order=asc`,
   highToLowPrice = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=price&sort_order=desc`,
@@ -12,13 +12,13 @@ const storedMake = sessionStorage.getItem("make"),
   lowToHighYear = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=year&sort_order=desc`,
   highToLowYear = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=year&sort_order=asc`,
   locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
+let testVar = "nope";
 
-
-async function fetchURLs(carAPI = apiUrl) {
+async function fetchURLs() {
   // Fetching the marketcheck and the mapquest API together
   try {
     const data = await Promise.all([
-      fetch(carAPI).then((res) => res.json()),
+      fetch(apiUrl).then((res) => res.json()),
       fetch(locationUrl).then((res) => res.json())
     ]);
 
@@ -32,7 +32,7 @@ async function fetchURLs(carAPI = apiUrl) {
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results for ${
         data[0].listings[0].build.make
-      } ${data[0].listings[0].build.model} near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
+        } ${data[0].listings[0].build.model} near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
     }
 
     // Get the response, target the response of the Marketcheck API, and then loop through each individual element
@@ -42,36 +42,65 @@ async function fetchURLs(carAPI = apiUrl) {
       const stockPhotoLink = element.media && element.media.photo_links && (element.media.photo_links.length > 0) ? element.media.photo_links[0] : "/stock_photo_link";
       const price = element.price ? element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
       const miles = element.miles ? element.miles.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
-      const owners = element.carfax_1_owner ? 'One previous owner' : "More than one owner";
+      const owners = element.carfax_1_owner ? `<div class="center"> <span class="iconify one-owner-icon" data-icon="mdi-account" data-inline="false"></span> </div>
+  <div class="center"> <span class="history-text">One previous owner</span> </div>` : `<div class="center"> <span class="iconify multi-owner-icon" data-icon="mdi-account-multiple" data-inline="false"></span> </div>
+<div class="center"> <span class="history-text">One previous owner</span> </div>`;
       const city = element.dealer.city && (element.dealer.city.length > 0) ? element.dealer.city : "NA";
       const state = element.dealer.state && (element.dealer.state.length > 0) ? element.dealer.state : "NA";
       const intColor = element.interior_color && (element.interior_color.length > 0) ? element.interior_color : "NA";
       const extColor = element.exterior_color && (element.exterior_color.length > 0) ? element.exterior_color : "NA";
       const transmission = element.build.transmission && (element.build.transmission.length > 0) ? element.build.transmission : "NA";
       const dom = element.dom && (element.dom > 0) ? element.dom : "NA";
+      const statsUrl = `http://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&rows=0&car_type=used&make=${element.build.make}&model=${element.build.model}&trim=${element.build.trim}&year=${element.build.year}&transmission=${element.build.transmission}&stats=miles,price,dom`
+
+      let sunColor = ""
       let heading_mod = ""
       let details = ""
       let tag = ""
-      let ownerIcon = ""
+      let deal = ""
 
-      if (owners === 'One previous owner') {
-        ownerIcon = `<span class="iconify one-owner-icon" data-icon="mdi-account" data-inline="false"></span>`
-      } else {
-        ownerIcon = `<span class="iconify multi-owner-icon" data-icon="mdi-account-multiple" data-inline="false"></span>`
+      //take this outside and wrap the original api call in this?
+      try {
+        const requestStats = async () => {
+          const response = await fetch(statsUrl);
+          const json = await response.json();
+          console.log(json)
+          console.log(json.stats.price.mean);
+          console.log(statsUrl)
+          if (json.stats.price.mean > 1000) {
+            deal = `<div>I'm a new div!!!</div>`
+            console.log(deal)
+          }
+        }
+
+        requestStats();
+
+      } catch (err) {
+        console.log(err)
       }
 
 
+      // Changing sun icon color based on how many days on market the car has
+      if (dom >= 150) {
+        sunColor = 'dom-g'
+      } else if (dom <= 60) {
+        sunColor = 'dom-r';
+      } else {
+        sunColor = 'dom-o'
+      }
+
+      // Checking if each detail is in the data reponse and then adding html only if it's there
       if ((city || state) !== "NA") {
-        details += `<span class="detail location">Location: ${ city }, ${state}</span>`;
+        details += `<span class="detail location">Location: ${city}, ${state}</span>`;
       }
       if (extColor !== "NA") {
-        details += `<span class="detail exterior">Exterior: ${ extColor }</span>`;
+        details += `<span class="detail exterior">Exterior: ${extColor}</span>`;
       }
       if (intColor !== "NA") {
-        details += `<span class="detail interior"> Interior: ${ intColor }</span>`;
+        details += `<span class="detail interior"> Interior: ${intColor}</span>`;
       }
       if (transmission !== "NA") {
-        details += `<span class="detail transmission"> Transmission: ${ transmission }</span>`;
+        details += `<span class="detail transmission"> Transmission: ${transmission}</span>`;
       }
 
 
@@ -90,7 +119,7 @@ async function fetchURLs(carAPI = apiUrl) {
         }
       }
 
-
+      // Setting tags based on parameters
       if (element.price <= 5000) {
         tag = "less than 5k"
       }
@@ -110,18 +139,21 @@ async function fetchURLs(carAPI = apiUrl) {
         tag = 'dom over 100 and one owner'
       }
 
+      // Refactor these ^ with an array of data and do arr.includes(param)?
 
 
-      output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${ element.vin }" target="_blank">
+
+      output.innerHTML += `<a class="listing-link" href="http://127.0.0.1:5500/public/vehicles/${element.vin}" target="_blank">
                               <div class="results">
                                       <div class="title-container">
                                             <span class="listing-title">${heading_mod}</span>
                                       </div>
                                       <div class="img-container">
-                                          <img class="list-img" src="${ stockPhotoLink }" alt="">
+                                          <img class="list-img" src="${stockPhotoLink}" alt="">
                                       </div>
                                       <div class="info-container">
                                       <div class="tag-container"><div class="tag">${tag}</div>
+                                      <div>${deal}</div>
                                       </div>
                                             <div class="price-container">
                                                 <span class="price">$${price}</span>
@@ -138,16 +170,11 @@ async function fetchURLs(carAPI = apiUrl) {
                                                         </div>
                                                       </li>
                                                       <li class="column-item">
-                                                      <div class="center">
-                                                      ${ownerIcon}
-                                                  </div>
-                                                  <div class="center">
-                                                      <span class="history-text">${owners}</span>
-                                                  </div>
+                                                      ${owners}
                                                       </li>
                                                     <li class="column-item">                       
                                                     <div class="center">
-                                                    <span class="iconify dom-icon" data-icon="wi:day-sunny" data-inline="false"></span>
+                                                    <span class="iconify dom-icon ${sunColor}" data-icon="wi:day-sunny" data-inline="false"></span>
                                                         </div>
                                                         <div class="center">
                                                             <span class="history-text">${dom} days on market</span>
@@ -155,7 +182,6 @@ async function fetchURLs(carAPI = apiUrl) {
                                                   </ul>
                                             </div>
                                             <div class="details-container">${details}</div> </div> </div> </a>`;
-
 
     });
 
@@ -170,7 +196,7 @@ async function fetchURLs(carAPI = apiUrl) {
   }
 }
 
-fetchURLs(apiUrl);
+fetchURLs();
 
 // Adding functionality to toggle filter buttons
 

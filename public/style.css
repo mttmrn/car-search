@@ -748,14 +748,26 @@ a.signup {
 }
 
 .multi-owner-icon {
-    color: rgb(216, 68, 68);
+    color: rgb(231, 163, 85);
     font-size: 5rem;
 }
 
 .dom-icon {
-    color: #44D889;
     font-size: 5rem;
     padding: 0.25rem;
+}
+
+.dom-r {
+    color: rgb(231, 85, 85);
+
+}
+
+.dom-o {
+    color: rgb(231, 163, 85);
+}
+
+.dom-g{
+    color: #44D889;
 }
 
 .last-link {
