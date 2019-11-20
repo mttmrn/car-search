@@ -66,10 +66,6 @@ nav {
     width: 100%;
 }
 
-.nav-main {
-    margin-top: 1rem;
-}
-
 .signup-form {
     display: flex;
     width: 100%;
@@ -893,13 +889,12 @@ a.signup {
     border-radius: 4px 4px 0px 0px;
 }
 
-.filters>.filter-dropdown:nth-child(2) {
+.filters>.filter-dropdown {
     margin-top: -1px;
 }
 
 .filters>.filter-dropdown:last-child {
     border-radius: 0px 0px 4px 4px;
-    margin-top: -1px;
 }
 
 .filter-icon {
@@ -931,7 +926,6 @@ a.signup {
     padding: 0.5rem 1rem;
     width: 100%;
     position: relative;
-    /* Width of the outside container */
 }
 
 .slider {
@@ -948,7 +942,6 @@ a.signup {
     pointer-events: none;
 
 }
-
 
 .high {
     background: none;
@@ -971,6 +964,47 @@ a.signup {
     background: #87B7FF;
     cursor: pointer;
     pointer-events: all;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox-left {
+    flex: auto;
+}
+
+.checkbox-right {
+    flex: auto;
+}
+
+.fieldset-container {
+    margin: 1rem 0rem 0rem 0rem;
+    padding: 0.5rem 1rem;
+}
+
+.checkbox-text {
+    font-size: 1.3rem;
+    margin: 1rem;
+}
+
+.pagination-container {
+    width: 100%;
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 3rem;
+    height: 4rem;
+    background: crimson;
+    width: 5rem;
 }
 
 .add-width {
@@ -1028,6 +1062,7 @@ a.signup {
     height: 34rem;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .list-img {
@@ -1051,8 +1086,52 @@ a.signup {
     justify-content: flex-end;
 }
 
-.tag {
-    background: cyan;
+.negoTag {
+    background: #60D279;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    margin: 0rem 0.3rem;
+}
+
+.negIcon {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0rem 0.75rem 0rem 0rem;
+}
+
+.sponsTag{
+    background: #5577CD;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin: 0rem 0.3rem;
+}
+
+.greatTag {
+    background: #ED5E5E;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    margin: 0rem 0.3rem;
+}
+
+.greatDealIcon {
+    color: #fff;
+    font-size: 2.1rem;
+    margin: 0rem 0.2rem 0rem 0rem;
 }
 
 .price-container {
@@ -1145,6 +1224,27 @@ a.signup {
     text-indent: 0;
 }
 
+.loader-container {
+    display: flex;
+    width: 100%;
+    height: 50rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    border: 8px solid #87B7FF; 
+    border-top: 8px solid #fff;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    animation: spin 1.2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 /* button effects */
 
@@ -1178,7 +1278,7 @@ a.signup {
 }
 
 .signup:hover {
-    background: #087DD2;
+    background: rgb(6, 96, 160);
 }
 
 .login {
@@ -1187,8 +1287,8 @@ a.signup {
 
 .login:hover {
     color: #ffffff;
-    border-color: #87B7FF;
-    background: #87B7FF;
+    border-color: rgb(6, 96, 160);
+    background: rgb(6, 96, 160);
     transition: all 0.2s ease 0s;
 }
 
@@ -1488,7 +1588,7 @@ a.signup {
     .bar3 {
         width: 35px;
         height: 5px;
-        background-color: #2EBD71;
+        background-color: #087DD2;
         margin: 6px 0;
         transition: 0.4s;
     }
@@ -1510,7 +1610,7 @@ a.signup {
     .hamburger-links {
         position: fixed;
         z-index: 2;
-        background: #2EBD71;
+        background: #087DD2;
         display: flex;
         flex-direction: column;
         height: 100vh;

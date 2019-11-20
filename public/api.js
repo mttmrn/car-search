@@ -3,20 +3,128 @@ const storedMake = sessionStorage.getItem("make"),
   storedZip = sessionStorage.getItem("zip"),
   heading = document.getElementById("heading"),
   output = document.getElementById("data"),
+  pagination = document.querySelector('#pagination-container'),
+  pageUp = document.querySelector('#pageUp'),
+  pageDown = document.querySelector('#pageDown'),
   apiKey = "TOwzUUuiHdSdXMKwTWvC0vt4CUt0XcDC",
-  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15`,
-  lowToHighPrice = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=price&sort_order=asc`,
-  highToLowPrice = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=price&sort_order=desc`,
-  lowToHighMileage = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=miles&sort_order=asc`,
-  highToLowMileage = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=miles&sort_order=desc`,
-  lowToHighYear = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=year&sort_order=desc`,
-  highToLowYear = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=0&rows=15&sort_by=year&sort_order=asc`,
   locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
-let testVar = "nope";
+
+
+// Pagination
+
+let page = 0;
+let startingNum = 1;
+let endingNum = 15;
+let sortFacets = ""
+let apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+
+
+pageUp.addEventListener('click', () => {
+  page += 15;
+  startingNum += 15;
+  endingNum += 15;
+  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`;
+  console.log(page, apiUrl)
+  output.innerHTML = ''
+  fetchURLs()
+})
+
+pageDown.addEventListener('click', () => {
+  if (page > 0) {
+    page -= 15
+    startingNum -= 15;
+    endingNum -= 15;
+    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+    console.log(page, apiUrl)
+    output.innerHTML = ''
+    fetchURLs()
+  }
+})
+
+// Adding sort feature and calling subsequent API endpoints
+
+const sort = document.querySelector("#sort");
+
+const sortResults = () => {
+  switch (sort.value) {
+    case "low-price":
+      page = 0;
+      startingNum = 1;
+      endingNum = 15;
+      sortFacets = `&sort_by=price&sort_order=asc`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      output.innerHTML = "";
+      fetchURLs();
+      break;
+    case "high-price":
+      page = 0;
+      startingNum = 1;
+      endingNum = 15;
+      sortFacets = `&sort_by=price&sort_order=desc`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      output.innerHTML = "";
+      fetchURLs();
+      break;
+    case "low-miles":
+      page = 0;
+      startingNum = 1;
+      endingNum = 15;
+      sortFacets = `&sort_by=miles&sort_order=asc`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      output.innerHTML = "";
+      fetchURLs();
+      break;
+    case "high-miles":
+      page = 0;
+      startingNum = 1;
+      endingNum = 15;
+      sortFacets = `&sort_by=miles&sort_order=desc`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      output.innerHTML = "";
+      fetchURLs();
+      break;
+    case "low-year":
+      page = 0;
+      startingNum = 1;
+      endingNum = 15;
+      sortFacets = `&sort_by=year&sort_order=desc`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      output.innerHTML = "";
+      fetchURLs();
+      break;
+    case "high-year":
+      page = 0;
+      startingNum = 1;
+      endingNum = 15;
+      sortFacets = `&sort_by=year&sort_order=asc`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      output.innerHTML = "";
+      fetchURLs();
+      break;
+    default:
+      output.innerHTML = ""
+      fetchURLs()
+  }
+}
+
+sort.addEventListener("change", sortResults)
+
+// Run fetchURLs function when page has loaded
+
+document.addEventListener('DOMContentLoaded', fetchURLs());
 
 async function fetchURLs() {
+
   // Fetching the marketcheck and the mapquest API together
   try {
+
+    const loading = () => {
+      output.innerHTML = `<div class="loader-container" id="loader">
+      <div class="loader"></div></div>`
+      pagination.style.display = 'none'
+    }
+    loading()
+
     const data = await Promise.all([
       fetch(apiUrl).then((res) => res.json()),
       fetch(locationUrl).then((res) => res.json())
@@ -39,12 +147,12 @@ async function fetchURLs() {
     // For each element, output HTML
 
     await data[0].listings.forEach(element => {
-      const stockPhotoLink = element.media && element.media.photo_links && (element.media.photo_links.length > 0) ? element.media.photo_links[0] : "/stock_photo_link";
+      const stockPhotoLink = element.media && element.media.photo_links && (element.media.photo_links.length > 0) ? element.media.photo_links[0] : "./img/placeholder.png";
       const price = element.price ? element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
       const miles = element.miles ? element.miles.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
       const owners = element.carfax_1_owner ? `<div class="center"> <span class="iconify one-owner-icon" data-icon="mdi-account" data-inline="false"></span> </div>
   <div class="center"> <span class="history-text">One previous owner</span> </div>` : `<div class="center"> <span class="iconify multi-owner-icon" data-icon="mdi-account-multiple" data-inline="false"></span> </div>
-<div class="center"> <span class="history-text">One previous owner</span> </div>`;
+<div class="center"> <span class="history-text">Multiple owners</span> </div>`;
       const city = element.dealer.city && (element.dealer.city.length > 0) ? element.dealer.city : "NA";
       const state = element.dealer.state && (element.dealer.state.length > 0) ? element.dealer.state : "NA";
       const intColor = element.interior_color && (element.interior_color.length > 0) ? element.interior_color : "NA";
@@ -57,10 +165,9 @@ async function fetchURLs() {
       let heading_mod = ""
       let details = ""
       let tag = ""
-      let deal = ""
 
       //take this outside and wrap the original api call in this?
-      try {
+      /*try {
         const requestStats = async () => {
           const response = await fetch(statsUrl);
           const json = await response.json();
@@ -77,7 +184,7 @@ async function fetchURLs() {
 
       } catch (err) {
         console.log(err)
-      }
+      }*/
 
 
       // Changing sun icon color based on how many days on market the car has
@@ -130,13 +237,13 @@ async function fetchURLs() {
         tag = 'over 5000'
       }
       if (element.price > 10000) {
-        tag = 'over 10000'
+        tag = `<div class="negoTag"><span class="iconify negIcon" data-icon="fa-regular:handshake" data-inline="false"></span>Negotiable</div>`
       }
-      if (element.price > 5000 && miles > 10000) {
-        tag = '5k price and over 10k miles'
+      if (element.price > 10000 && element.miles > 10000) {
+        tag += '<div class="sponsTag">Sponsored</div>'
       }
-      if (dom > 100 && owners === 'One owner') {
-        tag = 'dom over 100 and one owner'
+      if (element.dom > 100) {
+        tag += `<div class="greatTag"><span class="iconify greatDealIcon" data-icon="mdi-fire" data-inline="false"></span>Excellent Deal</div>`
       }
 
       // Refactor these ^ with an array of data and do arr.includes(param)?
@@ -152,8 +259,7 @@ async function fetchURLs() {
                                           <img class="list-img" src="${stockPhotoLink}" alt="">
                                       </div>
                                       <div class="info-container">
-                                      <div class="tag-container"><div class="tag">${tag}</div>
-                                      <div>${deal}</div>
+                                      <div class="tag-container">${tag}
                                       </div>
                                             <div class="price-container">
                                                 <span class="price">$${price}</span>
@@ -185,25 +291,33 @@ async function fetchURLs() {
 
     });
 
+    output.innerHTML += `<div>Displaying ${startingNum} - ${endingNum} of ${data[0].num_found} listings</div>`
     // number of pages = whatever I set the limit to / total results.
     // i.e. If I do 10 results per page and there are 54 results, we divide 54 / 10 and get 5.4
-    // We can then round that up and get 6 pages, which would be the total needed to house 54 results
-
+    // We can then round that up with Math.ceil and get 6 pages, which would be the total needed to house 54 results
     console.log(data)
+    const loaded = () => {
+      document.querySelector('#loader').style.display = 'none'
+      pagination.style.display = 'flex'
+    }
+    loaded()
+
 
   } catch (error) {
     console.log(error);
   }
 }
 
-fetchURLs();
+
 
 // Adding functionality to toggle filter buttons
 
 const priceFilter = document.querySelector('#price-filter'),
   priceDropdown = document.querySelector('#price-dropdown'),
   mileageFilter = document.querySelector("#mileage-filter"),
-  mileageDropdown = document.querySelector("#mileage-dropdown");
+  mileageDropdown = document.querySelector("#mileage-dropdown"),
+  yearFilter = document.querySelector('#year-filter'),
+  yearDropdown = document.querySelector('#year-dropdown');
 
 
 const toggleFilter = (dropdown, expandedContent) => {
@@ -216,46 +330,7 @@ const toggleFilter = (dropdown, expandedContent) => {
 
 toggleFilter(mileageDropdown, mileageFilter);
 toggleFilter(priceDropdown, priceFilter);
-
-
-
-// Adding sort feature and calling subsequent API endpoints
-
-const sort = document.querySelector("#sort");
-
-const sortResults = () => {
-  switch (sort.value) {
-    case "low-price":
-      output.innerHTML = "";
-      fetchURLs(lowToHighPrice);
-      break;
-    case "high-price":
-      output.innerHTML = "";
-      fetchURLs(highToLowPrice);
-      break;
-    case "low-miles":
-      output.innerHTML = "";
-      fetchURLs(lowToHighMileage);
-      break;
-    case "high-miles":
-      output.innerHTML = "";
-      fetchURLs(highToLowMileage);
-      break;
-    case "low-year":
-      output.innerHTML = "";
-      fetchURLs(lowToHighYear);
-      break;
-    case "high-year":
-      output.innerHTML = "";
-      fetchURLs(highToLowYear);
-      break;
-    default:
-      output.innerHTML = ""
-      fetchURLs(apiUrl)
-  }
-}
-
-sort.addEventListener("change", sortResults)
+toggleFilter(yearDropdown, yearFilter);
 
 
 // Slider logic
@@ -1124,3 +1199,155 @@ lowerSliderMiles.addEventListener('input', function () {
     lowerSliderMiles.value = upperValMiles - 5;
   }
 });
+
+let lowerYearRange;
+let upperYearRange;
+
+const upperYear = document.querySelector('#upperYear'),
+  lowerYear = document.querySelector('#lowerYear')
+
+let lowerSliderYear = document.querySelector('#yearRangeLow'),
+  upperSliderYear = document.querySelector('#yearRangeHigh'),
+  lowerValYear = parseInt(lowerSliderYear.value),
+  upperValYear = parseInt(upperSliderYear.value);
+
+upperSliderYear.addEventListener('input', function () {
+  lowerValYear = parseInt(lowerSliderYear.value);
+  upperValYear = parseInt(upperSliderYear.value);
+
+  if (upperValYear > lowerValYear) {
+    switch (upperValYear) {
+      case 15:
+        upperYear.innerHTML = "2020"
+        break
+      case 14:
+        upperYear.innerHTML = "2019"
+        break
+      case 13:
+        upperYear.innerHTML = "2018"
+        break
+      case 12:
+        upperYear.innerHTML = "2017"
+        break
+      case 11:
+        upperYear.innerHTML = "2016"
+        break
+      case 10:
+        upperYear.innerHTML = "2015"
+        break
+      case 9:
+        upperYear.innerHTML = "2014"
+        break
+      case 8:
+        upperYear.innerHTML = "2013"
+        break
+      case 7:
+        upperYear.innerHTML = "2012"
+        break
+      case 6:
+        upperYear.innerHTML = "2011"
+        break
+      case 5:
+        upperYear.innerHTML = "2010"
+        break
+      case 4:
+        upperYear.innerHTML = "2009"
+        break
+      case 3:
+        upperYear.innerHTML = "2008"
+        break
+      case 2:
+        upperYear.innerHTML = "2007"
+        break
+      case 1:
+        upperYear.innerHTML = "2006"
+        break
+      case 0:
+        upperYear.innerHTML = "2005"
+        break
+    }
+  }
+
+  upperYearRange = parseInt(upperYear.innerHTML.replace(/[,+]/g, ""))
+
+  if (upperValYear < lowerValYear + 1) {
+    upperSliderYear.value = lowerValYear + 1
+  }
+});
+
+lowerSliderYear.addEventListener('input', function () {
+  lowerValYear = parseInt(lowerSliderYear.value);
+  upperValYear = parseInt(upperSliderYear.value);
+
+  if (upperValYear > lowerValYear) {
+    switch (lowerValYear) {
+      case 15:
+        lowerYear.innerHTML = "2020"
+        break
+      case 14:
+        lowerYear.innerHTML = "2019"
+        break
+      case 13:
+        lowerYear.innerHTML = "2018"
+        break
+      case 12:
+        lowerYear.innerHTML = "2017"
+        break
+      case 11:
+        lowerYear.innerHTML = "2016"
+        break
+      case 10:
+        lowerYear.innerHTML = "2015"
+        break
+      case 9:
+        lowerYear.innerHTML = "2014"
+        break
+      case 8:
+        lowerYear.innerHTML = "2013"
+        break
+      case 7:
+        lowerYear.innerHTML = "2012"
+        break
+      case 6:
+        lowerYear.innerHTML = "2011"
+        break
+      case 5:
+        lowerYear.innerHTML = "2010"
+        break
+      case 4:
+        lowerYear.innerHTML = "2009"
+        break
+      case 3:
+        lowerYear.innerHTML = "2008"
+        break
+      case 2:
+        lowerYear.innerHTML = "2007"
+        break
+      case 1:
+        lowerYear.innerHTML = "2006"
+        break
+      case 0:
+        lowerYear.innerHTML = "2005"
+        break
+    }
+  }
+
+  if (lowerValYear > upperValYear - 1) {
+    lowerSliderYear.value = upperValYear - 1;
+  }
+});
+
+
+// Pagination
+
+/*
+const pagination = () => {
+
+  const pages = num_found / 15
+  let x = 0
+  while (x <= pages) {
+    fetchURLs(doPagination)
+    x++
+  }
+}
+*/
