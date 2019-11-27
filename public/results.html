@@ -38,8 +38,43 @@
         <div class="sidebar">
             <div class="search-container-top">
                 <div class="make-reset-container">
-                    <select name="make" id="" class="make">
-                        <option value="">All Makes</option>
+                    <select name="makes" id="makes" class="make">
+                        <option value="" selected>All Makes</option>
+                        <option value="acura">Acura</option>
+                        <option value="alfa romeo">Alfa Romeo</option>
+                        <option value="aston martin">Aston Martin</option>
+                        <option value="audi">Audi</option>
+                        <option value="bentley">Bentley</option>
+                        <option value="bmw">BMW</option>
+                        <option value="buick">Buick</option>
+                        <option value="cadillac">Cadillac</option>
+                        <option value="chevrolet">Chevrolet</option>
+                        <option value="chrysler">Chrysler</option>
+                        <option value="dodge">Dodge</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="ford">Ford</option>
+                        <option value="gmc">GMC</option>
+                        <option value="honda">Honda</option>
+                        <option value="hyundai">Hyundai</option>
+                        <option value="infiniti">Infiniti</option>
+                        <option value="jaguar">Jaguar</option>
+                        <option value="jeep">Jeep</option>
+                        <option value="kia">Kia</option>
+                        <option value="land rover">Land Rover</option>
+                        <option value="lexus">Lexus</option>
+                        <option value="lincoln">Lincoln</option>
+                        <option value="mazda">Mazda</option>
+                        <option value="mercedes benz">Mercedes-Benz</option>
+                        <option value="mitsubishi">Mitsubishi</option>
+                        <option value="nissan">Nissan</option>
+                        <option value="porsche">Porsche</option>
+                        <option value="scion">Scion</option>
+                        <option value="saab">Smart</option>
+                        <option value="subaru">Subaru</option>
+                        <option value="tesla">Tesla</option>
+                        <option value="toyota">Toyota</option>
+                        <option value="volkswagen">Volkswagen</option>
+                        <option value="volvo">Volvo</option>
                     </select>
                     <i class="fas fa-chevron-down" style="
                     position: absolute;
@@ -48,7 +83,7 @@
                 "></i>
                 </div>
                 <div class="model-reset-container">
-                    <select name="" id="" class="model">
+                    <select name="models" id="models" class="model">
                         <option value="">All Models</option>
                     </select>
                     <i class="fas fa-chevron-down" style="
@@ -60,7 +95,7 @@
             </div>
             <div class="search-container-bottom">
                 <span class="filter-title">Radius</span><span class="filter-title">Zip Code</span>
-                <select name="radius" id="" class="selection add-width">
+                <select name="radius" id="radius" class="selection add-width">
                     <option value="200">200 Miles</option>
                     <option value="150">150 Miles</option>
                     <option value="100">100 Miles</option>
@@ -74,8 +109,9 @@
                 left: 152px;
                 top: 66px;
             "></i>
-                <input class="selection add-width" type="tel" id="zipCode" value="08758">
-                <button class="filter-btn">Search</button>
+                <input class="selection add-width" maxlength="5" required name="zip" type="tel" id="zip" value="">
+                <div class="zip-error-container"><span class="zip-error hidden" id="zipError"></span></div>
+                <button class="filter-btn" id="searchBtn">Search</button>
             </div>
             <div class="filters">
                 <div class="filter-dropdown">
@@ -136,27 +172,31 @@
                     <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
                         data-inline="false"></span>
                     <div class="hidden*">
-                        <div class="checkbox-container">
+                        <div class="checkbox-container" id="color-checkboxes">
                             <div class="checkbox-left">
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Black</span>
+                                    <input type="checkbox" name="color" id="black"> <span
+                                        class="checkbox-text">Black</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Blue</span>
+                                    <input type="checkbox" name="color" id="blue"> <span
+                                        class="checkbox-text">Blue</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Silver</span>
+                                    <input type="checkbox" name="color" id="silver"> <span
+                                        class="checkbox-text">Silver</span>
                                 </div>
                             </div>
                             <div class="checkbox-right">
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">White</span>
+                                    <input type="checkbox" id="white"> <span class="checkbox-text">White</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Red</span>
+                                    <input type="checkbox" id="red"> <span class="checkbox-text">Red</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Other</span>
+                                    <input type="checkbox" id="otherColor" name="color"> <span
+                                        class="checkbox-text">Other</span>
                                 </div>
                             </div>
                         </div>
@@ -170,24 +210,24 @@
                         <div class="checkbox-container">
                             <div class="checkbox-left">
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">4 Cylinder</span>
+                                    <input type="checkbox"> <span class="checkbox-text" id="fourCyl">4 Cylinder</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">6 Cylinder</span>
+                                    <input type="checkbox"> <span class="checkbox-text" id="sixCyl">6 Cylinder</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">8 Cylinder</span>
+                                    <input type="checkbox"> <span class="checkbox-text" id="eightCyl">8 Cylinder</span>
                                 </div>
                             </div>
                             <div class="checkbox-right">
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Hybrid</span>
+                                    <input type="checkbox"> <span class="checkbox-text" id="hybrid">Hybrid</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Electric</span>
+                                    <input type="checkbox"> <span class="checkbox-text" id="electric">Electric</span>
                                 </div>
                                 <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text">Other</span>
+                                    <input type="checkbox"> <span class="checkbox-text" id="otherEngine">Other</span>
                                 </div>
                             </div>
                         </div>
@@ -199,13 +239,13 @@
                         data-inline="false"></span>
                     <div class="hidden*">
                         <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text">Automatic</span>
+                            <input type="checkbox"> <span class="checkbox-text" id="automatic">Automatic</span>
                         </div>
                         <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text">Manual</span>
+                            <input type="checkbox"> <span class="checkbox-text" id="manual">Manual</span>
                         </div>
                         <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text">Other</span>
+                            <input type="checkbox"> <span class="checkbox-text" id="otherTransmission">Other</span>
                         </div>
                     </div>
                 </div>

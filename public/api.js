@@ -1,103 +1,575 @@
-const storedMake = sessionStorage.getItem("make"),
+let storedMake = sessionStorage.getItem("make"),
   storedModel = sessionStorage.getItem("model"),
-  storedZip = sessionStorage.getItem("zip"),
-  heading = document.getElementById("heading"),
-  output = document.getElementById("data"),
+  storedZip = sessionStorage.getItem("zip");
+locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
+radius = document.querySelector('#radius'),
+  errCount = 0
+
+const heading = document.querySelector('#heading'),
+  output = document.querySelector('#data'),
   pagination = document.querySelector('#pagination-container'),
   pageUp = document.querySelector('#pageUp'),
   pageDown = document.querySelector('#pageDown'),
-  apiKey = "TOwzUUuiHdSdXMKwTWvC0vt4CUt0XcDC",
-  locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
+  apiKey = "TOwzUUuiHdSdXMKwTWvC0vt4CUt0XcDC";
 
+let page = 0,
+  startingNum = 1,
+  endingNum = 10,
+  lowerPriceRange = 1,
+  upperPriceRange = 999999,
+  lowerMilesRange = 1,
+  upperMilesRange = 999999,
+  lowerYearRange = 2005,
+  upperYearRange = 2020,
+  years = range(lowerYearRange, upperYearRange),
+  sortFacets = "",
+  colors = [],
+  colorFacets = "" + colors,
+  engineFacets = "",
+  transmissionFacets = "",
+  featuresFacets = "",
+  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
+
+// Sidebar search form
+
+const make = document.querySelector("#makes"),
+  models = document.querySelector("#models"),
+  zip = document.querySelector("#zip"),
+  zipError = document.querySelector('#zipError'),
+  searchBtn = document.querySelector('#searchBtn');
+
+
+//! Get year range
+function range(start, end) {
+  if (start === end) return [start];
+  return [start, ...range(start + 1, end)];
+}
+
+//! Get different cars depending on user input
+const getCar = () => {
+  fetch("cars.json")
+    .then(res => res.json())
+    .then(data => {
+      switch (make.value) {
+        case "":
+          models.innerHTML = "";
+          models.innerHTML += `<option value="">All Models</option>`;
+          break;
+        case "acura":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.acura.length; i++) {
+            models.innerHTML += `<option value="${data.acura[
+              i
+            ].toLowerCase()}">${data.acura[i]}</option>`;
+          }
+          break;
+        case "alfa romeo":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.alfaRomeo.length; i++) {
+            models.innerHTML += `<option value="${data.alfaRomeo[
+              i
+            ].toLowerCase()}">${data.alfaRomeo[i]}</option>`;
+          }
+          break;
+        case "aston martin":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.astonMartin.length; i++) {
+            models.innerHTML += `<option value="${data.astonMartin[
+              i
+            ].toLowerCase()}">${data.astonMartin[i]}</option>`;
+          }
+          break;
+        case "audi":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.audi.length; i++) {
+            models.innerHTML += `<option value="${data.audi[
+              i
+            ].toLowerCase()}">${data.audi[i]}</option>`;
+          }
+          break;
+        case "bentley":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.bentley.length; i++) {
+            models.innerHTML += `<option value="${data.bentley[
+              i
+            ].toLowerCase()}">${data.bentley[i]}</option>`;
+          }
+          break;
+        case "bmw":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.bmw.length; i++) {
+            models.innerHTML += `<option value="${data.bmw[i].toLowerCase()}">${
+              data.bmw[i]
+              }</option>`;
+          }
+          break;
+        case "buick":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.buick.length; i++) {
+            models.innerHTML += `<option value="${data.buick[
+              i
+            ].toLowerCase()}">${data.buick[i]}</option>`;
+          }
+          break;
+        case "cadillac":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.cadillac.length; i++) {
+            models.innerHTML += `<option value="${data.cadillac[
+              i
+            ].toLowerCase()}">${data.cadillac[i]}</option>`;
+          }
+          break;
+        case "chevrolet":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.chevrolet.length; i++) {
+            models.innerHTML += `<option value="${data.chevrolet[
+              i
+            ].toLowerCase()}">${data.chevrolet[i]}</option>`;
+          }
+          break;
+        case "chrysler":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.chrysler.length; i++) {
+            models.innerHTML += `<option value="${data.chrysler[
+              i
+            ].toLowerCase()}">${data.chrysler[i]}</option>`;
+          }
+          break;
+        case "dodge":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.dodge.length; i++) {
+            models.innerHTML += `<option value="${data.dodge[
+              i
+            ].toLowerCase()}">${data.dodge[i]}</option>`;
+          }
+          break;
+        case "fiat":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.fiat.length; i++) {
+            models.innerHTML += `<option value="${data.fiat[
+              i
+            ].toLowerCase()}">${data.fiat[i]}</option>`;
+          }
+          break;
+        case "ford":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.ford.length; i++) {
+            models.innerHTML += `<option value="${data.ford[
+              i
+            ].toLowerCase()}">${data.ford[i]}</option>`;
+          }
+          break;
+        case "gmc":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.gmc.length; i++) {
+            models.innerHTML += `<option value="${data.gmc[i].toLowerCase()}">${
+              data.gmc[i]
+              }</option>`;
+          }
+          break;
+        case "honda":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.honda.length; i++) {
+            models.innerHTML += `<option value="${data.honda[
+              i
+            ].toLowerCase()}">${data.honda[i]}</option>`;
+          }
+          break;
+        case "hyundai":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.hyundai.length; i++) {
+            models.innerHTML += `<option value="${data.hyundai[
+              i
+            ].toLowerCase()}">${data.hyundai[i]}</option>`;
+          }
+          break;
+        case "infiniti":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.infiniti.length; i++) {
+            models.innerHTML += `<option value="${data.infiniti[
+              i
+            ].toLowerCase()}">${data.infiniti[i]}</option>`;
+          }
+          break;
+        case "jaguar":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.jaguar.length; i++) {
+            models.innerHTML += `<option value="${data.jaguar[
+              i
+            ].toLowerCase()}">${data.jaguar[i]}</option>`;
+          }
+          break;
+        case "jeep":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.jeep.length; i++) {
+            models.innerHTML += `<option value="${data.jeep[
+              i
+            ].toLowerCase()}">${data.jeep[i]}</option>`;
+          }
+          break;
+        case "kia":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.kia.length; i++) {
+            models.innerHTML += `<option value="${data.kia[i].toLowerCase()}">${
+              data.kia[i]
+              }</option>`;
+          }
+          break;
+        case "land rover":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.landRover.length; i++) {
+            models.innerHTML += `<option value="${data.landRover[
+              i
+            ].toLowerCase()}">${data.landRover[i]}</option>`;
+          }
+          break;
+        case "lexus":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.lexus.length; i++) {
+            models.innerHTML += `<option value="${data.lexus[
+              i
+            ].toLowerCase()}">${data.lexus[i]}</option>`;
+          }
+          break;
+        case "lincoln":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.lincoln.length; i++) {
+            models.innerHTML += `<option value="${data.lincoln[
+              i
+            ].toLowerCase()}">${data.lincoln[i]}</option>`;
+          }
+          break;
+        case "mazda":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.mazda.length; i++) {
+            models.innerHTML += `<option value="${data.mazda[
+              i
+            ].toLowerCase()}">${data.mazda[i]}</option>`;
+          }
+          break;
+        case "mercedes benz":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.mercedesBenz.length; i++) {
+            models.innerHTML += `<option value="${data.mercedesBenz[
+              i
+            ].toLowerCase()}">${data.mercedesBenz[i]}</option>`;
+          }
+          break;
+        case "mini":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.mini.length; i++) {
+            models.innerHTML += `<option value="${data.mini[
+              i
+            ].toLowerCase()}">${data.mini[i]}</option>`;
+          }
+          break;
+        case "mitsubishi":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.mitsubishi.length; i++) {
+            models.innerHTML += `<option value="${data.mitsubishi[
+              i
+            ].toLowerCase()}">${data.mitsubishi[i]}</option>`;
+          }
+          break;
+        case "nissan":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.nissan.length; i++) {
+            models.innerHTML += `<option value="${data.nissan[
+              i
+            ].toLowerCase()}">${data.nissan[i]}</option>`;
+          }
+          break;
+        case "porsche":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.porsche.length; i++) {
+            models.innerHTML += `<option value="${data.porsche[
+              i
+            ].toLowerCase()}">${data.porsche[i]}</option>`;
+          }
+          break;
+        case "saab":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.saab.length; i++) {
+            models.innerHTML += `<option value="${data.saab[
+              i
+            ].toLowerCase()}">${data.saab[i]}</option>`;
+          }
+          break;
+        case "scion":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.scion.length; i++) {
+            models.innerHTML += `<option value="${data.scion[
+              i
+            ].toLowerCase()}">${data.scion[i]}</option>`;
+          }
+          break;
+        case "subaru":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.subaru.length; i++) {
+            models.innerHTML += `<option value="${data.subaru[
+              i
+            ].toLowerCase()}">${data.subaru[i]}</option>`;
+          }
+          break;
+        case "tesla":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.tesla.length; i++) {
+            models.innerHTML += `<option value="${data.tesla[
+              i
+            ].toLowerCase()}">${data.tesla[i]}</option>`;
+          }
+          break;
+        case "toyota":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.toyota.length; i++) {
+            models.innerHTML += `<option value="${data.toyota[
+              i
+            ].toLowerCase()}">${data.toyota[i]}</option>`;
+          }
+          break;
+        case "volkswagen":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.volkswagen.length; i++) {
+            models.innerHTML += `<option value="${data.volkswagen[
+              i
+            ].toLowerCase()}">${data.volkswagen[i]}</option>`;
+          }
+          break;
+        case "volvo":
+          models.innerHTML = "";
+          models.innerHTML = `<option value="">All Models</option>`;
+          for (var i = 0; i < data.volvo.length; i++) {
+            models.innerHTML += `<option value="${data.volvo[
+              i
+            ].toLowerCase()}">${data.volvo[i]}</option>`;
+          }
+          break;
+      }
+    });
+};
+
+// Call function on input change
+make.addEventListener("change", getCar);
+
+
+// Check zip code
+const checkZip = () => {
+  const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`
+  console.log(zipApiUrl)
+  fetch(zipApiUrl).then(res => {
+    if (res.status != 200) {
+      isError = true
+      throw Error(res.statusText)
+    } else {
+      isError = false
+      return res.json()
+    }
+  }).then(data => {
+    console.log(data)
+  })
+}
+
+let isError;
+
+
+zip.addEventListener('input', (e) => {
+  if (zip.value.length === 5) {
+    checkZip();
+  }
+});
+
+searchBtn.addEventListener('click', (e) => {
+  if (zip.value.length < 5) {
+    e.preventDefault()
+    zipError.innerHTML = `Please input a valid zip code`
+    zipError.classList.remove('hidden');
+  } else if (isError === true) {
+    e.preventDefault()
+    zipError.innerHTML = `Please input a valid zip code`
+    zipError.classList.remove('hidden');
+    console.log("error!")
+  } else {
+    sessionStorage.setItem("zip", zip.value);
+    sessionStorage.setItem("make", make.value);
+    sessionStorage.setItem("model", models.value);
+    storedMake = sessionStorage.getItem("make"),
+      storedModel = sessionStorage.getItem("model"),
+      storedZip = sessionStorage.getItem("zip");
+    locationUrl = `https://www.mapquestapi.com/geocoding/v1/address?key=AjIFpUUnToiKbLHIONgAj0GgnjAX7KgY&location=${storedZip}`;
+    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
+    console.log(apiUrl)
+    fetchURLs()
+    console.log(storedMake, storedModel, storedZip)
+  }
+});
 
 // Pagination
 
-let page = 0;
-let startingNum = 1;
-let endingNum = 15;
-let sortFacets = ""
-let apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
-
-
 pageUp.addEventListener('click', () => {
-  page += 15;
-  startingNum += 15;
-  endingNum += 15;
-  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`;
-  console.log(page, apiUrl)
+  page += 10;
+  startingNum += 10;
+  endingNum += 10;
+  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
   output.innerHTML = ''
   fetchURLs()
 })
 
 pageDown.addEventListener('click', () => {
   if (page > 0) {
-    page -= 15
-    startingNum -= 15;
-    endingNum -= 15;
-    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
-    console.log(page, apiUrl)
+    page -= 10
+    startingNum -= 10;
+    endingNum -= 10;
+    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
     output.innerHTML = ''
     fetchURLs()
   }
 })
 
-// Adding sort feature and calling subsequent API endpoints
+// Adding sorting features and calling subsequent API endpoints
+const sort = document.querySelector("#sort"),
+  black = document.querySelector('#black'),
+  blue = document.querySelector('#blue'),
+  silver = document.querySelector('#silver'),
+  white = document.querySelector('#white'),
+  red = document.querySelector('#red'),
+  otherColor = document.querySelector('#otherColor'),
+  fourCyl = document.querySelector('#fourCyl'),
+  sixCyl = document.querySelector('#sixCyl'),
+  eightCyl = document.querySelector('#eightCyl');
 
-const sort = document.querySelector("#sort");
+// First check if any checkbox is checked. If it is, add colorFacets to it + the colorArray
 
+const colorSorter = (color) => {
+  color.addEventListener('change', () => {
+    if (color.checked) {
+      colors.push(color.id)
+      colorFacets = '&exterior_color=' + colors
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
+      console.log(colors);
+      fetchURLs()
+    } else if (!color.checked) {
+      colors = colors.filter(e => e !== color.id)
+      colors.length === 0 ? colorFacets = '' : colorFacets = '&exterior_color=' + colors;
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
+      console.log(colors);
+      fetchURLs()
+    }
+  })
+}
+
+colorSorter(black);
+colorSorter(blue);
+colorSorter(red);
+colorSorter(silver);
+colorSorter(white);
+
+otherColor.addEventListener('change', () => {
+  if (otherColor.checked) {
+    colors.push('yellow', 'orange', 'green', 'pink', 'gray', 'brown', 'gold')
+    colorFacets = '&exterior_color=' + colors
+    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
+    console.log(colors)
+    fetchURLs()
+  } else if (!otherColor.checked) {
+    colors = colors.filter(e => e !== 'yellow' && e !== 'orange' && e !== 'green' && e !== 'pink' && e !== 'gray' && e !== 'brown' && e !== 'gold');
+    console.log(colors)
+    colors.length === 0 ? colorFacets = '' : colorFacets = '&exterior_color=' + colors;
+    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
+    fetchURLs()
+  }
+})
+
+
+
+// Sorting by high or low price, miles, year, etc.
 const sortResults = () => {
   switch (sort.value) {
     case "low-price":
       page = 0;
       startingNum = 1;
-      endingNum = 15;
+      endingNum = 10;
       sortFacets = `&sort_by=price&sort_order=asc`
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
       output.innerHTML = "";
       fetchURLs();
       break;
     case "high-price":
       page = 0;
       startingNum = 1;
-      endingNum = 15;
+      endingNum = 10;
       sortFacets = `&sort_by=price&sort_order=desc`
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
       output.innerHTML = "";
       fetchURLs();
       break;
     case "low-miles":
       page = 0;
       startingNum = 1;
-      endingNum = 15;
+      endingNum = 10;
       sortFacets = `&sort_by=miles&sort_order=asc`
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
       output.innerHTML = "";
       fetchURLs();
       break;
     case "high-miles":
       page = 0;
       startingNum = 1;
-      endingNum = 15;
+      endingNum = 10;
       sortFacets = `&sort_by=miles&sort_order=desc`
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
       output.innerHTML = "";
       fetchURLs();
       break;
     case "low-year":
       page = 0;
       startingNum = 1;
-      endingNum = 15;
+      endingNum = 10;
       sortFacets = `&sort_by=year&sort_order=desc`
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
       output.innerHTML = "";
       fetchURLs();
       break;
     case "high-year":
       page = 0;
       startingNum = 1;
-      endingNum = 15;
+      endingNum = 10;
       sortFacets = `&sort_by=year&sort_order=asc`
-      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=1-999999&miles_range=1-999999&carfax_clean_title=true&radius=75&start=${page}&rows=15${sortFacets}`
+      apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&year=${years}&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}${engineFacets}${transmissionFacets}`;
       output.innerHTML = "";
       fetchURLs();
       break;
@@ -110,13 +582,21 @@ const sortResults = () => {
 sort.addEventListener("change", sortResults)
 
 // Run fetchURLs function when page has loaded
-
 document.addEventListener('DOMContentLoaded', fetchURLs());
 
 async function fetchURLs() {
 
+  zip.value = storedZip
+
+  // If they get to the results page with no car information, display that message to the user and return to leave the function
+  if (storedMake === null || storedModel === null) {
+    return output.innerHTML = `<h1>Please select a make and model</h1>`
+  }
+
   // Fetching the marketcheck and the mapquest API together
   try {
+
+    heading.innerHTML = ""
 
     const loading = () => {
       output.innerHTML = `<div class="loader-container" id="loader">
@@ -130,22 +610,33 @@ async function fetchURLs() {
       fetch(locationUrl).then((res) => res.json())
     ]);
 
+    // If the search came back empty, display that message to the user and return to leave the function
+    if (data[0].listings.length < 1) {
+      return output.innerHTML = `<h1>No listings found</h1>`
+    }
+
     // Changing the output of the title of the div depending on whether a make and model are specified or they search all cars
     if (storedMake === "") {
       heading.innerHTML = `Displaying ${data[0].num_found
         .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} cars near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
-    } else {
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} cars within ${radius.value} miles of ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
+    } else if (storedModel === "") {
       heading.innerHTML = `Displaying ${data[0].num_found
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results for ${
         data[0].listings[0].build.make
-        } ${data[0].listings[0].build.model} near ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
+        } within ${radius.value} miles of ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
+    }
+    else {
+      heading.innerHTML = `Displaying ${data[0].num_found
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")} results for ${
+        data[0].listings[0].build.make
+        } ${data[0].listings[0].build.model} within ${radius.value} miles of ${data[1].results[0].locations[0].adminArea5}, ${data[1].results[0].locations[0].adminArea3}`;
     }
 
     // Get the response, target the response of the Marketcheck API, and then loop through each individual element
     // For each element, output HTML
-
     await data[0].listings.forEach(element => {
       const stockPhotoLink = element.media && element.media.photo_links && (element.media.photo_links.length > 0) ? element.media.photo_links[0] : "./img/placeholder.png";
       const price = element.price ? element.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "Not Available";
@@ -175,7 +666,7 @@ async function fetchURLs() {
           console.log(json.stats.price.mean);
           console.log(statsUrl)
           if (json.stats.price.mean > 1000) {
-            deal = `<div>I'm a new div!!!</div>`
+            deal = `<div>I'm a new div</div>`
             console.log(deal)
           }
         }
@@ -210,7 +701,7 @@ async function fetchURLs() {
         details += `<span class="detail transmission"> Transmission: ${transmission}</span>`;
       }
 
-
+      // Get car heading
       if (element.build) {
         if (element.build.year) {
           heading_mod += `${element.build.year} `;
@@ -291,11 +782,12 @@ async function fetchURLs() {
 
     });
 
-    output.innerHTML += `<div>Displaying ${startingNum} - ${endingNum} of ${data[0].num_found} listings</div>`
+    output.innerHTML += `<span>Displaying ${startingNum} - ${endingNum} of ${data[0].num_found} listings</span>`
     // number of pages = whatever I set the limit to / total results.
     // i.e. If I do 10 results per page and there are 54 results, we divide 54 / 10 and get 5.4
     // We can then round that up with Math.ceil and get 6 pages, which would be the total needed to house 54 results
     console.log(data)
+    console.log(apiUrl)
     const loaded = () => {
       document.querySelector('#loader').style.display = 'none'
       pagination.style.display = 'flex'
@@ -304,11 +796,15 @@ async function fetchURLs() {
 
 
   } catch (error) {
+    errCount += 1
+    if (errCount >= 3) {
+      output.innerHTML = `<div>It looks like we're having some trouble, sorry about that! Please reload the page and try again.</div>`
+    } else {
+      output.innerHTML = `<div>We're sorry, your request could not be completed. Please try again.</div>`
+    }
     console.log(error);
   }
 }
-
-
 
 // Adding functionality to toggle filter buttons
 
@@ -334,9 +830,6 @@ toggleFilter(yearDropdown, yearFilter);
 
 
 // Slider logic
-let lowerPriceRange;
-let upperPriceRange;
-
 const upperPrice = document.querySelector('#upperPrice'),
   lowerPrice = document.querySelector('#lowerPrice')
 
@@ -345,7 +838,7 @@ let lowerSliderPrice = document.querySelector('#priceRangeLow'),
   lowerValPrice = parseInt(lowerSliderPrice.value),
   upperValPrice = parseInt(upperSliderPrice.value);
 
-upperSliderPrice.addEventListener('input', function () {
+upperSliderPrice.addEventListener('input', () => {
   lowerValPrice = parseInt(lowerSliderPrice.value);
   upperValPrice = parseInt(upperSliderPrice.value);
 
@@ -660,7 +1153,18 @@ upperSliderPrice.addEventListener('input', function () {
   }
 });
 
-lowerSliderPrice.addEventListener('input', function () {
+upperSliderPrice.addEventListener('change', () => {
+  upperPriceRange = parseInt(upperPrice.innerHTML.replace(/[$,+]/g, ""))
+  apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}`;
+  if (upperPriceRange === 100000) {
+    upperPriceRange = 999999;
+    apiUrl = `https://marketcheck-prod.apigee.net/v1/search?api_key=${apiKey}&car_type=used&make=${storedMake}&model=${storedModel}&zip=${storedZip}&price_range=${lowerPriceRange}-${upperPriceRange}&miles_range=1-999999&carfax_clean_title=true&radius=${radius.value}&start=${page}&rows=10${sortFacets}${colorFacets}`;
+  }
+  fetchURLs()
+})
+
+//! Lower Slider
+lowerSliderPrice.addEventListener('input', () => {
   lowerValPrice = parseInt(lowerSliderPrice.value);
   upperValPrice = parseInt(upperSliderPrice.value);
 
@@ -968,13 +1472,12 @@ lowerSliderPrice.addEventListener('input', function () {
     }
   }
 
+  lowerPriceRange = parseInt(lowerPrice.innerHTML.replace(/[$,+]/g, ""))
+
   if (lowerValPrice > upperValPrice - 5) {
     lowerSliderPrice.value = upperValPrice - 5;
   }
 });
-
-let lowerMilesRange;
-let upperMilesRange;
 
 const upperMiles = document.querySelector('#upperMiles'),
   lowerMiles = document.querySelector('#lowerMiles')
@@ -1199,9 +1702,6 @@ lowerSliderMiles.addEventListener('input', function () {
     lowerSliderMiles.value = upperValMiles - 5;
   }
 });
-
-let lowerYearRange;
-let upperYearRange;
 
 const upperYear = document.querySelector('#upperYear'),
   lowerYear = document.querySelector('#lowerYear')

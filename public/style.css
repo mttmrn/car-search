@@ -221,8 +221,16 @@ a.signup {
 .zip-error {
     font-size: 1.2rem;
     display: block;
-    padding: 1rem 2rem;
+    padding: 0.5rem 0.2rem;
     color: rgb(192, 36, 16);
+    position: absolute;
+    right: 0;
+}
+
+.zip-error-container {
+    width: 100%;
+    height: 2.5rem;
+    position: relative;
 }
 
 .hidden {
@@ -835,7 +843,7 @@ a.signup {
     background: #FFFFFF;
     border: 1px solid #000000;
     border-radius: 4px;
-    padding: 1rem;
+    padding: 0rem 1rem;
 }
 
 .make-reset-container .make {
@@ -845,7 +853,7 @@ a.signup {
     background: #FFFFFF;
     border: 1px solid #000000;
     border-radius: 4px;
-    padding: 1rem;
+    padding: 0rem 1rem;
 }
 
 .center {
@@ -863,7 +871,6 @@ a.signup {
 .filter-btn {
     height: 4.5rem;
     width: 100%;
-    margin-top: 2.5rem;
     color: white;
     background: #87B7FF;
     font-size: 2.6rem;
@@ -908,6 +915,7 @@ a.signup {
 .range-numbers {
     padding: 1rem 1rem;
     margin-top: 0.5rem;
+    user-select: none;
 }
 
 .lower-num {
@@ -2878,3 +2886,5 @@ a.signup {
         opacity: 0;
     }
 }
+
+

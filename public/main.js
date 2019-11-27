@@ -92,7 +92,7 @@ const getCar = () => {
           for (var i = 0; i < data.bmw.length; i++) {
             models.innerHTML += `<option value="${data.bmw[i].toLowerCase()}">${
               data.bmw[i]
-            }</option>`;
+              }</option>`;
           }
           break;
         case "buick":
@@ -164,7 +164,7 @@ const getCar = () => {
           for (var i = 0; i < data.gmc.length; i++) {
             models.innerHTML += `<option value="${data.gmc[i].toLowerCase()}">${
               data.gmc[i]
-            }</option>`;
+              }</option>`;
           }
           break;
         case "honda":
@@ -218,7 +218,7 @@ const getCar = () => {
           for (var i = 0; i < data.kia.length; i++) {
             models.innerHTML += `<option value="${data.kia[i].toLowerCase()}">${
               data.kia[i]
-            }</option>`;
+              }</option>`;
           }
           break;
         case "land rover":
@@ -450,16 +450,16 @@ signUpForm.addEventListener("submit", e => {
   const url = "http://localhost:3000";
 
   fetch(`${url}/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        confirmPass: confirm
-      })
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      confirmPass: confirm
     })
+  })
     .then(res => res.json())
     .then(data => {
       console.log(data);
@@ -476,30 +476,29 @@ carSearch.addEventListener("submit", e => {
 
 // Zip Code Validation
 const searchBtn = document.querySelector('#searchBtn'),
-  zipError = document.querySelector('#zipError'),
-  checkZip = () =>
+  zipError = document.querySelector('#zipError');
 
-  {
-    const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`
-    console.log(zipApiUrl)
-    fetch(zipApiUrl).then(res => {
-      if (res.status != 200) {
-        isError = true
-        throw Error(res.statusText)
-      } else {
-        isError = false
-        return res.json()
-      }
-    }).then(data => {
-      console.log(data)
-    })
-  }
+
+const checkZip = () => {
+  const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`
+  console.log(zipApiUrl)
+  fetch(zipApiUrl).then(res => {
+    if (res.status != 200) {
+      isError = true
+      throw Error(res.statusText)
+    } else {
+      isError = false
+      return res.json()
+    }
+  }).then(data => {
+    console.log(data)
+  })
+}
 
 let isError;
 
 
 zip.addEventListener('input', (e) => {
-  console.log("hello")
   if (zip.value.length === 5) {
     checkZip();
   }
