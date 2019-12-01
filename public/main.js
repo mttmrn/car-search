@@ -92,7 +92,7 @@ const getCar = () => {
           for (var i = 0; i < data.bmw.length; i++) {
             models.innerHTML += `<option value="${data.bmw[i].toLowerCase()}">${
               data.bmw[i]
-              }</option>`;
+            }</option>`;
           }
           break;
         case "buick":
@@ -164,7 +164,7 @@ const getCar = () => {
           for (var i = 0; i < data.gmc.length; i++) {
             models.innerHTML += `<option value="${data.gmc[i].toLowerCase()}">${
               data.gmc[i]
-              }</option>`;
+            }</option>`;
           }
           break;
         case "honda":
@@ -218,7 +218,7 @@ const getCar = () => {
           for (var i = 0; i < data.kia.length; i++) {
             models.innerHTML += `<option value="${data.kia[i].toLowerCase()}">${
               data.kia[i]
-              }</option>`;
+            }</option>`;
           }
           break;
         case "land rover":
@@ -377,7 +377,7 @@ const background = document.getElementById("background"),
   close = document.querySelector(".close");
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
+window.onclick = function(event) {
   if (event.target === background) {
     background.style.display = "none";
   }
@@ -385,31 +385,31 @@ window.onclick = function (event) {
 
 // Login event listener (nav bar)
 
-document.getElementById("modal1").addEventListener("click", function () {
+document.getElementById("modal1").addEventListener("click", function() {
   background.style.display = "flex";
 });
 
-close.addEventListener("click", function () {
+close.addEventListener("click", function() {
   background.style.display = "none";
 });
 
 // Signup event listener (nav bar)
 
-document.getElementById("modal2").addEventListener("click", function () {
+document.getElementById("modal2").addEventListener("click", function() {
   background.style.display = "flex";
 });
 
-close.addEventListener("click", function () {
+close.addEventListener("click", function() {
   background.style.display = "none";
 });
 
 // Signup event listener (bottom of page)
 
-document.getElementById("modal3").addEventListener("click", function () {
+document.getElementById("modal3").addEventListener("click", function() {
   background.style.display = "flex";
 });
 
-close.addEventListener("click", function () {
+close.addEventListener("click", function() {
   background.style.display = "none";
 });
 
@@ -419,7 +419,7 @@ function loginTab() {
   document.querySelector("#login-tab").classList.remove("active");
   document.querySelector(".modal-login").style.borderTop = "#087DD2 4px solid";
   document.querySelector(".signup-content").style.display = "none";
-  document.querySelector(".modal-content").style.height = "76%";
+  document.querySelector(".modal-content").style.height = "60rem";
   document.querySelector("#signup-tab").classList.add("active");
   document.querySelector(".modal-signup").style.borderTop = "none";
   document.querySelector(".login-content").style.display = "block";
@@ -473,56 +473,53 @@ carSearch.addEventListener("submit", e => {
   sessionStorage.setItem("model", models.value);
 });
 
-
 // Zip Code Validation
-const searchBtn = document.querySelector('#searchBtn'),
-  zipError = document.querySelector('#zipError');
-
+const searchBtn = document.querySelector("#searchBtn"),
+  zipError = document.querySelector("#zipError");
 
 const checkZip = () => {
-  const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`
-  console.log(zipApiUrl)
-  fetch(zipApiUrl).then(res => {
-    if (res.status != 200) {
-      isError = true
-      throw Error(res.statusText)
-    } else {
-      isError = false
-      return res.json()
-    }
-  }).then(data => {
-    console.log(data)
-  })
-}
+  const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`;
+  console.log(zipApiUrl);
+  fetch(zipApiUrl)
+    .then(res => {
+      if (res.status != 200) {
+        isError = true;
+        throw Error(res.statusText);
+      } else {
+        isError = false;
+        return res.json();
+      }
+    })
+    .then(data => {
+      console.log(data);
+    });
+};
 
 let isError;
 
-
-zip.addEventListener('input', (e) => {
+zip.addEventListener("input", e => {
   if (zip.value.length === 5) {
     checkZip();
   }
 });
 
-searchBtn.addEventListener('click', (e) => {
+searchBtn.addEventListener("click", e => {
   if (zip.value.length < 5) {
-    e.preventDefault()
-    zipError.innerHTML = `Please input a valid zip code`
-    zipError.classList.remove('hidden');
-    console.log(zip.value)
-
+    e.preventDefault();
+    zipError.innerHTML = `Please input a valid zip code`;
+    zipError.classList.remove("hidden");
+    console.log(zip.value);
   } else if (isError === true) {
-    e.preventDefault()
-    zipError.innerHTML = `Please input a valid zip code`
-    zipError.classList.remove('hidden');
-    console.log("error!")
+    e.preventDefault();
+    zipError.innerHTML = `Please input a valid zip code`;
+    zipError.classList.remove("hidden");
+    console.log("error!");
   }
 });
 
-
-const hamburger = document.querySelector('.container')
-const hamburgerLinks = document.querySelector('.hamburger-links')
-hamburger.addEventListener('click', e => {
+const hamburger = document.querySelector(".container");
+const hamburgerLinks = document.querySelector(".hamburger-links");
+hamburger.addEventListener("click", e => {
   hamburger.classList.toggle("change");
   hamburgerLinks.classList.toggle("hidden");
-})
+});
