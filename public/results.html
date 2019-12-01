@@ -1,306 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://kit.fontawesome.com/2ef970bfe9.js"></script>
     <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header">
-        <nav class="header">
-            <div class="logo-wrapper">
-                <a class="logo-wrapper" href="index.html">
-                    <span class="iconify larger" data-icon="ant-design:car-fill" data-inline="false"></span>
-                    <h1 class="logo" style="color: #ffffff;">Batchcar</h1>
-                </a>
-            </div>
-            <div class="link-wrapper">
-                <a class="navlink" href="#support">Support</a>
-                <a class="navlink" href="#Sell-your-car">Sell Your Car</a>
-                <a class="navlink" href="#finance">Financing</a>
-                <span class="navlink" style="padding-left: 0rem;"></span>
-                <a href="#profile" class="center">
-                    <span class="iconify" data-icon="ion:person-circle-outline" data-inline="false"></span>
-                    <span class="navlink last-link">Sign In</span>
-                </a>
-            </div>
-        </nav>
+      <nav class="header">
+        <div class="logo-wrapper">
+          <a class="logo-wrapper" href="index.html">
+            <span
+              class="iconify larger"
+              data-icon="ant-design:car-fill"
+              data-inline="false"
+            ></span>
+            <h1 class="logo" style="color: #ffffff;">Batchcar</h1>
+          </a>
+        </div>
+        <div class="link-wrapper">
+          <a class="navlink" href="#support">Support</a>
+          <a class="navlink" href="#Sell-your-car">Sell Your Car</a>
+          <a class="navlink" href="#finance">Financing</a>
+          <span class="navlink" style="padding-left: 0rem;"></span>
+          <a href="#profile" class="center">
+            <span
+              class="iconify"
+              data-icon="ion:person-circle-outline"
+              data-inline="false"
+            ></span>
+            <span class="navlink last-link">Sign In</span>
+          </a>
+        </div>
+      </nav>
     </header>
     <main class="main-container">
-        <div class="sidebar">
-            <div class="search-container-top">
-                <div class="make-reset-container">
-                    <select name="makes" id="makes" class="make">
-                        <option value="" selected>All Makes</option>
-                        <option value="acura">Acura</option>
-                        <option value="alfa romeo">Alfa Romeo</option>
-                        <option value="aston martin">Aston Martin</option>
-                        <option value="audi">Audi</option>
-                        <option value="bentley">Bentley</option>
-                        <option value="bmw">BMW</option>
-                        <option value="buick">Buick</option>
-                        <option value="cadillac">Cadillac</option>
-                        <option value="chevrolet">Chevrolet</option>
-                        <option value="chrysler">Chrysler</option>
-                        <option value="dodge">Dodge</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="ford">Ford</option>
-                        <option value="gmc">GMC</option>
-                        <option value="honda">Honda</option>
-                        <option value="hyundai">Hyundai</option>
-                        <option value="infiniti">Infiniti</option>
-                        <option value="jaguar">Jaguar</option>
-                        <option value="jeep">Jeep</option>
-                        <option value="kia">Kia</option>
-                        <option value="land rover">Land Rover</option>
-                        <option value="lexus">Lexus</option>
-                        <option value="lincoln">Lincoln</option>
-                        <option value="mazda">Mazda</option>
-                        <option value="mercedes benz">Mercedes-Benz</option>
-                        <option value="mitsubishi">Mitsubishi</option>
-                        <option value="nissan">Nissan</option>
-                        <option value="porsche">Porsche</option>
-                        <option value="scion">Scion</option>
-                        <option value="saab">Smart</option>
-                        <option value="subaru">Subaru</option>
-                        <option value="tesla">Tesla</option>
-                        <option value="toyota">Toyota</option>
-                        <option value="volkswagen">Volkswagen</option>
-                        <option value="volvo">Volvo</option>
-                    </select>
-                    <i class="fas fa-chevron-down" style="
+      <div class="sidebar">
+        <div class="search-container-top">
+          <div class="make-reset-container">
+            <select name="makes" id="makes" class="make">
+              <option value="" selected>All Makes</option>
+              <option value="acura">Acura</option>
+              <option value="alfa romeo">Alfa Romeo</option>
+              <option value="aston martin">Aston Martin</option>
+              <option value="audi">Audi</option>
+              <option value="bentley">Bentley</option>
+              <option value="bmw">BMW</option>
+              <option value="buick">Buick</option>
+              <option value="cadillac">Cadillac</option>
+              <option value="chevrolet">Chevrolet</option>
+              <option value="chrysler">Chrysler</option>
+              <option value="dodge">Dodge</option>
+              <option value="fiat">Fiat</option>
+              <option value="ford">Ford</option>
+              <option value="gmc">GMC</option>
+              <option value="honda">Honda</option>
+              <option value="hyundai">Hyundai</option>
+              <option value="infiniti">Infiniti</option>
+              <option value="jaguar">Jaguar</option>
+              <option value="jeep">Jeep</option>
+              <option value="kia">Kia</option>
+              <option value="land rover">Land Rover</option>
+              <option value="lexus">Lexus</option>
+              <option value="lincoln">Lincoln</option>
+              <option value="mazda">Mazda</option>
+              <option value="mercedes benz">Mercedes-Benz</option>
+              <option value="mitsubishi">Mitsubishi</option>
+              <option value="nissan">Nissan</option>
+              <option value="porsche">Porsche</option>
+              <option value="scion">Scion</option>
+              <option value="saab">Smart</option>
+              <option value="subaru">Subaru</option>
+              <option value="tesla">Tesla</option>
+              <option value="toyota">Toyota</option>
+              <option value="volkswagen">Volkswagen</option>
+              <option value="volvo">Volvo</option>
+            </select>
+            <i
+              class="fas fa-chevron-down"
+              style="
                     position: absolute;
                     top: 35px;
                     right: 35px;
-                "></i>
-                </div>
-                <div class="model-reset-container">
-                    <select name="models" id="models" class="model">
-                        <option value="">All Models</option>
-                    </select>
-                    <i class="fas fa-chevron-down" style="
+                "
+            ></i>
+          </div>
+          <div class="model-reset-container">
+            <select name="models" id="models" class="model">
+              <option value="">All Models</option>
+            </select>
+            <i
+              class="fas fa-chevron-down"
+              style="
                     position: absolute;
                     bottom: 43px;
                     right: 35px;
-                "></i>
-                </div>
-            </div>
-            <div class="search-container-bottom">
-                <span class="filter-title">Radius</span><span class="filter-title">Zip Code</span>
-                <select name="radius" id="radius" class="selection add-width">
-                    <option value="200">200 Miles</option>
-                    <option value="150">150 Miles</option>
-                    <option value="100">100 Miles</option>
-                    <option value="75" selected>75 Miles</option>
-                    <option value="50">50 Miles</option>
-                    <option value="25">25 Miles</option>
-                    <option value="10">10 Miles</option>
-                </select>
-                <i class="fas fa-chevron-down" style="
+                "
+            ></i>
+          </div>
+        </div>
+        <div class="search-container-bottom">
+          <span class="filter-title">Radius</span
+          ><span class="filter-title">Zip Code</span>
+          <select name="radius" id="radius" class="selection add-width">
+            <option value="200">200 Miles</option>
+            <option value="150">150 Miles</option>
+            <option value="100">100 Miles</option>
+            <option value="75" selected>75 Miles</option>
+            <option value="50">50 Miles</option>
+            <option value="25">25 Miles</option>
+            <option value="10">10 Miles</option>
+          </select>
+          <i
+            class="fas fa-chevron-down"
+            style="
                 position: absolute;
                 left: 152px;
                 top: 66px;
-            "></i>
-                <input class="selection add-width" maxlength="5" required name="zip" type="tel" id="zip" value="">
-                <div class="zip-error-container"><span class="zip-error hidden" id="zipError"></span></div>
-                <button class="filter-btn" id="searchBtn">Search</button>
-            </div>
-            <div class="filters">
-                <div class="filter-dropdown">
-                    <div id="price-dropdown">
-                        <span class="filter-title">Price</span>
-                        <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                            data-inline="false"></span>
-                    </div>
-                    <div class="hidden" id="price-filter">
-                        <div class="range-numbers">
-                            <span class="lower-num" id="lowerPrice">$0</span><span>-</span><span class="higher-num"
-                                id="upperPrice">$100,000+</span>
-                        </div>
-                        <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="0" class="slider low" id="priceRangeLow">
-                            <input type="range" min="0" max="100" value="100" class="slider high" id="priceRangeHigh">
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-dropdown">
-                    <div id="mileage-dropdown">
-                        <span class="filter-title">Mileage</span>
-                        <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                            data-inline="false"></span>
-                    </div>
-                    <div class="hidden" id="mileage-filter">
-                        <div class="range-numbers">
-                            <span class="lower-num" id="lowerMiles">0</span><span>-</span><span class="higher-num"
-                                id="upperMiles">150,000+</span>
-                        </div>
-                        <div class="slidecontainer">
-                            <input type="range" min="0" max="150" value="0" step="5" class="slider low"
-                                id="milesRangeLow">
-                            <input type="range" min="0" max="150" value="150" step="5" class="slider high"
-                                id="milesRangeHigh">
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-dropdown">
-                    <div id="year-dropdown">
-                        <span class="filter-title">Year</span>
-                        <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                            data-inline="false"></span>
-                    </div>
-                    <div class="hidden" id="year-filter">
-                        <div class="range-numbers">
-                            <span class="lower-num" id="lowerYear">2005</span><span>-</span><span class="higher-num"
-                                id="upperYear">2020</span>
-                        </div>
-                        <div class="slidecontainer">
-                            <input type="range" min="0" max="15" value="0" class="slider low" id="yearRangeLow">
-                            <input type="range" min="0" max="15" value="15" class="slider high" id="yearRangeHigh">
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-dropdown">
-                    <span class="filter-title">Color</span>
-                    <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                        data-inline="false"></span>
-                    <div class="hidden*">
-                        <div class="checkbox-container" id="color-checkboxes">
-                            <div class="checkbox-left">
-                                <div class="fieldset-container">
-                                    <input type="checkbox" name="color" id="black"> <span
-                                        class="checkbox-text">Black</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox" name="color" id="blue"> <span
-                                        class="checkbox-text">Blue</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox" name="color" id="silver"> <span
-                                        class="checkbox-text">Silver</span>
-                                </div>
-                            </div>
-                            <div class="checkbox-right">
-                                <div class="fieldset-container">
-                                    <input type="checkbox" id="white"> <span class="checkbox-text">White</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox" id="red"> <span class="checkbox-text">Red</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox" id="otherColor" name="color"> <span
-                                        class="checkbox-text">Other</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-dropdown">
-                    <span class="filter-title">Engine</span>
-                    <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                        data-inline="false"></span>
-                    <div class="hidden*">
-                        <div class="checkbox-container">
-                            <div class="checkbox-left">
-                                <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text" id="fourCyl">4 Cylinder</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text" id="sixCyl">6 Cylinder</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text" id="eightCyl">8 Cylinder</span>
-                                </div>
-                            </div>
-                            <div class="checkbox-right">
-                                <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text" id="hybrid">Hybrid</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text" id="electric">Electric</span>
-                                </div>
-                                <div class="fieldset-container">
-                                    <input type="checkbox"> <span class="checkbox-text" id="otherEngine">Other</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-dropdown">
-                    <span class="filter-title">Transmission</span>
-                    <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                        data-inline="false"></span>
-                    <div class="hidden*">
-                        <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text" id="automatic">Automatic</span>
-                        </div>
-                        <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text" id="manual">Manual</span>
-                        </div>
-                        <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text" id="otherTransmission">Other</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="filter-dropdown">
-                    <span class="filter-title">Features</span>
-                    <span class="iconify filter-icon" data-icon="ant-design:plus-circle-fill"
-                        data-inline="false"></span>
-                    <div class="hidden*">
-                        <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text">Automatic</span>
-                        </div>
-                        <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text">Manual</span>
-                        </div>
-                        <div class="fieldset-container">
-                            <input type="checkbox"> <span class="checkbox-text">Other</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            "
+          ></i>
+          <input
+            class="selection add-width"
+            maxlength="5"
+            required
+            name="zip"
+            type="tel"
+            id="zip"
+            value=""
+          />
+          <div class="zip-error-container">
+            <span class="zip-error hidden" id="zipError"></span>
+          </div>
+          <button class="filter-btn" id="searchBtn">Search</button>
         </div>
-        <div class="data-container">
-            <div class="heading-container">
-                <span class="heading" id="heading"></span>
-                <div class="sort-container heading">
-                    <span>Sort by</span>
-                    <select class="selection heading" name="sort" id="sort">
-                        <option value="best" selected>Best Match</option>
-                        <option value="low-price">Price: Low to High</option>
-                        <option value="high-price">Price: High to Low</option>
-                        <option value="low-miles">Miles: Low to High</option>
-                        <option value="high-miles">Miles: High to Low</option>
-                        <option value="low-year">Year: New to Old</option>
-                        <option value="high-year">Year: Old to New</option>
-                    </select>
-                    <i class="fas fa-chevron-down" style="position: absolute;
+        <div class="filters">
+          <div class="filter-dropdown">
+            <div id="price-dropdown">
+              <span class="filter-title">Price</span>
+              <span
+                class="iconify filter-icon"
+                data-icon="ant-design:plus-circle-fill"
+                data-inline="false"
+              ></span>
+            </div>
+            <div class="hidden" id="price-filter">
+              <div class="range-numbers">
+                <span class="lower-num" id="lowerPrice">$0</span><span>-</span
+                ><span class="higher-num" id="upperPrice">$100,000+</span>
+              </div>
+              <div class="slidecontainer">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  class="slider low"
+                  id="priceRangeLow"
+                />
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="100"
+                  class="slider high"
+                  id="priceRangeHigh"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="filter-dropdown">
+            <div id="mileage-dropdown">
+              <span class="filter-title">Mileage</span>
+              <span
+                class="iconify filter-icon"
+                data-icon="ant-design:plus-circle-fill"
+                data-inline="false"
+              ></span>
+            </div>
+            <div class="hidden" id="mileage-filter">
+              <div class="range-numbers">
+                <span class="lower-num" id="lowerMiles">0</span><span>-</span
+                ><span class="higher-num" id="upperMiles">150,000+</span>
+              </div>
+              <div class="slidecontainer">
+                <input
+                  type="range"
+                  min="0"
+                  max="150"
+                  value="0"
+                  step="5"
+                  class="slider low"
+                  id="milesRangeLow"
+                />
+                <input
+                  type="range"
+                  min="0"
+                  max="150"
+                  value="150"
+                  step="5"
+                  class="slider high"
+                  id="milesRangeHigh"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="filter-dropdown">
+            <div id="year-dropdown">
+              <span class="filter-title">Year</span>
+              <span
+                class="iconify filter-icon"
+                data-icon="ant-design:plus-circle-fill"
+                data-inline="false"
+              ></span>
+            </div>
+            <div class="hidden" id="year-filter">
+              <div class="range-numbers">
+                <span class="lower-num" id="lowerYear">2005</span><span>-</span
+                ><span class="higher-num" id="upperYear">2020</span>
+              </div>
+              <div class="slidecontainer">
+                <input
+                  type="range"
+                  min="0"
+                  max="15"
+                  value="0"
+                  class="slider low"
+                  id="yearRangeLow"
+                />
+                <input
+                  type="range"
+                  min="0"
+                  max="15"
+                  value="15"
+                  class="slider high"
+                  id="yearRangeHigh"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="filter-dropdown">
+                <div id="color-dropdown">
+            <span class="filter-title">Color</span>
+            <span
+              class="iconify filter-icon"
+              data-icon="ant-design:plus-circle-fill"
+              data-inline="false"
+            ></span>
+                </div>
+            <div class="hidden" id="color-filter">
+              <div class="checkbox-container" id="color-checkboxes">
+                <div class="checkbox-left">
+                  <div class="fieldset-container">
+                    <input type="checkbox" name="color" id="black" />
+                    <span class="checkbox-text">Black</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" name="color" id="blue" />
+                    <span class="checkbox-text">Blue</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" name="color" id="silver" />
+                    <span class="checkbox-text">Silver</span>
+                  </div>
+                </div>
+                <div class="checkbox-right">
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="white" />
+                    <span class="checkbox-text">White</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="red" />
+                    <span class="checkbox-text">Red</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="otherColor" name="color" />
+                    <span class="checkbox-text">Other</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filter-dropdown">
+                <div id="engine-dropdown">
+            <span class="filter-title">Engine</span>
+            <span
+              class="iconify filter-icon"
+              data-icon="ant-design:plus-circle-fill"
+              data-inline="false"
+            ></span>
+                </div>
+            <div class="hidden" id="engine-filter">
+              <div class="checkbox-container">
+                <div class="checkbox-left">
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="fourCyl" value="4" />
+                    <span class="checkbox-text" >4 Cylinder</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="sixCyl" value="6" />
+                    <span class="checkbox-text" >6 Cylinder</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="eightCyl" value="8"/>
+                    <span class="checkbox-text" >8 Cylinder</span>
+                  </div>
+                </div>
+                <div class="checkbox-right">
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="electric" value="electric" />
+                    <span class="checkbox-text" >Electric</span>
+                  </div>
+                  <div class="fieldset-container">
+                    <input type="checkbox" id="hybrid" value="electric / unleaded" />
+                    <span class="checkbox-text" >Hybrid</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filter-dropdown">
+                <div id="transmission-dropdown">
+            <span class="filter-title">Transmission</span>
+            <span
+              class="iconify filter-icon"
+              data-icon="ant-design:plus-circle-fill"
+              data-inline="false"
+            ></span>
+                </div>
+            <div class="hidden" id="transmission-filter">
+              <div class="fieldset-container">
+                <input type="checkbox" id="automatic" />
+                <span class="checkbox-text" >Automatic</span>
+              </div>
+              <div class="fieldset-container">
+                <input type="checkbox"  id="manual" />
+                <span class="checkbox-text">Manual</span>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="data-container">
+        <div class="heading-container">
+          <span class="heading" id="heading"></span>
+          <div class="sort-container heading">
+            <span>Sort by</span>
+            <select class="selection heading" name="sort" id="sort">
+              <option value="best" selected>Best Match</option>
+              <option value="low-price">Price: Low to High</option>
+              <option value="high-price">Price: High to Low</option>
+              <option value="low-miles">Miles: Low to High</option>
+              <option value="high-miles">Miles: High to Low</option>
+              <option value="low-year">Year: New to Old</option>
+              <option value="high-year">Year: Old to New</option>
+            </select>
+            <i
+              class="fas fa-chevron-down"
+              style="position: absolute;
                     top: 22px;
                     right: 12px;
-                    font-size: 10px;"></i>
-
-                </div>
-            </div>
-            <div class="results-container">
-                <div id="data">
-                </div>
-                <div class="pagination-container" id="pagination-container">
-                    <div class="pagination" id="pageDown">-</div>
-                    <div class="pagination" id="pageUp">+</div>
-                </div>
-            </div>
-
+                    font-size: 10px;"
+            ></i>
+          </div>
         </div>
+        <div class="results-container">
+          <div id="data"></div>
+          <div class="pagination-container" id="pagination-container">
+            <div class="pagination" id="pageDown">-</div>
+            <div class="pagination" id="pageUp">+</div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="./api.js"></script>
-</body>
-
+  </body>
 </html>

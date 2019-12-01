@@ -461,9 +461,7 @@ signUpForm.addEventListener("submit", e => {
     })
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    });
+    .then(data => {});
 });
 
 const carSearch = document.getElementById("search-form");
@@ -479,20 +477,15 @@ const searchBtn = document.querySelector("#searchBtn"),
 
 const checkZip = () => {
   const zipApiUrl = `https://api.zippopotam.us/us/${zip.value}`;
-  console.log(zipApiUrl);
-  fetch(zipApiUrl)
-    .then(res => {
-      if (res.status != 200) {
-        isError = true;
-        throw Error(res.statusText);
-      } else {
-        isError = false;
-        return res.json();
-      }
-    })
-    .then(data => {
-      console.log(data);
-    });
+  fetch(zipApiUrl).then(res => {
+    if (res.status != 200) {
+      isError = true;
+      throw Error(res.statusText);
+    } else {
+      isError = false;
+      return res.json();
+    }
+  });
 };
 
 let isError;
@@ -508,12 +501,10 @@ searchBtn.addEventListener("click", e => {
     e.preventDefault();
     zipError.innerHTML = `Please input a valid zip code`;
     zipError.classList.remove("hidden");
-    console.log(zip.value);
   } else if (isError === true) {
     e.preventDefault();
     zipError.innerHTML = `Please input a valid zip code`;
     zipError.classList.remove("hidden");
-    console.log("error!");
   }
 });
 
